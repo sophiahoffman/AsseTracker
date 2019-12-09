@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import PersonalPropertyList from './components/personalProperty/PersonalPropertyList';
 import PersonalPropertyAdd from './components/personalProperty/PersonalPropertyAdd';
 import PersonalPropertyDisposal from './components/personalProperty/PersonalPropertyDisposal';
@@ -18,7 +18,6 @@ import Login from './components/loginRegister/Login';
 import Register from './components/loginRegister/Register';
 
 
-
 class ApplicationViews extends Component {
 
     render() {
@@ -26,15 +25,144 @@ class ApplicationViews extends Component {
           <React.Fragment>
     
             <Route
-              exact path="/" render={props => {
-                return Test
-                // Remove null and return the component which will show news articles
+              exact path="/login" render={props => {
+                  return <Login {...props} />
+              }}
+            />
+              
+            <Route
+              exact path="/register" render={props => {
+                  return <Register {...props} />
               }}
             />
 
-        </ React.Fragment>
+            <Route
+              exact path="/vehicles" render={props => {
+                // if (this.props.user) {
+                  return <VehiclesList {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/vehicles/:vehicleId(\d+)/edit" render={props => {
+                // if (this.props.userValidated) {
+                  return <VehiclesEdit {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
+                // if (this.props.userValidated) {
+                  return <VehiclesDisposal {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
 
-        )
+                
+            <Route
+              path="/vehicles/new" render={props => {
+                // if (this.props.userValidated) {
+                  return <VehiclesAdd {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+
+            <Route
+              exact path="/personalProperty" render={props => {
+                // if (this.props.userValidated) {
+                  return <PersonalPropertyList {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/personalProperty/:personalPropertyId(\d+)/edit" render={props => {
+                // if (this.props.userValidated) {
+                  return <PersonalPropertyEdit {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/personalProperty/:personalPropertyId(\d+)/disposal" render={props => {
+                // if (this.props.userValidated) {
+                  return <PersonalPropertyDisposal {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+
+                
+            <Route
+              path="/personalProperty/new" render={props => {
+                // if (this.props.userValidated) {
+                  return <PersonalPropertyAdd {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+
+            <Route
+              exact path="/realEstate" render={props => {
+                // if (this.props.userValidated) {
+                  return <RealEstateList {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/realEstate/:realEstateId(\d+)/edit" render={props => {
+                // if (this.props.userValidated) {
+                  return <realEstateEdit {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+    
+            <Route
+              path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
+                // if (this.props.userValidated) {
+                  return <RealEstateDisposal {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+
+                
+            <Route
+              path="/realEstate/new" render={props => {
+                // if (this.props.userValidated) {
+                  return <RealEstateAdd {...props} />
+                // } else {
+                  // <Redirect to="/" />
+                // }
+              }}
+            />
+
+
+        </ React.Fragment>
+      )
+    }
 
 
 }
