@@ -1,0 +1,657 @@
+{
+"users": [
+  {
+    "id": 1,
+    "username": "Andrei Ledwidge",
+    "password": "BuomzUTwPlgT",
+    "email": "aledwidge0@google.de"
+  },
+  {
+    "id": 2,
+    "username": "Bran Vella",
+    "password": "u6YynnfB",
+    "email": "bvella1@cdbaby.com"
+  },
+  {
+    "id": 3,
+    "username": "Valaree Byles",
+    "password": "Fnyhsemv",
+    "email": "vbyles2@amazon.de"
+  },
+  {
+    "id": 4,
+    "username": "Shae Gallaccio",
+    "password": "LCUTAZv3n",
+    "email": "sgallaccio3@1688.com"
+  },
+  {
+    "id": 5,
+    "username": "Jessika Tinman",
+    "password": "AJN7mvqxmI",
+    "email": "jtinman4@cbc.ca"
+  },
+  {
+    "id": 6,
+    "username": "Collie Hinksen",
+    "password": "9RTuoig4",
+    "email": "chinksen5@odnoklassniki.ru"
+  },
+  {
+    "id": 7,
+    "username": "Giselle Toal",
+    "password": "ITE5kPqZ",
+    "email": "gtoal6@dell.com"
+  },
+  {
+    "id": 8,
+    "username": "Daryl Josselson",
+    "password": "LvTDFi",
+    "email": "djosselson7@slideshare.net"
+  },
+  {
+    "id": 9,
+    "username": "Jaquenetta Lante",
+    "password": "RNa1BnE",
+    "email": "jlante8@sphinn.com"
+  },
+  {
+    "id": 10,
+    "username": "Leia Shoesmith",
+    "password": "nbyB60cWlo",
+    "email": "lshoesmith9@theguardian.com"
+  }
+],
+"personalProperty": [
+  {
+    "id": 1,
+    "name": "ecadden0",
+    "description": "Open-source tangible alliance",
+    "manufacturer": "Lexus",
+    "model": "11994-127",
+    "location": "62 Rieder Trail",
+    "purchaseLocation": "Gusikowski Group",
+    "purchaseDate": "8/12/2019",
+    "purchasePrice": "$382.61",
+    "disposalDate": "12/1/2019",
+    "disposalPrice": "$2879.15",
+    "disposalNotes": "Mandatory leading edge model",
+    "activeAsset": false,
+    "userId": 5,
+    "ppTypeId": 8
+  },
+  {
+    "id": 2,
+    "name": "dkeddy1",
+    "description": "Virtual well-modulated adapter",
+    "manufacturer": "Mercedes-Benz",
+    "model": "15127-129",
+    "location": "29 Memorial Terrace",
+    "purchaseLocation": "Lueilwitz LLC",
+    "purchaseDate": "3/15/2019",
+    "purchasePrice": "$2637.74",
+    "disposalDate": "6/9/2019",
+    "disposalPrice": "$5877.90",
+    "disposalNotes": "Reactive zero defect website",
+    "activeAsset": false,
+    "userId": 10,
+    "ppTypeId": 1
+  },
+  {
+    "id": 3,
+    "name": "kritmeier2",
+    "description": "Seamless asymmetric approach",
+    "manufacturer": "Mitsubishi",
+    "model": "35356-470",
+    "location": "1 Maywood Terrace",
+    "purchaseLocation": "Towne, Labadie and Baumbach",
+    "purchaseDate": "12/9/2018",
+    "purchasePrice": "$6490.75",
+    "disposalDate": "8/7/2019",
+    "disposalPrice": "$9017.52",
+    "disposalNotes": "Object-based 24 hour middleware",
+    "activeAsset": false,
+    "userId": 8,
+    "ppTypeId": 7
+  },
+  {
+    "id": 4,
+    "name": "gwarlow3",
+    "description": "Operative solution-oriented model",
+    "manufacturer": "Lincoln",
+    "model": "64679-921",
+    "location": "9080 Northview Pass",
+    "purchaseLocation": "Wolff, Jacobi and Runte",
+    "purchaseDate": "12/2/2019",
+    "purchasePrice": "$9458.99",
+    "disposalDate": "1/14/2019",
+    "disposalPrice": "$2938.90",
+    "disposalNotes": "Sharable 24/7 initiative",
+    "activeAsset": true,
+    "userId": 9,
+    "ppTypeId": 6
+  },
+  {
+    "id": 5,
+    "name": "mburnsides4",
+    "description": "Down-sized neutral ability",
+    "manufacturer": "GMC",
+    "model": "65044-2100",
+    "location": "8829 Harbort Plaza",
+    "purchaseLocation": "Abshire, Spinka and Lindgren",
+    "purchaseDate": "11/5/2019",
+    "purchasePrice": "$4996.82",
+    "disposalDate": "11/10/2019",
+    "disposalPrice": "$882.20",
+    "disposalNotes": "Customer-focused foreground matrix",
+    "activeAsset": false,
+    "userId": 7,
+    "ppTypeId": 2
+  },
+  {
+    "id": 6,
+    "name": "bmoubray5",
+    "description": "Self-enabling mission-critical Graphic Interface",
+    "manufacturer": "Ford",
+    "model": "60505-0232",
+    "location": "08 Warbler Way",
+    "purchaseLocation": "Haag, Weissnat and Wunsch",
+    "purchaseDate": "6/22/2019",
+    "purchasePrice": "$5235.51",
+    "disposalDate": "2/25/2019",
+    "disposalPrice": "$9083.21",
+    "disposalNotes": "Self-enabling eco-centric monitoring",
+    "activeAsset": true,
+    "userId": 4,
+    "ppTypeId": 9
+  },
+  {
+    "id": 7,
+    "name": "mstapford6",
+    "description": "Synchronised multimedia moderator",
+    "manufacturer": "Honda",
+    "model": "52380-1905",
+    "location": "845 Hayes Terrace",
+    "purchaseLocation": "Koss-Kris",
+    "purchaseDate": "12/23/2018",
+    "purchasePrice": "$6165.41",
+    "disposalDate": "8/3/2019",
+    "disposalPrice": "$7245.75",
+    "disposalNotes": "Horizontal zero administration middleware",
+    "activeAsset": true,
+    "userId": 6,
+    "ppTypeId": 3
+  },
+  {
+    "id": 8,
+    "name": "bdeporte7",
+    "description": "De-engineered zero defect circuit",
+    "manufacturer": "Ford",
+    "model": "49281-752",
+    "location": "4 Morrow Road",
+    "purchaseLocation": "Hermiston Inc",
+    "purchaseDate": "3/4/2019",
+    "purchasePrice": "$7683.74",
+    "disposalDate": "7/30/2019",
+    "disposalPrice": "$7754.20",
+    "disposalNotes": "Team-oriented grid-enabled framework",
+    "activeAsset": false,
+    "userId": 4,
+    "ppTypeId": 2
+  },
+  {
+    "id": 9,
+    "name": "qlissandri8",
+    "description": "Seamless homogeneous access",
+    "manufacturer": "Land Rover",
+    "model": "68428-146",
+    "location": "79353 Blaine Park",
+    "purchaseLocation": "Herman-Ratke",
+    "purchaseDate": "12/17/2018",
+    "purchasePrice": "$8845.65",
+    "disposalDate": "6/12/2019",
+    "disposalPrice": "$726.19",
+    "disposalNotes": "Innovative incremental application",
+    "activeAsset": true,
+    "userId": 8,
+    "ppTypeId": 5
+  },
+  {
+    "id": 10,
+    "name": "ohoyte9",
+    "description": "Automated clear-thinking orchestration",
+    "manufacturer": "Lotus",
+    "model": "52959-126",
+    "location": "646 Orin Hill",
+    "purchaseLocation": "Pollich and Sons",
+    "purchaseDate": "12/13/2018",
+    "purchasePrice": "$7474.58",
+    "disposalDate": "12/6/2019",
+    "disposalPrice": "$9110.66",
+    "disposalNotes": "Cloned intangible methodology",
+    "activeAsset": false,
+    "userId": 10,
+    "ppTypeId": 3
+  }
+],
+"ppTypes": [
+  {
+    "id": 1,
+    "type": "content-based"
+  },
+  {
+    "id": 2,
+    "type": "User-friendly"
+  },
+  {
+    "id": 3,
+    "type": "ability"
+  },
+  {
+    "id": 4,
+    "type": "Reverse-engineered"
+  },
+  {
+    "id": 5,
+    "type": "emulation"
+  },
+  {
+    "id": 6,
+    "type": "open architecture"
+  },
+  {
+    "id": 7,
+    "type": "Enterprise-wide"
+  },
+  {
+    "id": 8,
+    "type": "Visionary"
+  },
+  {
+    "id": 9,
+    "type": "project"
+  },
+  {
+    "id": 10,
+    "type": "Advanced"
+  }
+],
+"realEstate": [
+  {
+    "id": 1,
+    "name": "rradclyffe0",
+    "address": "4546 Canary Street",
+    "city": "Savannah",
+    "state": "GA",
+    "zip": 5644,
+    "rent": false,
+    "purchaseDate": "12/6/2019",
+    "purchasePrice": "$4.52",
+    "activeAsset": true,
+    "userId": 4,
+    "reTypeId": 3
+  },
+  {
+    "id": 2,
+    "name": "fnadin1",
+    "address": "320 Redwing Junction",
+    "city": "Kansas City",
+    "state": "KS",
+    "zip": 6233,
+    "rent": true,
+    "purchaseDate": "8/17/2019",
+    "purchasePrice": "$1.11",
+    "activeAsset": true,
+    "userId": 10,
+    "reTypeId": 6
+  },
+  {
+    "id": 3,
+    "name": "kcosti2",
+    "address": "3 Knutson Park",
+    "city": "Washington",
+    "state": "DC",
+    "zip": 8332,
+    "rent": false,
+    "purchaseDate": "7/14/2019",
+    "purchasePrice": "$4.70",
+    "activeAsset": true,
+    "userId": 10,
+    "reTypeId": 7
+  },
+  {
+    "id": 4,
+    "name": "ahamsson3",
+    "address": "713 Katie Drive",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": 291,
+    "rent": false,
+    "purchaseDate": "7/29/2019",
+    "purchasePrice": "$8.20",
+    "activeAsset": true,
+    "userId": 9,
+    "reTypeId": 3
+  },
+  {
+    "id": 5,
+    "name": "lfallens4",
+    "address": "9010 Dennis Pass",
+    "city": "Palm Bay",
+    "state": "FL",
+    "zip": 8685,
+    "rent": false,
+    "purchaseDate": "10/20/2019",
+    "purchasePrice": "$1.62",
+    "activeAsset": false,
+    "userId": 1,
+    "reTypeId": 5
+  },
+  {
+    "id": 6,
+    "name": "nsvanetti5",
+    "address": "5243 Kipling Point",
+    "city": "New Orleans",
+    "state": "LA",
+    "zip": 9746,
+    "rent": true,
+    "purchaseDate": "9/13/2019",
+    "purchasePrice": "$7.07",
+    "activeAsset": true,
+    "userId": 3,
+    "reTypeId": 4
+  },
+  {
+    "id": 7,
+    "name": "sraubheim6",
+    "address": "08965 Summerview Place",
+    "city": "Colorado Springs",
+    "state": "CO",
+    "zip": 3222,
+    "rent": true,
+    "purchaseDate": "6/13/2019",
+    "purchasePrice": "$8.02",
+    "activeAsset": true,
+    "userId": 9,
+    "reTypeId": 8
+  },
+  {
+    "id": 8,
+    "name": "rwrench7",
+    "address": "0 Crescent Oaks Place",
+    "city": "Houston",
+    "state": "TX",
+    "zip": 8728,
+    "rent": false,
+    "purchaseDate": "6/14/2019",
+    "purchasePrice": "$1.94",
+    "activeAsset": true,
+    "userId": 4,
+    "reTypeId": 7
+  },
+  {
+    "id": 9,
+    "name": "bwilfinger8",
+    "address": "07272 Carey Circle",
+    "city": "Vienna",
+    "state": "VA",
+    "zip": 3452,
+    "rent": true,
+    "purchaseDate": "6/12/2019",
+    "purchasePrice": "$2.90",
+    "activeAsset": false,
+    "userId": 10,
+    "reTypeId": 2
+  },
+  {
+    "id": 10,
+    "name": "bmerritt9",
+    "address": "54 Shopko Alley",
+    "city": "Denver",
+    "state": "CO",
+    "zip": 826,
+    "rent": false,
+    "purchaseDate": "1/8/2019",
+    "purchasePrice": "$0.78",
+    "activeAsset": false,
+    "userId": 10,
+    "reTypeId": 2
+  }
+],
+"reTypes": [
+  {
+    "id": 1,
+    "type": "cbrodhead0"
+  },
+  {
+    "id": 2,
+    "type": "rbrunsden1"
+  },
+  {
+    "id": 3,
+    "type": "tmalzard2"
+  },
+  {
+    "id": 4,
+    "type": "ehandes3"
+  },
+  {
+    "id": 5,
+    "type": "btitmuss4"
+  },
+  {
+    "id": 6,
+    "type": "srixon5"
+  },
+  {
+    "id": 7,
+    "type": "lkellough6"
+  },
+  {
+    "id": 8,
+    "type": "eschimonek7"
+  },
+  {
+    "id": 9,
+    "type": "mtroubridge8"
+  },
+  {
+    "id": 10,
+    "type": "atreker9"
+  }
+],
+"vehicles": [
+  {
+    "id": 1,
+    "vin": "1G6DV1EP9F0785404",
+    "license": "Colgate",
+    "year": 1987,
+    "make": "Volkswagen",
+    "model": "Type 2",
+    "location": "Camalote",
+    "purchaseLocation": "Corpus Christi",
+    "purchaseDate": "2/22/2019",
+    "purchasePrice": "$4913.44",
+    "activeAsset": false,
+    "userId": 5,
+    "vehicleTypeId": 7
+  },
+  {
+    "id": 2,
+    "vin": "1C4NJPBA5FD887744",
+    "license": "Long-Lasting Wicked Fresh - Spearmint Ice",
+    "year": 1996,
+    "make": "Geo",
+    "model": "Metro",
+    "location": "Hailin",
+    "purchaseLocation": "Masma",
+    "purchaseDate": "10/31/2019",
+    "purchasePrice": "$9009.01",
+    "activeAsset": true,
+    "userId": 8,
+    "vehicleTypeId": 6
+  },
+  {
+    "id": 3,
+    "vin": "WAUAH94F27N989445",
+    "license": "Clear",
+    "year": 1991,
+    "make": "Mazda",
+    "model": "Familia",
+    "location": "Skarbimierz Osiedle",
+    "purchaseLocation": "Qorveh",
+    "purchaseDate": "2/16/2019",
+    "purchasePrice": "$5822.54",
+    "activeAsset": true,
+    "userId": 10,
+    "vehicleTypeId": 7
+  },
+  {
+    "id": 4,
+    "vin": "5NPDH4AE8DH390625",
+    "license": "Terazosin Hydrochloride",
+    "year": 2000,
+    "make": "Toyota",
+    "model": "Celica",
+    "location": "E’zhou",
+    "purchaseLocation": "Kedungbanteng Krajan",
+    "purchaseDate": "1/8/2019",
+    "purchasePrice": "$4714.84",
+    "activeAsset": true,
+    "userId": 3,
+    "vehicleTypeId": 1
+  },
+  {
+    "id": 5,
+    "vin": "SALAG2D49CA543962",
+    "license": "Nabumetone",
+    "year": 1993,
+    "make": "Lexus",
+    "model": "SC",
+    "location": "Pacucha",
+    "purchaseLocation": "Wengaingo",
+    "purchaseDate": "4/12/2019",
+    "purchasePrice": "$4902.20",
+    "activeAsset": true,
+    "userId": 4,
+    "vehicleTypeId": 1
+  },
+  {
+    "id": 6,
+    "vin": "5J8TB4H35DL296524",
+    "license": "ASPERGILLUS NIGER VAR NIGER",
+    "year": 2010,
+    "make": "Chevrolet",
+    "model": "Silverado",
+    "location": "Fengshou",
+    "purchaseLocation": "Zmiyëvka",
+    "purchaseDate": "6/15/2019",
+    "purchasePrice": "$6259.46",
+    "activeAsset": false,
+    "userId": 5,
+    "vehicleTypeId": 4
+  },
+  {
+    "id": 7,
+    "vin": "2C4RDGBG0CR946995",
+    "license": "MISSHA M SHINY BB",
+    "year": 2012,
+    "make": "Ford",
+    "model": "E150",
+    "location": "Milwaukee",
+    "purchaseLocation": "Tagiura",
+    "purchaseDate": "11/27/2019",
+    "purchasePrice": "$3076.05",
+    "activeAsset": false,
+    "userId": 2,
+    "vehicleTypeId": 7
+  },
+  {
+    "id": 8,
+    "vin": "YV1982BW8A1965918",
+    "license": "HAWAIIAN Tropic",
+    "year": 1999,
+    "make": "Ford",
+    "model": "F250",
+    "location": "Fangxiang",
+    "purchaseLocation": "Konkwesso",
+    "purchaseDate": "9/17/2019",
+    "purchasePrice": "$2405.70",
+    "activeAsset": false,
+    "userId": 9,
+    "vehicleTypeId": 3
+  },
+  {
+    "id": 9,
+    "vin": "WAUUL98E87A046514",
+    "license": "Lisinopril",
+    "year": 1969,
+    "make": "Pontiac",
+    "model": "GTO",
+    "location": "Volochys’k",
+    "purchaseLocation": "Thành Phố Nam Định",
+    "purchaseDate": "8/21/2019",
+    "purchasePrice": "$5797.00",
+    "activeAsset": false,
+    "userId": 9,
+    "vehicleTypeId": 5
+  },
+  {
+    "id": 10,
+    "vin": "SCBCU7ZAXBC225715",
+    "license": "SERTRALINE HYDROCHLORIDE",
+    "year": 2010,
+    "make": "Nissan",
+    "model": "GT-R",
+    "location": "Nggambel",
+    "purchaseLocation": "Vänersborg",
+    "purchaseDate": "1/3/2019",
+    "purchasePrice": "$9891.71",
+    "activeAsset": true,
+    "userId": 10,
+    "vehicleTypeId": 10
+  }
+], 
+"vehicleTypes": [
+  {
+    "id": 1,
+    "type": "Riffpedia"
+  },
+  {
+    "id": 2,
+    "type": "Voolia"
+  },
+  {
+    "id": 3,
+    "type": "Fiveclub"
+  },
+  {
+    "id": 4,
+    "type": "Mymm"
+  },
+  {
+    "id": 5,
+    "type": "Yozio"
+  },
+  {
+    "id": 6,
+    "type": "Zoonoodle"
+  },
+  {
+    "id": 7,
+    "type": "Devshare"
+  },
+  {
+    "id": 8,
+    "type": "Wordpedia"
+  },
+  {
+    "id": 9,
+    "type": "Yadel"
+  },
+  {
+    "id": 10,
+    "type": "Viva"
+  }
+]
+
+}
