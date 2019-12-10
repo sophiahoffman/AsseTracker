@@ -35,12 +35,12 @@ class RealEstateList extends Component {
                     <Button variant="primary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
                 <div className="realEstate-container-cards" align="center">
-                    {this.state.realEstate.map(realEstate => 
+                    {this.state.realEstate.map(realEstate =>
                         <RealEstateCard 
                         key={realEstate.id}
                         realEstate={realEstate}
                         deleteRealEstate = {this.deleteRealEstate}
-                        {...this.props} />)}
+                        {...this.props} /> )}
                 </div>
             </React.Fragment>
             

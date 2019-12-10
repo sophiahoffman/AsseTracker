@@ -41,7 +41,7 @@
     "disposalNotes": "Mandatory leading edge model",
     "activeAsset": false,
     "userId": 1,
-    "ppTypeId": 8
+    "ppTypeId": 2
   },
   {
     "id": 2,
@@ -75,7 +75,7 @@
     "disposalNotes": "Object-based 24 hour middleware",
     "activeAsset": false,
     "userId": 2,
-    "ppTypeId": 7
+    "ppTypeId": 3
   },
   {
     "id": 4,
@@ -92,7 +92,7 @@
     "disposalNotes": "Sharable 24/7 initiative",
     "activeAsset": true,
     "userId": 2,
-    "ppTypeId": 6
+    "ppTypeId": 4
   },
   {
     "id": 5,
@@ -109,7 +109,7 @@
     "disposalNotes": "Customer-focused foreground matrix",
     "activeAsset": false,
     "userId": 3,
-    "ppTypeId": 2
+    "ppTypeId": 1
   },
   {
     "id": 6,
@@ -126,7 +126,7 @@
     "disposalNotes": "Self-enabling eco-centric monitoring",
     "activeAsset": true,
     "userId": 3,
-    "ppTypeId": 9
+    "ppTypeId": 1
   },
   {
     "id": 7,
@@ -177,7 +177,7 @@
     "disposalNotes": "Innovative incremental application",
     "activeAsset": true,
     "userId": 1,
-    "ppTypeId": 5
+    "ppTypeId": 4
   },
   {
     "id": 10,
@@ -200,43 +200,19 @@
 "ppTypes": [
   {
     "id": 1,
-    "type": "content-based"
+    "type": "jewelry"
   },
   {
     "id": 2,
-    "type": "User-friendly"
+    "type": "appliances"
   },
   {
     "id": 3,
-    "type": "ability"
+    "type": "electronics"
   },
   {
     "id": 4,
-    "type": "Reverse-engineered"
-  },
-  {
-    "id": 5,
-    "type": "emulation"
-  },
-  {
-    "id": 6,
-    "type": "open architecture"
-  },
-  {
-    "id": 7,
-    "type": "Enterprise-wide"
-  },
-  {
-    "id": 8,
-    "type": "Visionary"
-  },
-  {
-    "id": 9,
-    "type": "project"
-  },
-  {
-    "id": 10,
-    "type": "Advanced"
+    "type": "furniture"
   }
 ],
 "realEstate": [
@@ -266,7 +242,7 @@
     "purchasePrice": "$1.11",
     "activeAsset": true,
     "userId": 1,
-    "reTypeId": 6
+    "reTypeId": 1
   },
   {
     "id": 3,
@@ -280,7 +256,7 @@
     "purchasePrice": "$4.70",
     "activeAsset": true,
     "userId": 1,
-    "reTypeId": 7
+    "reTypeId": 1
   },
   {
     "id": 4,
@@ -294,7 +270,7 @@
     "purchasePrice": "$8.20",
     "activeAsset": true,
     "userId": 2,
-    "reTypeId": 3
+    "reTypeId": 2
   },
   {
     "id": 5,
@@ -308,7 +284,7 @@
     "purchasePrice": "$1.62",
     "activeAsset": false,
     "userId": 1,
-    "reTypeId": 5
+    "reTypeId": 1
   },
   {
     "id": 6,
@@ -336,7 +312,7 @@
     "purchasePrice": "$8.02",
     "activeAsset": true,
     "userId": 4,
-    "reTypeId": 8
+    "reTypeId": 3
   },
   {
     "id": 8,
@@ -350,7 +326,7 @@
     "purchasePrice": "$1.94",
     "activeAsset": true,
     "userId": 4,
-    "reTypeId": 7
+    "reTypeId": 4
   },
   {
     "id": 9,
@@ -384,43 +360,19 @@
 "reTypes": [
   {
     "id": 1,
-    "type": "cbrodhead0"
+    "type": "house"
   },
   {
     "id": 2,
-    "type": "rbrunsden1"
+    "type": "condo"
   },
   {
     "id": 3,
-    "type": "tmalzard2"
+    "type": "townhouse"
   },
   {
     "id": 4,
-    "type": "ehandes3"
-  },
-  {
-    "id": 5,
-    "type": "btitmuss4"
-  },
-  {
-    "id": 6,
-    "type": "srixon5"
-  },
-  {
-    "id": 7,
-    "type": "lkellough6"
-  },
-  {
-    "id": 8,
-    "type": "eschimonek7"
-  },
-  {
-    "id": 9,
-    "type": "mtroubridge8"
-  },
-  {
-    "id": 10,
-    "type": "atreker9"
+    "type": "apartment"
   }
 ],
 "vehicles": [
@@ -438,7 +390,7 @@
     "purchasePrice": "$4913.44",
     "activeAsset": false,
     "userId": 1,
-    "vehicleTypeId": 7
+    "vehicleTypeId": 2
   },
   {
     "id": 2,
@@ -454,7 +406,7 @@
     "purchasePrice": "$9009.01",
     "activeAsset": true,
     "userId": 2,
-    "vehicleTypeId": 6
+    "vehicleTypeId": 4
   },
   {
     "id": 3,
@@ -470,7 +422,7 @@
     "purchasePrice": "$5822.54",
     "activeAsset": true,
     "userId": 1,
-    "vehicleTypeId": 7
+    "vehicleTypeId": 3
   },
   {
     "id": 4,
@@ -534,7 +486,7 @@
     "purchasePrice": "$3076.05",
     "activeAsset": false,
     "userId": 2,
-    "vehicleTypeId": 7
+    "vehicleTypeId": 2
   },
   {
     "id": 8,
@@ -566,7 +518,7 @@
     "purchasePrice": "$5797.00",
     "activeAsset": false,
     "userId": 4,
-    "vehicleTypeId": 5
+    "vehicleTypeId": 4
   },
   {
     "id": 10,
@@ -582,49 +534,25 @@
     "purchasePrice": "$9891.71",
     "activeAsset": true,
     "userId": 1,
-    "vehicleTypeId": 10
+    "vehicleTypeId": 1
   }
 ], 
 "vehicleTypes": [
   {
     "id": 1,
-    "type": "Riffpedia"
+    "type": "SUV"
   },
   {
     "id": 2,
-    "type": "Voolia"
+    "type": "Minivan"
   },
   {
     "id": 3,
-    "type": "Fiveclub"
+    "type": "Sedan"
   },
   {
     "id": 4,
-    "type": "Mymm"
-  },
-  {
-    "id": 5,
-    "type": "Yozio"
-  },
-  {
-    "id": 6,
-    "type": "Zoonoodle"
-  },
-  {
-    "id": 7,
-    "type": "Devshare"
-  },
-  {
-    "id": 8,
-    "type": "Wordpedia"
-  },
-  {
-    "id": 9,
-    "type": "Yadel"
-  },
-  {
-    "id": 10,
-    "type": "Viva"
+    "type": "Scooter"
   }
 ]
 

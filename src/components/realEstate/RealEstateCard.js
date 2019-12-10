@@ -41,7 +41,7 @@ class RealEstateCard extends Component {
                     <Card.Body className="realEstate-content">
                         <Card.Title>{this.props.realEstate.name}</Card.Title><hr />
                         <Card.Text>
-                            {this.props.realEstate.reTypeId}<br /> 
+                            {this.props.realEstate.reType.type}<br /> 
                             {this.props.realEstate.address}<br />
                             {this.props.realEstate.city}<br />
                             {this.props.realEstate.state}<br />
