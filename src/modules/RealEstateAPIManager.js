@@ -5,7 +5,7 @@ export default {
     component: "realEstate",
 
     getAllRealEstate () {
-        let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_expand=reType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     postRealEstate (newObject) {
@@ -13,11 +13,11 @@ export default {
         return APIManager.post(route, newObject);
     },
     updateRealEstate (editedObject) {
-        let route = `${this.component}/${editedObject.id}`
+        let route = `${this.component}`
         return APIManager.update(route, editedObject);
     },
     deleteRealEstate (objectId) {
-        let route = `${this.component}/${objectId}`
+        let route = `${this.component}`
         return APIManager.delete(route, objectId);
     }
 

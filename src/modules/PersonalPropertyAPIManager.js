@@ -5,7 +5,7 @@ export default {
     component: "personalProperty",
 
     getAllPersonalProperty () {
-        let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     postPersonalProperty (newObject) {
@@ -17,7 +17,7 @@ export default {
         return APIManager.update(route, editedObject);
     },
     deletePersonalProperty (objectId) {
-        let route = `${this.component}/${objectId}`
+        let route = `${this.component}`
         return APIManager.delete(route, objectId);
     }
 

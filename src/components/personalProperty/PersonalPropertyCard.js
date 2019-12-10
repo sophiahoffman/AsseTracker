@@ -12,7 +12,7 @@ class PersonalPropertyCard extends Component {
                 <Card.Body className="personalProperty-content">
                     <Card.Title>{this.props.personalProperty.name}</Card.Title><hr />
                     <Card.Text>
-                        {this.props.personalProperty.ppTypeId}<br /> 
+                        {this.props.personalProperty.ppType.type}<br /> 
                         {this.props.personalProperty.description}<br /> 
                         {this.props.personalProperty.manufacturer}<br />
                         {this.props.personalProperty.model}<br />

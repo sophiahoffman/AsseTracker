@@ -131,7 +131,7 @@ class ApplicationViews extends Component {
             <Route
               path="/realEstate/:realEstateId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <realEstateEdit {...props} />
+                  return <RealEstateEdit {...props} />
                 // } else {
                   // <Redirect to="/" />
                 // }
