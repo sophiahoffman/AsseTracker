@@ -1,17 +1,18 @@
 const  remoteURL = "http://localhost:5002";
 
 export default {
-    get(component) {
-        return fetch(`${remoteURL}/${component}`)
+    get(route) {
+        return fetch(`${remoteURL}/${route}`)
+        .then(results => results.json())
     },
-    delete(component, objectId) {
-        return fetch(`${remoteURL}/${component}/${objectId}`, {
+    delete(route, objectId) {
+        return fetch(`${remoteURL}/${route}/${objectId}`, {
             method: "DELETE"
         })
         .then(results => results.json());
     },
-    post(component, newObject) {
-        return fetch(`${remoteURL}/${component}`, {
+    post(route, newObject) {
+        return fetch(`${remoteURL}/${route}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -20,8 +21,8 @@ export default {
         })
         .then(results => results.json());
     },
-    update(component, editedObject) {
-        return fetch(`${remoteURL}/${component}/${editedObject.id}`, {
+    update(route, editedObject) {
+        return fetch(`${remoteURL}/${route}/${editedObject.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
