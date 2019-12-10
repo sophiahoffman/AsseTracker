@@ -19,7 +19,7 @@ class PersonalPropertyCard extends Component {
                         {this.props.personalProperty.location}<br />
                         {this.props.personalProperty.purchaseLocation}<br />
                         {this.props.personalProperty.purchaseDate}<br />
-                        {this.props.personalProperty.purchasePrice}<br />
+                        ${this.props.personalProperty.purchasePrice}<br />
                     </Card.Text>
             
                         <Button variant="primary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalProperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>

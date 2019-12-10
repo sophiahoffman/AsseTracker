@@ -35,13 +35,13 @@
       "location": "62 Rieder Trail",
       "purchaseLocation": "Gusikowski Group",
       "purchaseDate": "8/12/2019",
-      "purchasePrice": "$382.61",
+      "purchasePrice": "382.61",
       "disposalDate": "12/1/2019",
-      "disposalPrice": "$2879.15",
+      "disposalPrice": "2879.15",
       "disposalNotes": "Mandatory leading edge model",
       "activeAsset": false,
       "userId": 1,
-      "ppTypeId": 8
+      "ppTypeId": 2
     },
     {
       "id": 2,
@@ -52,9 +52,9 @@
       "location": "29 Memorial Terrace",
       "purchaseLocation": "Lueilwitz LLC",
       "purchaseDate": "3/15/2019",
-      "purchasePrice": "$2637.74",
+      "purchasePrice": "2637.74",
       "disposalDate": "6/9/2019",
-      "disposalPrice": "$5877.90",
+      "disposalPrice": "5877.90",
       "disposalNotes": "Reactive zero defect website",
       "activeAsset": false,
       "userId": 1,
@@ -69,13 +69,13 @@
       "location": "1 Maywood Terrace",
       "purchaseLocation": "Towne, Labadie and Baumbach",
       "purchaseDate": "12/9/2018",
-      "purchasePrice": "$6490.75",
+      "purchasePrice": "6490.75",
       "disposalDate": "8/7/2019",
-      "disposalPrice": "$9017.52",
+      "disposalPrice": "9017.52",
       "disposalNotes": "Object-based 24 hour middleware",
       "activeAsset": false,
       "userId": 2,
-      "ppTypeId": 7
+      "ppTypeId": 3
     },
     {
       "id": 4,
@@ -86,13 +86,13 @@
       "location": "9080 Northview Pass",
       "purchaseLocation": "Wolff, Jacobi and Runte",
       "purchaseDate": "12/2/2019",
-      "purchasePrice": "$9458.99",
+      "purchasePrice": "9458.99",
       "disposalDate": "1/14/2019",
-      "disposalPrice": "$2938.90",
+      "disposalPrice": "2938.90",
       "disposalNotes": "Sharable 24/7 initiative",
       "activeAsset": true,
       "userId": 2,
-      "ppTypeId": 6
+      "ppTypeId": 4
     },
     {
       "id": 5,
@@ -103,13 +103,13 @@
       "location": "8829 Harbort Plaza",
       "purchaseLocation": "Abshire, Spinka and Lindgren",
       "purchaseDate": "11/5/2019",
-      "purchasePrice": "$4996.82",
+      "purchasePrice": "4996.82",
       "disposalDate": "11/10/2019",
-      "disposalPrice": "$882.20",
+      "disposalPrice": "882.20",
       "disposalNotes": "Customer-focused foreground matrix",
       "activeAsset": false,
       "userId": 3,
-      "ppTypeId": 2
+      "ppTypeId": 1
     },
     {
       "id": 6,
@@ -120,13 +120,13 @@
       "location": "08 Warbler Way",
       "purchaseLocation": "Haag, Weissnat and Wunsch",
       "purchaseDate": "6/22/2019",
-      "purchasePrice": "$5235.51",
+      "purchasePrice": "5235.51",
       "disposalDate": "2/25/2019",
-      "disposalPrice": "$9083.21",
+      "disposalPrice": "9083.21",
       "disposalNotes": "Self-enabling eco-centric monitoring",
       "activeAsset": true,
       "userId": 3,
-      "ppTypeId": 9
+      "ppTypeId": 1
     },
     {
       "id": 7,
@@ -137,9 +137,9 @@
       "location": "845 Hayes Terrace",
       "purchaseLocation": "Koss-Kris",
       "purchaseDate": "12/23/2018",
-      "purchasePrice": "$6165.41",
+      "purchasePrice": "6165.41",
       "disposalDate": "8/3/2019",
-      "disposalPrice": "$7245.75",
+      "disposalPrice": "7245.75",
       "disposalNotes": "Horizontal zero administration middleware",
       "activeAsset": true,
       "userId": 4,
@@ -154,13 +154,20 @@
       "location": "4 Morrow Road",
       "purchaseLocation": "Hermiston Inc",
       "purchaseDate": "3/4/2019",
-      "purchasePrice": "$7683.74",
+      "purchasePrice": "7683.74",
       "disposalDate": "7/30/2019",
-      "disposalPrice": "$7754.20",
+      "disposalPrice": "7754.20",
       "disposalNotes": "Team-oriented grid-enabled framework",
       "activeAsset": false,
       "userId": 4,
       "ppTypeId": 2
+    },
+    {
+      "id": 9,
+      "disposalDate": "12/12/2008",
+      "disposalPrice": "3400",
+      "disposalNotes": "gotta get rid of things",
+      "activeAsset": false
     },
     {
       "id": 10,
@@ -171,55 +178,45 @@
       "location": "646 Orin Hill",
       "purchaseLocation": "Pollich and Sons",
       "purchaseDate": "12/13/2018",
-      "purchasePrice": "$7474.58",
+      "purchasePrice": "7474.58",
       "disposalDate": "12/6/2019",
-      "disposalPrice": "$9110.66",
+      "disposalPrice": "9110.66",
       "disposalNotes": "Cloned intangible methodology",
       "activeAsset": false,
       "userId": 1,
       "ppTypeId": 3
+    },
+    {
+      "userId": 1,
+      "name": "tiffany necklace",
+      "ppTypeId": 1,
+      "description": "platinum with 2.8 carats of diamonds",
+      "manufacturer": "tiffany",
+      "model": "elsa peretti",
+      "location": "jewelry box",
+      "purchaseLocation": "tiffanys",
+      "purchaseDate": "12/12/2009",
+      "purchasePrice": "3500",
+      "activeAsset": true,
+      "id": 11
     }
   ],
   "ppTypes": [
     {
       "id": 1,
-      "type": "content-based"
+      "type": "jewelry"
     },
     {
       "id": 2,
-      "type": "User-friendly"
+      "type": "appliances"
     },
     {
       "id": 3,
-      "type": "ability"
+      "type": "electronics"
     },
     {
       "id": 4,
-      "type": "Reverse-engineered"
-    },
-    {
-      "id": 5,
-      "type": "emulation"
-    },
-    {
-      "id": 6,
-      "type": "open architecture"
-    },
-    {
-      "id": 7,
-      "type": "Enterprise-wide"
-    },
-    {
-      "id": 8,
-      "type": "Visionary"
-    },
-    {
-      "id": 9,
-      "type": "project"
-    },
-    {
-      "id": 10,
-      "type": "Advanced"
+      "type": "furniture"
     }
   ],
   "realEstate": [
@@ -232,10 +229,17 @@
       "zip": 5644,
       "rent": false,
       "purchaseDate": "12/6/2019",
-      "purchasePrice": "$4.52",
+      "purchasePrice": "4.52",
       "activeAsset": true,
       "userId": 4,
       "reTypeId": 3
+    },
+    {
+      "id": 2,
+      "disposalDate": "10/10/2010",
+      "disposalPrice": "3500",
+      "disposalNotes": "more to get rid of",
+      "activeAsset": false
     },
     {
       "id": 3,
@@ -246,10 +250,13 @@
       "zip": 8332,
       "rent": false,
       "purchaseDate": "7/14/2019",
-      "purchasePrice": "$4.70",
-      "activeAsset": true,
+      "purchasePrice": "4.70",
+      "activeAsset": false,
       "userId": 1,
-      "reTypeId": 7
+      "reTypeId": 1,
+      "disposalDate": "11/11/2011",
+      "disposalPrice": "2500",
+      "disposalNotes": "gotta get going"
     },
     {
       "id": 4,
@@ -260,10 +267,10 @@
       "zip": 291,
       "rent": false,
       "purchaseDate": "7/29/2019",
-      "purchasePrice": "$8.20",
+      "purchasePrice": "8.20",
       "activeAsset": true,
       "userId": 2,
-      "reTypeId": 3
+      "reTypeId": 2
     },
     {
       "id": 5,
@@ -274,10 +281,10 @@
       "zip": 8685,
       "rent": false,
       "purchaseDate": "10/20/2019",
-      "purchasePrice": "$1.62",
+      "purchasePrice": "1.62",
       "activeAsset": false,
       "userId": 1,
-      "reTypeId": 5
+      "reTypeId": 1
     },
     {
       "id": 6,
@@ -288,7 +295,7 @@
       "zip": 9746,
       "rent": true,
       "purchaseDate": "9/13/2019",
-      "purchasePrice": "$7.07",
+      "purchasePrice": "7.07",
       "activeAsset": true,
       "userId": 3,
       "reTypeId": 4
@@ -302,10 +309,10 @@
       "zip": 3222,
       "rent": true,
       "purchaseDate": "6/13/2019",
-      "purchasePrice": "$8.02",
+      "purchasePrice": "8.02",
       "activeAsset": true,
       "userId": 4,
-      "reTypeId": 8
+      "reTypeId": 3
     },
     {
       "id": 8,
@@ -316,10 +323,10 @@
       "zip": 8728,
       "rent": false,
       "purchaseDate": "6/14/2019",
-      "purchasePrice": "$1.94",
+      "purchasePrice": "1.94",
       "activeAsset": true,
       "userId": 4,
-      "reTypeId": 7
+      "reTypeId": 4
     },
     {
       "id": 9,
@@ -330,7 +337,7 @@
       "zip": 3452,
       "rent": true,
       "purchaseDate": "6/12/2019",
-      "purchasePrice": "$2.90",
+      "purchasePrice": "2.90",
       "activeAsset": false,
       "userId": 1,
       "reTypeId": 2
@@ -344,7 +351,7 @@
       "zip": 826,
       "rent": false,
       "purchaseDate": "1/8/2019",
-      "purchasePrice": "$0.78",
+      "purchasePrice": "0.78",
       "activeAsset": true,
       "userId": 1,
       "reTypeId": 2
@@ -353,43 +360,19 @@
   "reTypes": [
     {
       "id": 1,
-      "type": "cbrodhead0"
+      "type": "house"
     },
     {
       "id": 2,
-      "type": "rbrunsden1"
+      "type": "condo"
     },
     {
       "id": 3,
-      "type": "tmalzard2"
+      "type": "townhouse"
     },
     {
       "id": 4,
-      "type": "ehandes3"
-    },
-    {
-      "id": 5,
-      "type": "btitmuss4"
-    },
-    {
-      "id": 6,
-      "type": "srixon5"
-    },
-    {
-      "id": 7,
-      "type": "lkellough6"
-    },
-    {
-      "id": 8,
-      "type": "eschimonek7"
-    },
-    {
-      "id": 9,
-      "type": "mtroubridge8"
-    },
-    {
-      "id": 10,
-      "type": "atreker9"
+      "type": "apartment"
     }
   ],
   "vehicles": [
@@ -404,10 +387,10 @@
       "location": "Camalote",
       "purchaseLocation": "Corpus Christi",
       "purchaseDate": "2/22/2019",
-      "purchasePrice": "$4913.44",
+      "purchasePrice": "4913.44",
       "activeAsset": false,
       "userId": 1,
-      "vehicleTypeId": 7
+      "vehicleTypeId": 2
     },
     {
       "id": 2,
@@ -420,10 +403,26 @@
       "location": "Hailin",
       "purchaseLocation": "Masma",
       "purchaseDate": "10/31/2019",
-      "purchasePrice": "$9009.01",
+      "purchasePrice": "9009.01",
       "activeAsset": true,
       "userId": 2,
-      "vehicleTypeId": 6
+      "vehicleTypeId": 4
+    },
+    {
+      "id": 3,
+      "name": "Geezer Geyser",
+      "vin": "WAUAH94F27N989445",
+      "license": "Clear",
+      "year": 1991,
+      "make": "Mazda",
+      "model": "Familia",
+      "location": "Skarbimierz Osiedle",
+      "purchaseLocation": "Qorveh",
+      "purchaseDate": "2/16/2019",
+      "purchasePrice": "5822.54",
+      "activeAsset": true,
+      "userId": 1,
+      "vehicleTypeId": 3
     },
     {
       "id": 4,
@@ -436,7 +435,7 @@
       "location": "E’zhou",
       "purchaseLocation": "Kedungbanteng Krajan",
       "purchaseDate": "1/8/2019",
-      "purchasePrice": "$4714.84",
+      "purchasePrice": "4714.84",
       "activeAsset": true,
       "userId": 3,
       "vehicleTypeId": 1
@@ -452,7 +451,7 @@
       "location": "Pacucha",
       "purchaseLocation": "Wengaingo",
       "purchaseDate": "4/12/2019",
-      "purchasePrice": "$4902.20",
+      "purchasePrice": "4902.20",
       "activeAsset": true,
       "userId": 4,
       "vehicleTypeId": 1
@@ -468,7 +467,7 @@
       "location": "Fengshou",
       "purchaseLocation": "Zmiyëvka",
       "purchaseDate": "6/15/2019",
-      "purchasePrice": "$6259.46",
+      "purchasePrice": "6259.46",
       "activeAsset": false,
       "userId": 2,
       "vehicleTypeId": 4
@@ -484,10 +483,10 @@
       "location": "Milwaukee",
       "purchaseLocation": "Tagiura",
       "purchaseDate": "11/27/2019",
-      "purchasePrice": "$3076.05",
+      "purchasePrice": "3076.05",
       "activeAsset": false,
       "userId": 2,
-      "vehicleTypeId": 7
+      "vehicleTypeId": 2
     },
     {
       "id": 8,
@@ -500,7 +499,7 @@
       "location": "Fangxiang",
       "purchaseLocation": "Konkwesso",
       "purchaseDate": "9/17/2019",
-      "purchasePrice": "$2405.70",
+      "purchasePrice": "2405.70",
       "activeAsset": false,
       "userId": 1,
       "vehicleTypeId": 3
@@ -516,10 +515,10 @@
       "location": "Volochys’k",
       "purchaseLocation": "Thành Phố Nam Định",
       "purchaseDate": "8/21/2019",
-      "purchasePrice": "$5797.00",
+      "purchasePrice": "5797.00",
       "activeAsset": false,
       "userId": 4,
-      "vehicleTypeId": 5
+      "vehicleTypeId": 4
     },
     {
       "id": 10,
@@ -532,52 +531,28 @@
       "location": "Nggambel",
       "purchaseLocation": "Vänersborg",
       "purchaseDate": "1/3/2019",
-      "purchasePrice": "$9891.71",
+      "purchasePrice": "9891.71",
       "activeAsset": true,
       "userId": 1,
-      "vehicleTypeId": 10
+      "vehicleTypeId": 1
     }
   ],
   "vehicleTypes": [
     {
       "id": 1,
-      "type": "Riffpedia"
+      "type": "SUV"
     },
     {
       "id": 2,
-      "type": "Voolia"
+      "type": "Minivan"
     },
     {
       "id": 3,
-      "type": "Fiveclub"
+      "type": "Sedan"
     },
     {
       "id": 4,
-      "type": "Mymm"
-    },
-    {
-      "id": 5,
-      "type": "Yozio"
-    },
-    {
-      "id": 6,
-      "type": "Zoonoodle"
-    },
-    {
-      "id": 7,
-      "type": "Devshare"
-    },
-    {
-      "id": 8,
-      "type": "Wordpedia"
-    },
-    {
-      "id": 9,
-      "type": "Yadel"
-    },
-    {
-      "id": 10,
-      "type": "Viva"
+      "type": "Scooter"
     }
   ]
 }

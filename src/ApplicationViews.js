@@ -49,7 +49,7 @@ class ApplicationViews extends Component {
             <Route
               path="/vehicles/:vehicleId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <VehiclesEdit {...props} />
+                  return <VehiclesEdit {...props} {...this.props} />
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -59,7 +59,7 @@ class ApplicationViews extends Component {
             <Route
               path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
-                  return <VehiclesDisposal {...props} />
+                  return <VehiclesDisposal {...props} {...this.props}/>
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -90,7 +90,7 @@ class ApplicationViews extends Component {
             <Route
               path="/personalProperty/:personalPropertyId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <PersonalPropertyEdit {...props} />
+                  return <PersonalPropertyEdit {...props} {...this.props}/>
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -100,7 +100,7 @@ class ApplicationViews extends Component {
             <Route
               path="/personalProperty/:personalPropertyId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
-                  return <PersonalPropertyDisposal {...props} />
+                  return <PersonalPropertyDisposal {...props} {...this.props} />
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -131,7 +131,7 @@ class ApplicationViews extends Component {
             <Route
               path="/realEstate/:realEstateId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <RealEstateEdit {...props} />
+                  return <RealEstateEdit {...props} {...this.props} />
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -141,7 +141,7 @@ class ApplicationViews extends Component {
             <Route
               path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
-                  return <RealEstateDisposal {...props} />
+                  return <RealEstateDisposal {...props} {...this.props} />
                 // } else {
                   // <Redirect to="/" />
                 // }

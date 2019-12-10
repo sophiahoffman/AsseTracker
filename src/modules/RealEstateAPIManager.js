@@ -8,6 +8,10 @@ export default {
         let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_expand=reType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
+    getOneRealEstate (objectId) {
+        let route = `${this.component}/${objectId}`
+        return APIManager.get(route);
+    },
     postRealEstate (newObject) {
         let route = `${this.component}?`
         return APIManager.post(route, newObject);

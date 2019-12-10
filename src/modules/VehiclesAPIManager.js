@@ -8,6 +8,10 @@ export default {
         let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
+    getOneVehicle (objectId) {
+        let route = `${this.component}/${objectId}`
+        return APIManager.get(route);
+    },
     postVehicle (newObject) {
         let route = `${this.component}?`
         return APIManager.post(route, newObject);
