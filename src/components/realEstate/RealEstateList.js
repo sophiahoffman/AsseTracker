@@ -24,7 +24,7 @@ class RealEstateList extends Component {
 
     
     deleteRealEstate = realEstateId => {
-        RealEstateCard.deleteRealEstate(realEstateId)
+        RealEstateAPIManager.deleteRealEstate(realEstateId)
         .then(() => this.setRealEstateState())
     }
 

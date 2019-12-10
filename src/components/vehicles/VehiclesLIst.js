@@ -23,7 +23,7 @@ class VehiclesList extends Component {
     }
 
     deleteVehicle = vehicleId => {
-        VehiclesCard.deleteVehicle(vehicleId)
+        VehiclesAPIManager.deleteVehicle(vehicleId)
         .then(() => this.setVehicleState())
     }
 

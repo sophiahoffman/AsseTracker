@@ -14,7 +14,7 @@ class VehiclesCard extends Component {
                 <Card.Body className="vehicle-content">
                     <Card.Title>{this.props.vehicle.name}</Card.Title><hr />
                     <Card.Text>
-                        {this.props.vehicle.vehicleTypeId}<br /> 
+                        {this.props.vehicle.vehicleType.type}<br /> 
                         {this.props.vehicle.vin}<br />
                         {this.props.vehicle.license}<br />
                         {this.props.vehicle.year}<br />
