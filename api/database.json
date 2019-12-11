@@ -163,13 +163,6 @@
       "ppTypeId": 2
     },
     {
-      "id": 9,
-      "disposalDate": "12/12/2008",
-      "disposalPrice": "3400",
-      "disposalNotes": "gotta get rid of things",
-      "activeAsset": false
-    },
-    {
       "id": 10,
       "name": "ohoyte9",
       "description": "Automated clear-thinking orchestration",
@@ -217,6 +210,10 @@
     {
       "id": 4,
       "type": "furniture"
+    },
+    {
+      "id": 2000,
+      "type": "other"
     }
   ],
   "realEstate": [
@@ -373,6 +370,10 @@
     {
       "id": 4,
       "type": "apartment"
+    },
+    {
+      "id": 2000,
+      "type": "other"
     }
   ],
   "vehicles": [
@@ -535,6 +536,66 @@
       "activeAsset": true,
       "userId": 1,
       "vehicleTypeId": 1
+    },
+    {
+      "userId": 1,
+      "name": "this is one for the books",
+      "vehicleTypeId": 3,
+      "license": "123457",
+      "year": "1969",
+      "make": "honda",
+      "model": "cvic",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "theres",
+      "purchaseDate": "12/12/1969",
+      "purchasePrice": "2500",
+      "activeAsset": true,
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "name": "when will this work?",
+      "vehicleTypeId": 2,
+      "license": "123457",
+      "year": "1969",
+      "make": "honda",
+      "model": "cvic",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "theres",
+      "purchaseDate": "12/12/1969",
+      "purchasePrice": "2500",
+      "activeAsset": true,
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "name": "make it happen",
+      "vehicleTypeId": 5,
+      "license": "1239408",
+      "year": "1922",
+      "make": "ford",
+      "model": "model t",
+      "location": "here",
+      "purchaseLocation": "there",
+      "purchaseDate": "12/12/1922",
+      "purchasePrice": "150",
+      "activeAsset": true,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "name": "you can do it",
+      "vehicleTypeId": 10,
+      "license": "12356",
+      "year": "2000",
+      "make": "toyota",
+      "model": "camry",
+      "location": "there",
+      "purchaseLocation": "here",
+      "purchaseDate": "12/12/2000",
+      "purchasePrice": "1500",
+      "activeAsset": true,
+      "id": 14
     }
   ],
   "vehicleTypes": [
@@ -553,6 +614,30 @@
     {
       "id": 4,
       "type": "Scooter"
+    },
+    {
+      "id": 5,
+      "type": "skateboard"
+    },
+    {
+      "id": 6,
+      "type": "motorcycle"
+    },
+    {
+      "id": 7,
+      "type": "bicycle"
+    },
+    {
+      "id": 8,
+      "type": "tricycle"
+    },
+    {
+      "id": 9,
+      "type": "unicycle"
+    },
+    {
+      "id": 10,
+      "type": "skates"
     }
   ]
 }

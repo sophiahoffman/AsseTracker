@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
+import APIManager from '../../modules/APIManager';
 
 class PersonalPropertyEdit extends Component {
     objectId = this.props.match.params.personalPropertyId
@@ -10,6 +11,7 @@ class PersonalPropertyEdit extends Component {
         personalpropertyName: "",
         personalPropertyTypeId: "",
         personalPropertyType: "",
+        personalpropertyTypes: [],
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
@@ -25,7 +27,8 @@ class PersonalPropertyEdit extends Component {
     };
 
     componentDidMount() {
-        PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId)
+        this.getPPTypes()
+        .then(result => PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId))
         .then(item => {
             this.setState({
                 personalPropertyName: item.name,
@@ -51,28 +54,51 @@ class PersonalPropertyEdit extends Component {
         this.setState(stateToChange)
     };
 
+    handleOtherInput = e => {
+        let route = "ppTypes"
+        console.log("length", this.state.ppTypes.length)
+        let ppTypeId = this.state.ppTypes.length+1
+        this.setState({ppTypeId: ppTypeId})
+        let newTypeObject = {
+            id: Number(this.state.ppTypeId),
+            type: this.state.ppType
+        }
+        return APIManager.post(route, newTypeObject)
+    };
+
+    getPPTypes = () => {
+        let propType = 'ppTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            this.setState({personalPropertyTypes: results})
+        })
+    }
+
     constructUpdatedPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        const updatedPersonalProperty = {
-            id: this.objectId,
-            userId: Number(localStorage.getItem("userId")),
-            name: this.state.personalPropertyName,
-            ppTypeId: Number(this.state.personalPropertyTypeId),
-            description: this.state.personalPropertyDescription,
-            manufacturer: this.state.personalPropertyManufacturer,
-            model: this.state.personalPropertyModel,
-            location: this.state.personalPropertyLocation,
-            purchaseLocation: this.state.personalPropertyPurchaseLocation,
-            purchaseDate: this.state.personalPropertyPurchaseDate,
-            purchasePrice: this.state.personalPropertyPurchasePrice,
-            activeAsset: this.state.personalPropertyActiveAsset,
-            disposalDate: this.state.personalPropertyDisposalDate,
-            disposalPrice: this.state.personalPropertyDisposalPrice,
-            disposalNotes: this.state.personalPropertyDisposalNotes,
-        }
-        PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-        .then(() => this.props.history.push("/personalproperty"));
+        this.handleOtherInput()
+        .then(result => {
+            const updatedPersonalProperty = {
+                id: this.objectId,
+                userId: Number(localStorage.getItem("userId")),
+                name: this.state.personalPropertyName,
+                ppTypeId: Number(this.state.personalPropertyTypeId),
+                description: this.state.personalPropertyDescription,
+                manufacturer: this.state.personalPropertyManufacturer,
+                model: this.state.personalPropertyModel,
+                location: this.state.personalPropertyLocation,
+                purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                purchaseDate: this.state.personalPropertyPurchaseDate,
+                purchasePrice: this.state.personalPropertyPurchasePrice,
+                activeAsset: this.state.personalPropertyActiveAsset,
+                disposalDate: this.state.personalPropertyDisposalDate,
+                disposalPrice: this.state.personalPropertyDisposalPrice,
+                disposalNotes: this.state.personalPropertyDisposalNotes,
+            }
+            PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+            .then(() => this.props.history.push("/personalproperty"));
+        })
     }
 
     render() {
@@ -85,10 +111,17 @@ class PersonalPropertyEdit extends Component {
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" value={this.state.personalPropertyName} id="personalPropertyName" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    {/* need to make a dropdown menu or add new reType */}
                     <Form.Group>
-                        <Form.Label>Personal Property Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" value={this.state.personalPropertyType} id="personalPropertyTypeId" onChange={this.handleFieldChange} />
+                        <Form.Label>Select Item Type</Form.Label>
+                        <Form.Control as="select" id="personalPropertyTypeId">
+                        {this.state.personalPropertyTypes.map(type => (
+                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Or Enter Item Type (if not on the Select)</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Type" id="personalPropertyType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Description</Form.Label>

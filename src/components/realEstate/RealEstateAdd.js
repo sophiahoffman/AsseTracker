@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager'
+import APIManager from '../../modules/APIManager';
 
 class RealEstateAdd extends Component {
+
+
     state = {
         realEstateName: "",
         realEstateTypeId: "",
+        realEstateType: "",
+        realEstateTypes: [],
         realEstateAddress: "",
         realEstateCity: "",
         realEstateState: "",
@@ -18,11 +23,36 @@ class RealEstateAdd extends Component {
         loadingStatus: false,
     };
 
+    componentDidMount() {
+        this.getRETypes()
+    }
+
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
+
+    handleOtherInput = e => {
+        let route = "reTypes"
+        console.log("length", this.state.reTypes.length)
+        let reTypeId = this.state.reTypes.length+1
+        this.setState({reTypeId: reTypeId})
+        let newTypeObject = {
+            id: Number(this.state.reTypeId),
+            type: this.state.reType
+        }
+        return APIManager.post(route, newTypeObject)
+    };
+
+    getRETypes = () => {
+        let propType = 'reTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({realEstateTypes: results})
+        })
+    }
 
     handleCheckbox = e => {
         const stateToChange = {};
@@ -33,6 +63,7 @@ class RealEstateAdd extends Component {
     constructNewRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
+        this.handleOtherInput();
         const newRealEstate = {
             userId: Number(localStorage.getItem("userId")),
             name: this.state.realEstateName,
@@ -58,10 +89,17 @@ class RealEstateAdd extends Component {
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    {/* need to make a dropdown menu or add new reType */}
                     <Form.Group>
-                        <Form.Label>Real Estate Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="realEstateTypeId" onChange={this.handleFieldChange} />
+                        <Form.Label>Select Property Type</Form.Label>
+                        <Form.Control as="select" id="realEstateTypeId">
+                        {this.state.vehicleTypes.map(type => (
+                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Or Enter Other Real Estate Type</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Street Address</Form.Label>

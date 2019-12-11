@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager'
+import APIManager from '../../modules/APIManager';
 
 class PersonalPropertyAdd extends Component {
     state = {
         personalPropertyName: "",
         personalPropertyTypeId: "",
+        personalPropertyTypes: [],
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
@@ -18,11 +20,35 @@ class PersonalPropertyAdd extends Component {
         loadingStatus: false,
     };
 
+    componentDidMount() {
+        this.getPPTypes()
+    }
+
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
+
+    handleOtherInput = e => {
+        let route = "ppTypes"
+        console.log("length", this.state.ppTypes.length)
+        let ppTypeId = this.state.ppTypes.length+1
+        this.setState({ppTypeId: ppTypeId})
+        let newTypeObject = {
+            id: Number(this.state.ppTypeId),
+            type: this.state.ppType
+        }
+        return APIManager.post(route, newTypeObject)
+    };
+
+    getPPTypes = () => {
+        let propType = 'ppTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            this.setState({personalPropertyTypes: results})
+        })
+    }
 
     constructNewPersonalProperty = e => {
         e.preventDefault();
@@ -52,10 +78,17 @@ class PersonalPropertyAdd extends Component {
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" id="personalPropertyName" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    {/* need to make a dropdown menu or add new reType */}
                     <Form.Group>
-                        <Form.Label>Personal Property Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="personalPropertyTypeId" onChange={this.handleFieldChange} />
+                        <Form.Label>Select Item Type</Form.Label>
+                        <Form.Control as="select" id="personalPropertyTypeId">
+                        {this.state.personalPropertyTypes.map(type => (
+                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Or Enter Item Type (if not on the Select)</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Type" id="personalPropertyType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Description</Form.Label>

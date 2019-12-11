@@ -3,9 +3,10 @@ import APIManager from './APIManager';
 
 export default {
     component: "vehicles",
+    userId: localStorage.getItem("userId"),
 
     getAllVehicles () {
-        let route = `${this.component}?userId=${localStorage.getItem("userId")}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getOneVehicle (objectId) {

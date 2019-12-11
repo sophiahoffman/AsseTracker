@@ -16,6 +16,7 @@ import RealEstateEdit from './components/realEstate/RealEstateEdit';
 import WelcomeAsseTracker from './components/welcomeAsseTracker/WelcomeAsseTracker';
 import Login from './components/loginRegister/Login';
 import Register from './components/loginRegister/Register';
+import APIManager from './modules/APIManager';
 
 
 class ApplicationViews extends Component {
@@ -49,7 +50,12 @@ class ApplicationViews extends Component {
             <Route
               path="/vehicles/:vehicleId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <VehiclesEdit {...props} {...this.props} />
+                  return (
+                  <VehiclesEdit 
+                  {...props} 
+                  {...this.props} 
+                  />
+                  )
                 // } else {
                   // <Redirect to="/" />
                 // }
@@ -90,7 +96,7 @@ class ApplicationViews extends Component {
             <Route
               path="/personalProperty/:personalPropertyId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
-                  return <PersonalPropertyEdit {...props} {...this.props}/>
+                  return <PersonalPropertyEdit {...props} {...this.props} />
                 // } else {
                   // <Redirect to="/" />
                 // }
