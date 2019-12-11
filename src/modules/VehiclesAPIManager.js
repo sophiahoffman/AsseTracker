@@ -9,7 +9,7 @@ export default {
         return APIManager.get(route);
     },
     getOneVehicle (objectId) {
-        let route = `${this.component}/${objectId}`
+        let route = `${this.component}/${objectId}?_expand=vehicleType`
         return APIManager.get(route);
     },
     postVehicle (newObject) {

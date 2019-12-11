@@ -9,7 +9,7 @@ export default {
         return APIManager.get(route);
     },
     getOnePersonalProperty (objectId) {
-        let route = `${this.component}/${objectId}`
+        let route = `${this.component}/${objectId}?_expand=ppType`
         return APIManager.get(route);
     },
     postPersonalProperty (newObject) {

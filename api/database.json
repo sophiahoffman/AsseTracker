@@ -188,7 +188,7 @@
     },
     {
       "userId": 1,
-      "name": "tiffany necklace",
+      "name": "tiffany collar",
       "ppTypeId": 1,
       "description": "platinum with 2.8 carats of diamonds",
       "manufacturer": "tiffany",
@@ -196,7 +196,7 @@
       "location": "jewelry box",
       "purchaseLocation": "tiffanys",
       "purchaseDate": "12/12/2009",
-      "purchasePrice": "3500",
+      "purchasePrice": "4500",
       "activeAsset": true,
       "id": 11
     }
@@ -348,8 +348,8 @@
       "address": "54 Shopko Alley",
       "city": "Denver",
       "state": "CO",
-      "zip": 826,
-      "rent": false,
+      "zip": "99999",
+      "rent": true,
       "purchaseDate": "1/8/2019",
       "purchasePrice": "0.78",
       "activeAsset": true,
