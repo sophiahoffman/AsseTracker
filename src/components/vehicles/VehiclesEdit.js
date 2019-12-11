@@ -32,21 +32,21 @@ class VehiclesEdit extends Component {
         .then(item => {
             this.setState({
                 vehicleName: item.name,
-                vehicleTypeId: item.ypeId,
-                vehicleType: item.,
-                vehicleVin: "",
-                vehicleLicense: "",
-                vehicleYear: "",
-                vehicleMake: "",
-                vehicleModel: "",
-                vehicleLocation: "",
-                vehiclePurchaseLocation: "",
-                vehiclePurchaseDate: "",
-                vehiclePurchasePrice: "",
-                vehicleActiveAsset: true,
-                vehicleDisposalDate: "",
-                vehicleDisposalPrice: "",
-                vehicleDisposalNotes: "",})
+                vehicleTypeId: item.vehicleTypeId,
+                vehicleType: item.vehicleType.type,
+                vehicleVin: item.vin,
+                vehicleLicense: item.license,
+                vehicleYear: item.year,
+                vehicleMake: item.make,
+                vehicleModel: item.model,
+                vehicleLocation: item.location,
+                vehiclePurchaseLocation: item.purchaseLocation,
+                vehiclePurchaseDate: item.purchaseDate,
+                vehiclePurchasePrice: item.purchasePrice,
+                vehicleActiveAsset: item.activeAsset,
+                vehicleDisposalDate: item.disposalDate,
+                vehicleDisposalPrice: item.disposalPrice,
+                vehicleDisposalNotes: item.disposalNotes,})
         })
     }
 
