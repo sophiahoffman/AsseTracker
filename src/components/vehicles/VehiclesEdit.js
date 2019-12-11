@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
+import APIManager from '../../modules/APIManager';
 
 
 class VehiclesEdit extends Component {
@@ -10,6 +11,7 @@ class VehiclesEdit extends Component {
     state = {
         vehicleName: "",
         vehicleTypeId: "",
+        vehicleTypes: [],
         vehicleType: "",
         vehicleVin: "",
         vehicleLicense: "",
@@ -28,7 +30,8 @@ class VehiclesEdit extends Component {
     };
 
     componentDidMount() {
-        VehiclesAPIManager.getOneVehicle(this.objectId)
+        this.getVehicleTypes()
+        .then(results => VehiclesAPIManager.getOneVehicle(this.objectId))
         .then(item => {
             this.setState({
                 vehicleName: item.name,
@@ -55,14 +58,37 @@ class VehiclesEdit extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
+    
+    handleOtherInput = e => {
+        let route = "vehicleTypes"
+        console.log("length", this.state.vehicleTypes.length)
+        let vehicleTypeId = this.state.vehicleTypes.length+1
+        this.setState({vehicleTypeId: vehicleTypeId})
+        let newTypeObject = {
+            id: Number(this.state.vehicleTypeId),
+            type: this.state.vehicleType
+        }
+        return APIManager.post(route, newTypeObject)
+    };
+
+
+    getVehicleTypes = () => {
+        let propType = 'vehicleTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({vehicleTypes: results})
+        })
+    }
 
     constructUpdatedVehicle = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
+        this.handleOtherInput()
         const updatedVehicle = {
             id: this.objectId,
             name: this.vehicleName,
-            vehicleTypeId: this.vehicleTypeId,
+            vehicleTypeId: Number(this.state.vehicleTypeId),
             vin: this.vehicleVin,
             license: this.vehicleLicense,
             year: this.vehicleYear,
@@ -92,8 +118,16 @@ class VehiclesEdit extends Component {
                         <Form.Control type="text" placeholder="Enter Name" value={this.state.vehicleName} id="vehicleName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Vehicle Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" value={this.state.vehicleType} id="vehicleTypeId" onChange={this.handleFieldChange} />
+                        <Form.Label>Select Vehicle Type</Form.Label>
+                        <Form.Control as="select" id="vehicleTypeId">
+                        {this.state.vehicleTypes.map(type => (
+                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Or Enter Other Vehicle Type</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>VIN</Form.Label>

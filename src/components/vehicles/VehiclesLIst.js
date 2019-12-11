@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import VehiclesCard from './VehiclesCard';
 
-class VehiclesList extends Component {
+class VehicleList extends Component {
     state = {
         vehicles: [],
         loadingStatus: true
@@ -51,4 +51,4 @@ class VehiclesList extends Component {
     }
 }
 
-export default VehiclesList
+export default VehicleList

@@ -32,7 +32,4 @@ export default {
         .then(results => results.json())
     }
 
-
-
-
 }
