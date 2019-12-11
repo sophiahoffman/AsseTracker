@@ -6,7 +6,8 @@ import PersonalPropertyCard from './PersonalPropertyCard';
 
 class PersonalPropertyList extends Component {
     state = {
-        personalProperty: []
+        personalProperty: [],
+        loadingStatus: true
     }
 
     componentDidMount() {
@@ -14,6 +15,7 @@ class PersonalPropertyList extends Component {
     }
 
     setPersonalPropertyState = () => {
+        this.setState({loadingStatus: false})
         PersonalPropertyAPIManager.getAllPersonalProperty()
         .then(personalProperty => {
             this.setState({
@@ -23,6 +25,7 @@ class PersonalPropertyList extends Component {
     }
      
     deletePersonalProperty = personalPropertyId => {
+        this.setState({loadingStatus: true})        
         PersonalPropertyAPIManager.deletePersonalProperty(personalPropertyId)
         .then(() => this.setPersonalPropertyState())
     }

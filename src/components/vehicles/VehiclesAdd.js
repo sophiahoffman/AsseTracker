@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 
 class VehiclesAdd extends Component {
+
+    
     state = {
         vehicleName: "",
         vehicleTypeId: "",

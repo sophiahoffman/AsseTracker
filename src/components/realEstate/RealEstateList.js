@@ -6,7 +6,8 @@ import RealEstateCard from './RealEstateCard';
 
 class RealEstateList extends Component {
     state = {
-        realEstate: []
+        realEstate: [],
+        loadingStatus: true
     }
 
     componentDidMount() {
@@ -14,6 +15,7 @@ class RealEstateList extends Component {
     }
 
     setRealEstateState = () => {
+        this.setState({loadingStatus: false})
         RealEstateAPIManager.getAllRealEstate()
         .then(realEstate => {
             this.setState({
@@ -24,6 +26,7 @@ class RealEstateList extends Component {
 
     
     deleteRealEstate = realEstateId => {
+        this.setState({loadingStatus: true})
         RealEstateAPIManager.deleteRealEstate(realEstateId)
         .then(() => this.setRealEstateState())
     }

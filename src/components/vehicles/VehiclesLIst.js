@@ -6,7 +6,8 @@ import VehiclesCard from './VehiclesCard';
 
 class VehiclesList extends Component {
     state = {
-        vehicles: []
+        vehicles: [],
+        loadingStatus: true
     }
 
     componentDidMount() {
@@ -14,6 +15,7 @@ class VehiclesList extends Component {
     }
 
     setVehicleState = () => {
+        this.setState({loadingStatus: false})
         VehiclesAPIManager.getAllVehicles()
         .then(vehicles => {
             this.setState({
@@ -23,6 +25,7 @@ class VehiclesList extends Component {
     }
 
     deleteVehicle = vehicleId => {
+        this.setState({loadingStatus: true})
         VehiclesAPIManager.deleteVehicle(vehicleId)
         .then(() => this.setVehicleState())
     }

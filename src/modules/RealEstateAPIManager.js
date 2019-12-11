@@ -9,7 +9,7 @@ export default {
         return APIManager.get(route);
     },
     getOneRealEstate (objectId) {
-        let route = `${this.component}/${objectId}`
+        let route = `${this.component}/${objectId}?_expand=reType`
         return APIManager.get(route);
     },
     postRealEstate (newObject) {
