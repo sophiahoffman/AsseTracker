@@ -3,26 +3,32 @@
     {
       "id": 1,
       "username": "Andrei Ledwidge",
-      "password": "BuomzUTwPlgT",
-      "email": "aledwidge0@google.de"
+      "password": "123",
+      "email": "sophiahoffman@hotmail.com"
     },
     {
       "id": 2,
       "username": "Bran Vella",
-      "password": "u6YynnfB",
-      "email": "bvella1@cdbaby.com"
+      "password": "123",
+      "email": "sophiahoffman@google.com"
     },
     {
       "id": 3,
       "username": "Valaree Byles",
-      "password": "Fnyhsemv",
-      "email": "vbyles2@amazon.de"
+      "password": "123",
+      "email": "sophiahoffman@yahoo.com"
     },
     {
       "id": 4,
       "username": "Shae Gallaccio",
-      "password": "LCUTAZv3n",
-      "email": "sgallaccio3@1688.com"
+      "password": "123",
+      "email": "sophiahoffman@msn.com"
+    },
+    {
+      "userName": "johndoe",
+      "userPassword": "123",
+      "userEmailAddress": "johndoe@gmail.com",
+      "id": 5
     }
   ],
   "personalProperty": [
@@ -210,10 +216,6 @@
     {
       "id": 4,
       "type": "furniture"
-    },
-    {
-      "id": 2000,
-      "type": "other"
     }
   ],
   "realEstate": [
@@ -370,10 +372,6 @@
     {
       "id": 4,
       "type": "apartment"
-    },
-    {
-      "id": 2000,
-      "type": "other"
     }
   ],
   "vehicles": [

@@ -88,61 +88,61 @@ class VehiclesAdd extends Component {
         return (
             <div id="newVehicleForm">
                 <Form>
-                    <Form.Group>
-                        <Form.Label>Name</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" id="vehicleName" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Select Vehicle Type</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
                         <Form.Control as="select" id="vehicleTypeId">
                         {this.state.vehicleTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Or Enter Other Vehicle Type</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Or Enter Other Vehicle Type</Form.Label>
                         <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>VIN</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">VIN</Form.Label>
                         <Form.Control type="text" placeholder="Enter VIN" id="vehicleVin" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>License</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">License</Form.Label>
                         <Form.Control type="text" placeholder="Enter License" id="vehicleLicense" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Year</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Year</Form.Label>
                         <Form.Control type="text" placeholder="Enter Year" id="vehicleYear" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Make</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Make</Form.Label>
                         <Form.Control type="text" placeholder="Enter Make" id="vehicleMake" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Model</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Model</Form.Label>
                         <Form.Control type="text" placeholder="Enter Model" id="vehicleModel" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Car Physical Location</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Car Physical Location</Form.Label>
                         <Form.Control type="text" placeholder="Enter Location" id="vehicleLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Purchase Location</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Purchase Location</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Location" id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Purchase Date</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Date" id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Purchase Price</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructNewVehicle}>
                         Submit
-            </Button>
+                    </Button>
                 </Form>
             </div>
         )

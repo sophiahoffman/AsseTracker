@@ -17,6 +17,7 @@ import WelcomeAsseTracker from './components/welcomeAsseTracker/WelcomeAsseTrack
 import Login from './components/loginRegister/Login';
 import Register from './components/loginRegister/Register';
 import APIManager from './modules/APIManager';
+import EntryPortal from './components/loginRegister/EntryPortal';
 
 
 class ApplicationViews extends Component {
@@ -24,10 +25,23 @@ class ApplicationViews extends Component {
     render() {
         return (
           <React.Fragment>
+            <Route
+              exact path="/" render={props => {
+                if (localStorage.getItem("userId")) {
+                  return <WelcomeAsseTracker />
+                  } else 
+                  return <EntryPortal {...props} />
+              }}
+            />
+
     
             <Route
               exact path="/login" render={props => {
+                if (localStorage.getItem("email")) {
                   return <Login {...props} />
+                } else {
+                  return <EntryPortal {...props} />
+                }
               }}
             />
               
@@ -36,6 +50,13 @@ class ApplicationViews extends Component {
                   return <Register {...props} />
               }}
             />
+
+            <Route
+              exact path="/welcome" render={props => {
+                  return <WelcomeAsseTracker {...props} />
+              }}
+            />
+
 
             <Route
               exact path="/vehicles" render={props => {
@@ -48,7 +69,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/vehicles/:vehicleId(\d+)/edit" render={props => {
+              exact path="/vehicles/:vehicleId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
                   return (
                   <VehiclesEdit 
@@ -63,7 +84,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
+              exact path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
                   return <VehiclesDisposal {...props} {...this.props}/>
                 // } else {
@@ -74,7 +95,7 @@ class ApplicationViews extends Component {
 
                 
             <Route
-              path="/vehicles/new" render={props => {
+              exact path="/vehicles/new" render={props => {
                 // if (this.props.userValidated) {
                   return <VehiclesAdd {...props} />
                 // } else {
@@ -94,7 +115,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/personalProperty/:personalPropertyId(\d+)/edit" render={props => {
+              exact path="/personalProperty/:personalPropertyId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
                   return <PersonalPropertyEdit {...props} {...this.props} />
                 // } else {
@@ -104,7 +125,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/personalProperty/:personalPropertyId(\d+)/disposal" render={props => {
+              exact path="/personalProperty/:personalPropertyId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
                   return <PersonalPropertyDisposal {...props} {...this.props} />
                 // } else {
@@ -115,7 +136,7 @@ class ApplicationViews extends Component {
 
                 
             <Route
-              path="/personalProperty/new" render={props => {
+              exact path="/personalProperty/new" render={props => {
                 // if (this.props.userValidated) {
                   return <PersonalPropertyAdd {...props} />
                 // } else {
@@ -135,7 +156,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/realEstate/:realEstateId(\d+)/edit" render={props => {
+              exact path="/realEstate/:realEstateId(\d+)/edit" render={props => {
                 // if (this.props.userValidated) {
                   return <RealEstateEdit {...props} {...this.props} />
                 // } else {
@@ -145,7 +166,7 @@ class ApplicationViews extends Component {
             />
     
             <Route
-              path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
+              exact path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
                 // if (this.props.userValidated) {
                   return <RealEstateDisposal {...props} {...this.props} />
                 // } else {
@@ -156,7 +177,7 @@ class ApplicationViews extends Component {
 
                 
             <Route
-              path="/realEstate/new" render={props => {
+              exact path="/realEstate/new" render={props => {
                 // if (this.props.userValidated) {
                   return <RealEstateAdd {...props} />
                 // } else {

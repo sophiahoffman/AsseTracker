@@ -48,16 +48,16 @@ class PersonalPropertyDisposal extends Component {
                 <h3 id="title_disposalForm">Disposal Form <br />
                 {this.state.personalPropertyName}</h3>
                 <Form>
-                    <Form.Group>
-                        <Form.Label>Disposal Date</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Disposal Date</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Date" id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Disposal Price</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Disposal Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Price" id="personalPropertyDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Disposal Notes</Form.Label>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="col-sm-2 col-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Notes" id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
