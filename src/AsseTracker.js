@@ -21,8 +21,8 @@ class AsseTracker extends Component {
   handleLogout = () => {
     console.log(this.props)
     localStorage.clear()
-    this.setState({user: false});
-    // this.props.history.push('/')
+    this.setUserState()
+    return <Redirect to="/" />
   }
 
   handleFieldChange = e => {
@@ -34,6 +34,8 @@ class AsseTracker extends Component {
   setUserState = () => {
     if (localStorage.getItem("userId")) {
       this.setState({userAuthenticated: true})  
+    } else {
+      this.setState({userAuthenticated: false})
     }
   }
 

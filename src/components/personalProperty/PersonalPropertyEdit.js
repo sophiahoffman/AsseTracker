@@ -27,7 +27,11 @@ class PersonalPropertyEdit extends Component {
     };
 
     componentDidMount() {
-        this.getPPTypes()
+        let propType = 'ppTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            this.setState({personalPropertyTypes: results})
+        })
         .then(result => PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId))
         .then(item => {
             this.setState({
@@ -65,14 +69,6 @@ class PersonalPropertyEdit extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-    getPPTypes = () => {
-        let propType = 'ppTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            this.setState({personalPropertyTypes: results})
-        })
-    }
 
     constructUpdatedPersonalProperty = e => {
         e.preventDefault();

@@ -6,7 +6,6 @@ import APIManager from '../../modules/APIManager';
 
 class RealEstateAdd extends Component {
 
-
     state = {
         realEstateName: "",
         realEstateTypeId: "",
@@ -24,7 +23,12 @@ class RealEstateAdd extends Component {
     };
 
     componentDidMount() {
-        this.getRETypes()
+        let propType = 'reTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({realEstateTypes: results})
+        })
     }
 
     handleFieldChange = e => {
@@ -44,15 +48,6 @@ class RealEstateAdd extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-    getRETypes = () => {
-        let propType = 'reTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            console.log("getTypes results", results)
-            this.setState({realEstateTypes: results})
-        })
-    }
 
     handleCheckbox = e => {
         const stateToChange = {};
@@ -91,8 +86,8 @@ class RealEstateAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId" onChange={this.handleFieldChange}>
-                        {this.state.vehicleTypes.map(type => (
+                        <Form.Control as="select" id="realEstateTypeId">
+                        {this.state.realEstateTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
@@ -133,7 +128,7 @@ class RealEstateAdd extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>
+                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>
                         Submit
             </Button>
                 </Form>

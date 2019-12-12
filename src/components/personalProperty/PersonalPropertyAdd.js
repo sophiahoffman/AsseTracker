@@ -21,7 +21,11 @@ class PersonalPropertyAdd extends Component {
     };
 
     componentDidMount() {
-        this.getPPTypes()
+        let propType = 'ppTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            this.setState({personalPropertyTypes: results})
+        })
     }
 
     handleFieldChange = e => {
@@ -41,14 +45,6 @@ class PersonalPropertyAdd extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-    getPPTypes = () => {
-        let propType = 'ppTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            this.setState({personalPropertyTypes: results})
-        })
-    }
 
     constructNewPersonalProperty = e => {
         e.preventDefault();

@@ -30,7 +30,12 @@ class VehiclesEdit extends Component {
     };
 
     componentDidMount() {
-        this.getVehicleTypes()
+        let propType = 'vehicleTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({vehicleTypes: results})
+        })
         .then(results => VehiclesAPIManager.getOneVehicle(this.objectId))
         .then(item => {
             this.setState({
@@ -60,26 +65,20 @@ class VehiclesEdit extends Component {
     };
     
     handleOtherInput = e => {
-        let route = "vehicleTypes"
-        console.log("length", this.state.vehicleTypes.length)
-        let vehicleTypeId = this.state.vehicleTypes.length+1
-        this.setState({vehicleTypeId: vehicleTypeId})
-        let newTypeObject = {
-            id: Number(this.state.vehicleTypeId),
-            type: this.state.vehicleType
+        if (this.state.vehicleType !== "") {
+            let route = "vehicleTypes"
+            console.log("length", this.state.vehicleTypes.length)
+            let vehicleTypeId = this.state.vehicleTypes.length+1
+            this.setState({vehicleTypeId: vehicleTypeId})
+            let newTypeObject = {
+                id: Number(this.state.vehicleTypeId),
+                type: this.state.vehicleType
+            }
+            return APIManager.post(route, newTypeObject)
+        } else {
+            return null
         }
-        return APIManager.post(route, newTypeObject)
     };
-
-
-    getVehicleTypes = () => {
-        let propType = 'vehicleTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            console.log("getTypes results", results)
-            this.setState({vehicleTypes: results})
-        })
-    }
 
     constructUpdatedVehicle = e => {
         e.preventDefault();
@@ -127,7 +126,7 @@ class VehiclesEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Or Enter Other Vehicle Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleOtherInput} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">VIN</Form.Label>

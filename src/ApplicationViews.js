@@ -5,7 +5,7 @@ import PersonalPropertyList from './components/personalProperty/PersonalProperty
 import PersonalPropertyAdd from './components/personalProperty/PersonalPropertyAdd';
 import PersonalPropertyDisposal from './components/personalProperty/PersonalPropertyDisposal';
 import PersonalPropertyEdit from './components/personalProperty/PersonalPropertyEdit';
-import VehiclesList from './components/vehicles/VehiclesList';
+import VehiclesList from './components/vehicles/VehicleList';
 import VehiclesAdd from './components/vehicles/VehiclesAdd';
 import VehiclesDisposal from './components/vehicles/VehiclesDisposal';
 import VehiclesEdit from './components/vehicles/VehiclesEdit';
@@ -28,8 +28,8 @@ class ApplicationViews extends Component {
             <Route
               exact path="/" render={props => {
                 console.log(this.props.userAuthenticated)
-                if (localStorage.getItem("userId")) {
-                  return <WelcomeAsseTracker />
+                if (this.props.userAuthenticated) {
+                  return <WelcomeAsseTracker {...props} />
                   } else 
                   return <EntryPortal {...props} />
               }}
@@ -54,8 +54,11 @@ class ApplicationViews extends Component {
 
             <Route
               exact path="/welcome" render={props => {
+                if (this.props.userAuthenticated) { 
                   return <WelcomeAsseTracker {...props} />
-              }}
+              } else {
+                return <Login {...props} />
+              }}}
             />
 
 

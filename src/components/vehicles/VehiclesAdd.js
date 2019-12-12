@@ -26,7 +26,12 @@ class VehiclesAdd extends Component {
     };
 
     componentDidMount() {
-        this.getVehicleTypes()
+        let propType = 'vehicleTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({vehicleTypes: results})
+        })
     };
 
     handleFieldChange = e => {
@@ -46,16 +51,6 @@ class VehiclesAdd extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-
-    getVehicleTypes = () => {
-        let propType = 'vehicleTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            console.log("getTypes results", results)
-            this.setState({vehicleTypes: results})
-        })
-    }
 
     constructNewVehicle = e => {
         e.preventDefault();

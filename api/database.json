@@ -421,7 +421,7 @@
       "purchasePrice": "5822.54",
       "activeAsset": true,
       "userId": 1,
-      "vehicleTypeId": 3
+      "vehicleTypeId": 4
     },
     {
       "id": 4,
@@ -564,52 +564,6 @@
       "purchasePrice": "2500",
       "activeAsset": true,
       "id": 12
-    },
-    {
-      "userId": 1,
-      "name": "make it happen",
-      "vehicleTypeId": 5,
-      "license": "1239408",
-      "year": "1922",
-      "make": "ford",
-      "model": "model t",
-      "location": "here",
-      "purchaseLocation": "there",
-      "purchaseDate": "12/12/1922",
-      "purchasePrice": "150",
-      "activeAsset": true,
-      "id": 13
-    },
-    {
-      "userId": 1,
-      "name": "you can do it",
-      "vehicleTypeId": 10,
-      "license": "12356",
-      "year": "2000",
-      "make": "toyota",
-      "model": "camry",
-      "location": "there",
-      "purchaseLocation": "here",
-      "purchaseDate": "12/12/2000",
-      "purchasePrice": "1500",
-      "activeAsset": true,
-      "id": 14
-    },
-    {
-      "userId": 0,
-      "name": "this is one for the books",
-      "vehicleTypeId": 11,
-      "vin": "123456",
-      "license": "p234vj;",
-      "year": "2012",
-      "make": "honda",
-      "model": "12",
-      "location": "6 e monroe st apt 1503",
-      "purchaseLocation": "here",
-      "purchaseDate": "12/12/2002",
-      "purchasePrice": "2500",
-      "activeAsset": true,
-      "id": 15
     }
   ],
   "vehicleTypes": [
@@ -636,26 +590,6 @@
     {
       "id": 6,
       "type": "motorcycle"
-    },
-    {
-      "id": 7,
-      "type": "bicycle"
-    },
-    {
-      "id": 8,
-      "type": "tricycle"
-    },
-    {
-      "id": 9,
-      "type": "unicycle"
-    },
-    {
-      "id": 10,
-      "type": "skates"
-    },
-    {
-      "id": 11,
-      "type": ""
     }
   ]
 }

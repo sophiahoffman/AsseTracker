@@ -5,7 +5,7 @@ import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import APIManager from '../../modules/APIManager';
 
 class RealEstateEdit extends Component {
-    objectId = this.props.match.params.realEstateId
+    objectId = this.props.match.params.realEstateId;
 
     state = {
         realEstateName: "",
@@ -27,8 +27,15 @@ class RealEstateEdit extends Component {
     };
 
     componentDidMount() {
-        this.getRETypes()
-        .then(results => RealEstateAPIManager.getOneRealEstate(this.objectId))
+        console.log("componentDidMount")
+        let propType = 'reTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            console.log("getTypes results", results)
+            this.setState({realEstateTypes: results})
+            console.log(this.state.realEstateTypes)
+        })
+        RealEstateAPIManager.getOneRealEstate(this.objectId)
         .then(item => {
             this.setState({
                 realEstateName: item.name,
@@ -69,15 +76,6 @@ class RealEstateEdit extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-    getRETypes = () => {
-        let propType = 'reTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            console.log("getTypes results", results)
-            this.setState({realEstateTypes: results})
-        })
-    }
     
     handleCheckbox = e => {
         const stateToChange = {};
@@ -123,8 +121,8 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId">
-                        {this.state.vehicleTypes.map(type => (
+                        <Form.Control as="select" id="realEstateTypeId" >
+                        {this.state.realEstateTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
