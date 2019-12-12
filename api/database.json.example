@@ -210,10 +210,6 @@
     {
       "id": 4,
       "type": "furniture"
-    },
-    {
-      "id": 5,
-      "type": "other"
     }
   ],
   "realEstate": [
@@ -363,10 +359,6 @@
     {
       "id": 4,
       "type": "apartment"
-    },
-    {
-      "id": 5,
-      "type": "other"
     }
   ],
   "vehicles": [
@@ -547,10 +539,6 @@
     {
       "id": 4,
       "type": "Scooter"
-    },
-    {
-      "id": 5,
-      "type": "other"
     }
   ]
 }
