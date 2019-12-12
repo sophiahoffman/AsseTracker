@@ -119,7 +119,7 @@ class VehiclesEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
-                        <Form.Control as="select" id="vehicleTypeId">
+                        <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
                         {this.state.vehicleTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
@@ -165,7 +165,7 @@ class VehiclesEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.vehiclePurchasePrice} id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>
                         Submit
             </Button>
                 </Form>

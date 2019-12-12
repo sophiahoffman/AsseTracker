@@ -35,7 +35,7 @@ class RealEstateList extends Component {
         return (
             <React.Fragment>
                 <div className="button-new realEstate-section-content" align="center">
-                    <Button variant="primary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
+                    <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
                 <div className="realEstate-container-cards" align="center">
                     {this.state.realEstate.map(realEstate =>

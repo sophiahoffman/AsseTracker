@@ -7,7 +7,7 @@ render () {
     return (
 <div>
 {/* // <!-- Button trigger modal --> */}
-<Button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<Button type="button" className="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </Button>
 
@@ -25,7 +25,7 @@ render () {
       </ModalBody>
       <ModalFooter className="modal-footer">
         <Button type="button" className="btn btn-secondary" data-dismiss="modal">Close</Button>
-        <Button type="button" className="btn btn-primary">Save changes</Button>
+        <Button type="button" className="btn btn-dark">Save changes</Button>
       </ModalFooter>
     </Modal>
   </Modal>

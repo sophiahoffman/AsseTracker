@@ -27,6 +27,7 @@ class ApplicationViews extends Component {
           <React.Fragment>
             <Route
               exact path="/" render={props => {
+                console.log(this.props.userAuthenticated)
                 if (localStorage.getItem("userId")) {
                   return <WelcomeAsseTracker />
                   } else 
@@ -38,7 +39,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/login" render={props => {
                 if (localStorage.getItem("email")) {
-                  return <Login {...props} />
+                  return <Login {...props} setUserState={this.props.setUserState}/>
                 } else {
                   return <EntryPortal {...props} />
                 }
@@ -47,7 +48,7 @@ class ApplicationViews extends Component {
               
             <Route
               exact path="/register" render={props => {
-                  return <Register {...props} />
+                  return <Register {...props} setUserState={this.props.setUserState} />
               }}
             />
 

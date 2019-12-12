@@ -165,7 +165,7 @@ class RealEstateEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
                         Submit
             </Button>
                 </Form>

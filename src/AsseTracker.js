@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './AsseTracker.css';
-import { Form, Button } from 'react-bootstrap';
 import ApplicationViews from './ApplicationViews'
 import APIManager from './modules/APIManager';
 import { Redirect } from 'react-router-dom'
+import NavBar from '../src/components/navBar/NavBar'
 
 // localStorage.setItem("userId", 1)
 
 class AsseTracker extends Component {
   state = {
     userEmailAddress: "",
-    // loadingStatus: true,
-    isAuthenticated: false,
+    userAuthenticated: false,
   }
 
   componentDidMount() {
-    this.isAuthenticated()
+    this.setUserState()
     // this.setState({loadingStatus: false})
+  }
+
+  handleLogout = () => {
+    console.log(this.props)
+    localStorage.clear()
+    this.setState({user: false});
+    // this.props.history.push('/')
   }
 
   handleFieldChange = e => {
@@ -26,33 +31,25 @@ class AsseTracker extends Component {
       this.setState(stateToChange)
   };
 
-  isAuthenticated = () => {
+  setUserState = () => {
     if (localStorage.getItem("userId")) {
-      this.setState({isAuthenticated: true})
+      this.setState({userAuthenticated: true})  
     }
   }
 
-  validateUserEmail = () => {
-    console.log("I'm running validateUserEmail")
-    let userEmail=this.state.userEmailAddress;
-    APIManager.get(`users?email=${userEmail}`)
-    .then(result => {
-      console.log(result)
-      console.log(this.props)
-      if (result.length>0) {
-        return <Redirect to='/login' />
-      } else {
-        return <Redirect to='/register' />
-      }
-    })
-    // this.setState({loadingStatus: false})
-  }
-
-
   render() {
       return (
-        <ApplicationViews {...this.props} />
-
+        <React.Fragment>
+          <NavBar 
+          {...this.props} 
+          userAuthenticated={this.state.userAuthenticated}
+          handleLogout={this.handleLogout} 
+          {...this.props} />
+          <ApplicationViews 
+          {...this.props} 
+          userAuthenticated={this.state.userAuthenticated}
+          setUserState={this.setUserState}/>
+        </React.Fragment>
       )
     
   }

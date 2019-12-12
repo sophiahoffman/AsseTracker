@@ -61,7 +61,7 @@ class RealEstateDisposal extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Notes" id="realEstateDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
                         Submit
             </Button>
                 </Form>
