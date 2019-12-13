@@ -187,17 +187,37 @@
     },
     {
       "userId": 1,
-      "name": "tiffany collar",
+      "name": "guitar1",
       "ppTypeId": 1,
-      "description": "platinum with 2.8 carats of diamonds",
-      "manufacturer": "tiffany",
-      "model": "elsa peretti",
-      "location": "jewelry box",
-      "purchaseLocation": "tiffanys",
-      "purchaseDate": "12/12/2009",
-      "purchasePrice": "4500",
-      "activeAsset": true,
-      "id": 11
+      "description": "collectible",
+      "manufacturer": "gibson",
+      "model": "abcd",
+      "location": "efgh",
+      "purchaseLocation": "ijkl",
+      "purchaseDate": "12/22/2012",
+      "purchasePrice": "500",
+      "activeAsset": false,
+      "id": 12,
+      "disposalDate": "12/22/2012",
+      "disposalPrice": "1500",
+      "disposalNotes": "made money"
+    },
+    {
+      "userId": 1,
+      "name": "piano",
+      "ppTypeId": 7,
+      "description": "grand piano ",
+      "manufacturer": "steinway",
+      "model": "model s",
+      "location": "here",
+      "purchaseLocation": "there",
+      "purchaseDate": "12/22/2012",
+      "purchasePrice": "125000",
+      "activeAsset": false,
+      "id": 13,
+      "disposalDate": "12/12/2000",
+      "disposalPrice": "150000",
+      "disposalNotes": "made money"
     }
   ],
   "ppTypes": [
@@ -216,6 +236,18 @@
     {
       "id": 4,
       "type": "furniture"
+    },
+    {
+      "type": "musical instrument",
+      "id": 5
+    },
+    {
+      "type": "clothing",
+      "id": 6
+    },
+    {
+      "type": "piano",
+      "id": 7
     }
   ],
   "realEstate": [
@@ -342,20 +374,6 @@
       "reTypeId": 2
     },
     {
-      "id": 10,
-      "name": "bmerritt9",
-      "address": "54 Shopko Alley",
-      "city": "Denver",
-      "state": "CO",
-      "zip": "99999",
-      "rent": true,
-      "purchaseDate": "1/8/2019",
-      "purchasePrice": "250000",
-      "activeAsset": true,
-      "userId": 1,
-      "reTypeId": 2
-    },
-    {
       "userId": 1,
       "name": "chantilly lace",
       "reTypeId": 3,
@@ -380,22 +398,11 @@
       "rent": false,
       "purchaseDate": "8/22/2003",
       "purchasePrice": "250000",
-      "activeAsset": true,
-      "id": 12
-    },
-    {
-      "userId": 1,
-      "name": "chantilly lace",
-      "reTypeId": 5,
-      "address": "6 e monroe st apt 1503",
-      "city": "chicago",
-      "state": "Illinois",
-      "zip": "60603",
-      "rent": false,
-      "purchaseDate": "8/22/2003",
-      "purchasePrice": "400000",
-      "activeAsset": true,
-      "id": 13
+      "activeAsset": false,
+      "id": 12,
+      "disposalDate": "10/10/2010",
+      "disposalPrice": "4500",
+      "disposalNotes": "more to get rid off"
     },
     {
       "userId": 1,
@@ -408,8 +415,11 @@
       "rent": true,
       "purchaseDate": "",
       "purchasePrice": "",
-      "activeAsset": true,
-      "id": 14
+      "activeAsset": false,
+      "id": 14,
+      "disposalDate": "10/10/2010",
+      "disposalPrice": "4500",
+      "disposalNotes": "more to get rid off"
     },
     {
       "userId": 1,
@@ -424,6 +434,51 @@
       "purchasePrice": "",
       "activeAsset": true,
       "id": 15
+    },
+    {
+      "userId": 1,
+      "name": "icon condo",
+      "reTypeId": 2,
+      "address": "600 12th Ave S Apt 1004",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37203",
+      "rent": false,
+      "purchaseDate": "3/20/2019",
+      "purchasePrice": "355000",
+      "activeAsset": true,
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "name": "doggone",
+      "reTypeId": 3,
+      "address": "tropical way",
+      "city": "here",
+      "state": "there",
+      "zip": "1235",
+      "rent": false,
+      "purchaseDate": "8/22/2003",
+      "purchasePrice": "500000",
+      "activeAsset": false,
+      "id": 17,
+      "disposalDate": "10/10/2010",
+      "disposalPrice": "4500",
+      "disposalNotes": "more to get rid off"
+    },
+    {
+      "userId": 1,
+      "name": "house on lode",
+      "reTypeId": 2,
+      "address": "2680 lode st",
+      "city": "Santa Cruz",
+      "state": "ca",
+      "zip": "95062",
+      "rent": true,
+      "purchaseDate": "12/12/2012",
+      "purchasePrice": "450000",
+      "activeAsset": true,
+      "id": 18
     }
   ],
   "reTypes": [
@@ -450,6 +505,14 @@
     {
       "id": 6,
       "type": "water"
+    },
+    {
+      "type": "island",
+      "id": 7
+    },
+    {
+      "type": "dog",
+      "id": 8
     }
   ],
   "vehicles": [
@@ -499,7 +562,7 @@
       "purchasePrice": "5822.54",
       "activeAsset": true,
       "userId": 1,
-      "vehicleTypeId": 4
+      "vehicleTypeId": 1
     },
     {
       "id": 4,
@@ -642,6 +705,89 @@
       "purchasePrice": "2500",
       "activeAsset": true,
       "id": 12
+    },
+    {
+      "userId": 1,
+      "name": "litterbox ii",
+      "vehicleTypeId": 1,
+      "vin": "1234598",
+      "license": "123498",
+      "year": "2011",
+      "make": "honda",
+      "model": "element",
+      "location": "nashville",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "12/12/2012",
+      "purchasePrice": "20000",
+      "activeAsset": true,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "name": "litterbox iii",
+      "vehicleTypeId": 5,
+      "vin": "12345qwert",
+      "license": "09976",
+      "year": "2011",
+      "make": "honda",
+      "model": "element",
+      "location": "nashville",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "12/12/2012",
+      "purchasePrice": "25000",
+      "activeAsset": true,
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "name": "litterbox",
+      "vehicleTypeId": 5,
+      "vin": "109-42lja;jtl23jylk",
+      "license": "p234vj;",
+      "year": "2012",
+      "make": "honda",
+      "model": "element",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "12/12/2012",
+      "purchasePrice": "25000",
+      "activeAsset": true,
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "name": "litterbox",
+      "vehicleTypeId": 7,
+      "vin": "14goh4t",
+      "license": "123457",
+      "year": "2011",
+      "make": "honda",
+      "model": "element",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "12/12/2012",
+      "purchasePrice": "25000",
+      "activeAsset": true,
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "name": "this is one for the books",
+      "vehicleTypeId": 13,
+      "vin": "109-42lja;jtl23jylk",
+      "license": "123459",
+      "year": "2012",
+      "make": "honda",
+      "model": "element",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "2/2/2012",
+      "purchasePrice": "2500",
+      "activeAsset": false,
+      "id": 17,
+      "disposalDate": "12/12/2012",
+      "disposalPrice": "100000",
+      "disposalNotes": "lost money"
     }
   ],
   "vehicleTypes": [
@@ -668,6 +814,30 @@
     {
       "id": 6,
       "type": "motorcycle"
+    },
+    {
+      "type": "bicycle",
+      "id": 7
+    },
+    {
+      "type": "unicycle",
+      "id": 8
+    },
+    {
+      "type": "bobsled",
+      "id": 10
+    },
+    {
+      "type": "tricycle",
+      "id": 11
+    },
+    {
+      "type": "pontoon",
+      "id": 12
+    },
+    {
+      "type": "yacht",
+      "id": 13
     }
   ]
 }

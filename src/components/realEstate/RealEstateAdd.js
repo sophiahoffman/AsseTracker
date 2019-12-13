@@ -1,14 +1,17 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager'
 import APIManager from '../../modules/APIManager';
 
+// RealEstateAdd takes input from user and writes a new item to the realEstate table. First it gets the real estate types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the realEstate table. 
 class RealEstateAdd extends Component {
 
     state = {
         realEstateName: "",
-        realEstateTypeId: "",
+        realEstateTypeId: 1,
         realEstateType: "",
         realEstateTypes: [],
         realEstateAddress: "",
@@ -26,7 +29,6 @@ class RealEstateAdd extends Component {
         let propType = 'reTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
-            console.log("getTypes results", results)
             this.setState({realEstateTypes: results})
         })
     }
@@ -36,22 +38,13 @@ class RealEstateAdd extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-//  posts to reTypes table if text is entered in the input field
+//  posts to reTypes table if text is entered in the input field. Runs under constructNewRealEstate on form submit/button click
     handleOtherInput = e => {
-        if (this.state.realEstateType !== "") {
-            let route = "reTypes"
-            let reTypeId = this.state.realEstateTypes.length+1
-            console.log("settingstate)")
-            this.setState({realEstateTypeId: reTypeId})
-            let newTypeObject = {
-                id: Number(this.state.realEstateTypeId),
-                type: this.state.realEstateType
-            }
-            console.log("posting new object")
-            return APIManager.post(route, newTypeObject)
-        } else {
-            return APIManager.get('reTypes')
+        let route = "reTypes"
+        let newTypeObject = {
+            type: this.state.realEstateType
         }
+        return APIManager.post(route, newTypeObject)
     };
 
     handleCheckbox = e => {
@@ -63,8 +56,26 @@ class RealEstateAdd extends Component {
     constructNewRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput()
-        .then(results => {
+        if (this.state.realEstateType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const newRealEstate = {
+                    userId: Number(localStorage.getItem("userId")),
+                    name: this.state.realEstateName,
+                    reTypeId: Number(result.id),
+                    address: this.state.realEstateAddress,
+                    city: this.state.realEstateCity,
+                    state: this.state.realEstateState,
+                    zip: this.state.realEstateZip,
+                    rent: this.state.rentCheckbox,
+                    purchaseDate: this.state.realEstatePurchaseDate,
+                    purchasePrice: this.state.realEstatePurchasePrice,
+                    activeAsset: this.state.realEstateActiveAsset,
+                }
+                RealEstateAPIManager.postRealEstate(newRealEstate)
+                .then(() => this.props.history.push("/realestate"));
+            })
+        } else {
             const newRealEstate = {
                 userId: Number(localStorage.getItem("userId")),
                 name: this.state.realEstateName,
@@ -77,10 +88,10 @@ class RealEstateAdd extends Component {
                 purchaseDate: this.state.realEstatePurchaseDate,
                 purchasePrice: this.state.realEstatePurchasePrice,
                 activeAsset: this.state.realEstateActiveAsset,
+            }
+            RealEstateAPIManager.postRealEstate(newRealEstate)
+            .then(() => this.props.history.push("/realestate"));
         }
-        RealEstateAPIManager.postRealEstate(newRealEstate)
-        .then(() => this.props.history.push("/realestate"));
-        })
     }
 
     render() {

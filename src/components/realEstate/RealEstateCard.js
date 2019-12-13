@@ -1,3 +1,5 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
@@ -20,8 +22,8 @@ class RealEstateCard extends Component {
                         {this.props.realEstate.zip}<br />
                     </Card.Text>
             
-                        <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realEstate/${this.props.realEstate.id}/edit`)}>Edit</Button>
-                        <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realEstate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
+                        <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
+                        <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
                         <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
                     </Card.Body>
                 </div>
@@ -50,8 +52,8 @@ class RealEstateCard extends Component {
                             {this.props.realEstate.purchasePrice}<br />
                         </Card.Text>
                 
-                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realEstate/${this.props.realEstate.id}/edit`)}>Edit</Button>
-                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realEstate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
+                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
+                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
                         </Card.Body>
                     </div>

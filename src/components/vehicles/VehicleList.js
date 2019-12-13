@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import VehiclesCard from './VehiclesCard';
 

@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
 
+// VehiclesEdit prefills current database data and allows user to overwrite the values and update the item in the vehicles table using PATCH. First it gets the personal property types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 
 class VehiclesEdit extends Component {
     objectId = this.props.match.params.vehicleId
@@ -33,7 +34,6 @@ class VehiclesEdit extends Component {
         let propType = 'vehicleTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
-            console.log("getTypes results", results)
             this.setState({vehicleTypes: results})
         })
         .then(results => VehiclesAPIManager.getOneVehicle(this.objectId))
@@ -41,7 +41,6 @@ class VehiclesEdit extends Component {
             this.setState({
                 vehicleName: item.name,
                 vehicleTypeId: item.vehicleTypeId,
-                vehicleType: item.vehicleType.type,
                 vehicleVin: item.vin,
                 vehicleLicense: item.license,
                 vehicleYear: item.year,
@@ -63,54 +62,70 @@ class VehiclesEdit extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-    
+//  posts to vehicleTypes table if text is entered in the input field. Runs under constructNewVehicle on button click    
     handleOtherInput = e => {
-        if (this.state.vehicleType !== "") {
-            let route = "vehicleTypes"
-            console.log("length", this.state.vehicleTypes.length)
-            let vehicleTypeId = this.state.vehicleTypes.length+1
-            this.setState({vehicleTypeId: vehicleTypeId})
-            let newTypeObject = {
-                id: Number(this.state.vehicleTypeId),
-                type: this.state.vehicleType
-            }
-            return APIManager.post(route, newTypeObject)
-        } else {
-            return null
+        let route = "vehicleTypes"
+        let newTypeObject = {
+            type: this.state.vehicleType
         }
+        return APIManager.post(route, newTypeObject)
     };
 
     constructUpdatedVehicle = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput()
-        const updatedVehicle = {
-            id: this.objectId,
-            name: this.vehicleName,
-            vehicleTypeId: Number(this.state.vehicleTypeId),
-            vin: this.vehicleVin,
-            license: this.vehicleLicense,
-            year: this.vehicleYear,
-            make: this.vehicleMake,
-            model: this.vehicleModel,
-            location: this.vehicleLocation,
-            purchaseLocation: this.vehiclePurchaseLocation,
-            purchaseDate: this.vehiclePurchaseDate,
-            purchaePrice: this.vehiclePurchasePrice,
-            activeAsset: this.vehicleActiveAsset,
-            disposalDate: this.vehicleDisposalDate,
-            disposalPrice: this.vehicleDisposalPrice,
-            disposalNotes: this.vehicleDisposalNotes
+        if (this.state.vehicleType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const updatedVehicle = {
+                    id: this.objectId,
+                    name: this.state.vehicleName,
+                    vehicleTypeId: Number(result.id),
+                    vin: this.state.vehicleVin,
+                    license: this.state.vehicleLicense,
+                    year: this.state.vehicleYear,
+                    make: this.state.vehicleMake,
+                    model: this.state.vehicleModel,
+                    location: this.state.vehicleLocation,
+                    purchaseLocation: this.state.vehiclePurchaseLocation,
+                    purchaseDate: this.state.vehiclePurchaseDate,
+                    purchasePrice: this.state.vehiclePurchasePrice,
+                    activeAsset: this.state.vehicleActiveAsset,
+                    disposalDate: this.state.vehicleDisposalDate,
+                    disposalPrice: this.state.vehicleDisposalPrice,
+                    disposalNotes: this.state.vehicleDisposalNotes
+                }
+                VehiclesAPIManager.updateVehicle(updatedVehicle)
+                .then(() => this.props.history.push("/vehicles"));
+            })
+        } else {
+            const updatedVehicle = {
+                id: this.objectId,
+                name: this.state.vehicleName,
+                vehicleTypeId: Number(this.state.vehicleTypeId),
+                vin: this.state.vehicleVin,
+                license: this.state.vehicleLicense,
+                year: this.state.vehicleYear,
+                make: this.state.vehicleMake,
+                model: this.state.vehicleModel,
+                location: this.state.vehicleLocation,
+                purchaseLocation: this.state.vehiclePurchaseLocation,
+                purchaseDate: this.state.vehiclePurchaseDate,
+                purchasePrice: this.state.vehiclePurchasePrice,
+                activeAsset: this.state.vehicleActiveAsset,
+                disposalDate: this.state.vehicleDisposalDate,
+                disposalPrice: this.state.vehicleDisposalPrice,
+                disposalNotes: this.state.vehicleDisposalNotes
+            }
+            VehiclesAPIManager.updateVehicle(updatedVehicle)
+            .then(() => this.props.history.push("/vehicles"));
         }
-        VehiclesAPIManager.updateVehicle(updatedVehicle)
-        .then(() => this.props.history.push("/vehicle"));
     }
 
     render() {
         return (
             <div id="vehicleUpdateForm">
-                <h3 id="title_updateForm">Update Form <br />
-                {this.state.vehicleName}</h3>
+                <h3 id="title_updateForm">Update Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
@@ -118,7 +133,7 @@ class VehiclesEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
-                        <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
+                        <Form.Control as="select" id="vehicleTypeId" value={this.state.vehicleTypeId} onChange={this.handleFieldChange}>
                         {this.state.vehicleTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
@@ -126,7 +141,7 @@ class VehiclesEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Or Enter Other Vehicle Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleOtherInput} />
+                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" value={this.state.vehicleType} onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">VIN</Form.Label>

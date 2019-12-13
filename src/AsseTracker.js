@@ -1,7 +1,8 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import './AsseTracker.css';
 import ApplicationViews from './ApplicationViews'
-import APIManager from './modules/APIManager';
 import { Redirect } from 'react-router-dom'
 import NavBar from '../src/components/navBar/NavBar'
 
@@ -19,7 +20,6 @@ class AsseTracker extends Component {
   }
 
   handleLogout = () => {
-    console.log(this.props)
     localStorage.clear()
     this.setUserState()
     return <Redirect to="/" />

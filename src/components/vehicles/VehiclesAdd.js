@@ -1,9 +1,12 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
 
+// vehiclesAdd takes input from user and writes a new item to the vehicles table. First it gets the vehicle types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 class VehiclesAdd extends Component {
     vehicleTypesText = "";
     
@@ -11,7 +14,7 @@ class VehiclesAdd extends Component {
         vehicleName: "",
         vehicleTypes: [],
         vehicleType:"",
-        vehicleTypeId: "",
+        vehicleTypeId: 1,
         vehicleVin: "",
         vehicleLicense: "",
         vehicleYear: "",
@@ -24,12 +27,11 @@ class VehiclesAdd extends Component {
         vehicleActiveAsset: true,
         loadingStatus: false,
     };
-
+// gets vehicle types for the select input
     componentDidMount() {
         let propType = 'vehicleTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
-            console.log("getTypes results", results)
             this.setState({vehicleTypes: results})
         })
     };
@@ -39,14 +41,10 @@ class VehiclesAdd extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-
+//  posts to vehicleTypes table if text is entered in the input field. Runs under constructNewVehicle on button click
     handleOtherInput = e => {
         let route = "vehicleTypes"
-        console.log("length", this.state.vehicleTypes.length)
-        let vehicleTypeId = this.state.vehicleTypes.length+1
-        this.setState({vehicleTypeId: vehicleTypeId})
         let newTypeObject = {
-            id: Number(this.state.vehicleTypeId),
             type: this.state.vehicleType
         }
         return APIManager.post(route, newTypeObject)
@@ -55,9 +53,28 @@ class VehiclesAdd extends Component {
     constructNewVehicle = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput()
-        .then(result => {
-
+        if (this.state.vehicleType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const newVehicle = {
+                    userId: Number(localStorage.getItem("userId")),
+                    name: this.state.vehicleName,
+                    vehicleTypeId: Number(result.id),
+                    vin: this.state.vehicleVin,
+                    license: this.state.vehicleLicense,
+                    year: this.state.vehicleYear,
+                    make: this.state.vehicleMake,
+                    model: this.state.vehicleModel,
+                    location: this.state.vehicleLocation,
+                    purchaseLocation: this.state.vehiclePurchaseLocation,
+                    purchaseDate: this.state.vehiclePurchaseDate,
+                    purchasePrice: this.state.vehiclePurchasePrice,
+                    activeAsset: this.state.vehicleActiveAsset,
+                }
+                VehiclesAPIManager.postVehicle(newVehicle)
+                .then(() => this.props.history.push("/vehicles"));            
+            })
+        } else {
             const newVehicle = {
                 userId: Number(localStorage.getItem("userId")),
                 name: this.state.vehicleName,
@@ -74,9 +91,8 @@ class VehiclesAdd extends Component {
                 activeAsset: this.state.vehicleActiveAsset,
             }
             VehiclesAPIManager.postVehicle(newVehicle)
-            .then(() => this.props.history.push("/vehicles"));
-                        
-        })
+            .then(() => this.props.history.push("/vehicles"));  
+        }
     }
 
     render() {
@@ -89,9 +105,9 @@ class VehiclesAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
-                        <Form.Control as="select" id="vehicleTypeId"  >
+                        <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
                         {this.state.vehicleTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id} onChange={this.handleFieldChange}>{type.type}</option>
+                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
                     </Form.Group>
