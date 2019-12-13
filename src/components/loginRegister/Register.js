@@ -12,6 +12,11 @@ class Register extends Component {
         loadingStatus: false,
     }
 
+    
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
@@ -37,6 +42,7 @@ class Register extends Component {
                 console.log(result)
                 this.props.history.push('/welcome')
                 localStorage.setItem("userId", result.id)
+                this.props.setUserState()
             })       
         } else {
 
@@ -61,7 +67,7 @@ class Register extends Component {
                     <Form.Control type="password" placeholder="Enter Password" id="userPassword2" onChange={this.handleFieldChange} />
                 </Form.Group>
                 </Form>
-                <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
+                <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
                 </Button>
             </div>
         )

@@ -60,7 +60,7 @@ class PersonalPropertyDisposal extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Notes" id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
                         Submit
             </Button>
                 </Form>

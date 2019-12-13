@@ -5,7 +5,7 @@ import PersonalPropertyList from './components/personalProperty/PersonalProperty
 import PersonalPropertyAdd from './components/personalProperty/PersonalPropertyAdd';
 import PersonalPropertyDisposal from './components/personalProperty/PersonalPropertyDisposal';
 import PersonalPropertyEdit from './components/personalProperty/PersonalPropertyEdit';
-import VehiclesList from './components/vehicles/VehiclesList';
+import VehiclesList from './components/vehicles/VehicleList';
 import VehiclesAdd from './components/vehicles/VehiclesAdd';
 import VehiclesDisposal from './components/vehicles/VehiclesDisposal';
 import VehiclesEdit from './components/vehicles/VehiclesEdit';
@@ -27,8 +27,9 @@ class ApplicationViews extends Component {
           <React.Fragment>
             <Route
               exact path="/" render={props => {
-                if (localStorage.getItem("userId")) {
-                  return <WelcomeAsseTracker />
+                console.log(this.props.userAuthenticated)
+                if (this.props.userAuthenticated) {
+                  return <WelcomeAsseTracker {...props} />
                   } else 
                   return <EntryPortal {...props} />
               }}
@@ -38,7 +39,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/login" render={props => {
                 if (localStorage.getItem("email")) {
-                  return <Login {...props} />
+                  return <Login {...props} setUserState={this.props.setUserState}/>
                 } else {
                   return <EntryPortal {...props} />
                 }
@@ -47,14 +48,17 @@ class ApplicationViews extends Component {
               
             <Route
               exact path="/register" render={props => {
-                  return <Register {...props} />
+                  return <Register {...props} setUserState={this.props.setUserState} />
               }}
             />
 
             <Route
               exact path="/welcome" render={props => {
+                if (this.props.userAuthenticated) { 
                   return <WelcomeAsseTracker {...props} />
-              }}
+              } else {
+                return <Login {...props} />
+              }}}
             />
 
 

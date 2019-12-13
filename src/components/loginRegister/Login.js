@@ -10,6 +10,10 @@ class Login extends Component {
         loadingStatus: false,
     }
 
+    componentDidMount() {
+        console.log(this.props)
+    }
+
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
@@ -23,6 +27,7 @@ class Login extends Component {
             if (result[0].password === this.state.userPassword)             {
                 this.props.history.push('/welcome')
                 localStorage.setItem("userId", result[0].id)
+                this.props.setUserState()
             } else {
                 window.alert('User email and password do not match')
             }
@@ -38,7 +43,7 @@ class Login extends Component {
                     <Form.Control type="password" placeholder="Enter Password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 </Form>
-                <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
+                <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
                 </Button>
             </div>
         )

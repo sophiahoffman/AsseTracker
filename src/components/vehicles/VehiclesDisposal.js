@@ -60,7 +60,7 @@ class VehiclesDisposal extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Notes" id="vehicleDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>
                         Submit
             </Button>
                 </Form>

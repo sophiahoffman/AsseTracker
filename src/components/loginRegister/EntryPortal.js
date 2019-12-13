@@ -39,7 +39,7 @@ class EntryPortal extends Component {
                 <Form.Control type="email" placeholder="Enter Email Address" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
             </Form>
-            <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
+            <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
             </Button>
         </div>
       )

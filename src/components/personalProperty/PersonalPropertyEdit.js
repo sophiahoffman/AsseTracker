@@ -27,7 +27,11 @@ class PersonalPropertyEdit extends Component {
     };
 
     componentDidMount() {
-        this.getPPTypes()
+        let propType = 'ppTypes?_sort=id&&_order=asc'
+        APIManager.get(propType)
+        .then(results => {
+            this.setState({personalPropertyTypes: results})
+        })
         .then(result => PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId))
         .then(item => {
             this.setState({
@@ -65,14 +69,6 @@ class PersonalPropertyEdit extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
-    getPPTypes = () => {
-        let propType = 'ppTypes?_sort=id&&_order=asc'
-        APIManager.get(propType)
-        .then(results => {
-            this.setState({personalPropertyTypes: results})
-        })
-    }
 
     constructUpdatedPersonalProperty = e => {
         e.preventDefault();
@@ -151,7 +147,7 @@ class PersonalPropertyEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
                         Submit
             </Button>
                 </Form>
