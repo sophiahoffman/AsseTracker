@@ -350,10 +350,80 @@
       "zip": "99999",
       "rent": true,
       "purchaseDate": "1/8/2019",
-      "purchasePrice": "0.78",
+      "purchasePrice": "250000",
       "activeAsset": true,
       "userId": 1,
       "reTypeId": 2
+    },
+    {
+      "userId": 1,
+      "name": "chantilly lace",
+      "reTypeId": 3,
+      "address": "6 e monroe st apt 1503",
+      "city": "chicago",
+      "state": "Illinois",
+      "zip": "60603",
+      "rent": false,
+      "purchaseDate": "8/22/2003",
+      "purchasePrice": "250000",
+      "activeAsset": true,
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "name": "happy days",
+      "reTypeId": 3,
+      "address": "6 e monroe st apt 1503",
+      "city": "chicago",
+      "state": "Illinois",
+      "zip": "60603",
+      "rent": false,
+      "purchaseDate": "8/22/2003",
+      "purchasePrice": "250000",
+      "activeAsset": true,
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "name": "chantilly lace",
+      "reTypeId": 5,
+      "address": "6 e monroe st apt 1503",
+      "city": "chicago",
+      "state": "Illinois",
+      "zip": "60603",
+      "rent": false,
+      "purchaseDate": "8/22/2003",
+      "purchasePrice": "400000",
+      "activeAsset": true,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "name": "hello there",
+      "reTypeId": 2,
+      "address": "6 e monroe st apt 1503",
+      "city": "chicago",
+      "state": "Illinois",
+      "zip": "60603",
+      "rent": true,
+      "purchaseDate": "",
+      "purchasePrice": "",
+      "activeAsset": true,
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "name": "house on lode",
+      "reTypeId": 6,
+      "address": "6 e monroe st apt 1503",
+      "city": "chicago",
+      "state": "Illinois",
+      "zip": "60603",
+      "rent": true,
+      "purchaseDate": "",
+      "purchasePrice": "",
+      "activeAsset": true,
+      "id": 15
     }
   ],
   "reTypes": [
@@ -372,6 +442,14 @@
     {
       "id": 4,
       "type": "apartment"
+    },
+    {
+      "id": 5,
+      "type": "land"
+    },
+    {
+      "id": 6,
+      "type": "water"
     }
   ],
   "vehicles": [

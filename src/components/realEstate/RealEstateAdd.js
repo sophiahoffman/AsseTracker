@@ -21,7 +21,7 @@ class RealEstateAdd extends Component {
         rentCheckbox: false,
         loadingStatus: false,
     };
-
+// gets real estate types for the select
     componentDidMount() {
         let propType = 'reTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
@@ -30,23 +30,28 @@ class RealEstateAdd extends Component {
             this.setState({realEstateTypes: results})
         })
     }
-
+// to avoid issues with uncontrolled state
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-
+//  posts to reTypes table if text is entered in the input field
     handleOtherInput = e => {
-        let route = "reTypes"
-        console.log("length", this.state.reTypes.length)
-        let reTypeId = this.state.reTypes.length+1
-        this.setState({reTypeId: reTypeId})
-        let newTypeObject = {
-            id: Number(this.state.reTypeId),
-            type: this.state.reType
+        if (this.state.realEstateType !== "") {
+            let route = "reTypes"
+            let reTypeId = this.state.realEstateTypes.length+1
+            console.log("settingstate)")
+            this.setState({realEstateTypeId: reTypeId})
+            let newTypeObject = {
+                id: Number(this.state.realEstateTypeId),
+                type: this.state.realEstateType
+            }
+            console.log("posting new object")
+            return APIManager.post(route, newTypeObject)
+        } else {
+            return APIManager.get('reTypes')
         }
-        return APIManager.post(route, newTypeObject)
     };
 
     handleCheckbox = e => {
@@ -58,22 +63,24 @@ class RealEstateAdd extends Component {
     constructNewRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput();
-        const newRealEstate = {
-            userId: Number(localStorage.getItem("userId")),
-            name: this.state.realEstateName,
-            reTypeId: Number(this.state.realEstateTypeId),
-            address: this.state.realEstateAddress,
-            city: this.state.realEstateCity,
-            state: this.state.realEstateState,
-            zip: this.state.realEstateZip,
-            rent: this.state.rentCheckbox,
-            purchaseDate: this.state.realEstatePurchaseDate,
-            purchasePrice: this.state.realEstatePurchasePrice,
-            activeAsset: this.state.realEstateActiveAsset,
+        this.handleOtherInput()
+        .then(results => {
+            const newRealEstate = {
+                userId: Number(localStorage.getItem("userId")),
+                name: this.state.realEstateName,
+                reTypeId: Number(this.state.realEstateTypeId),
+                address: this.state.realEstateAddress,
+                city: this.state.realEstateCity,
+                state: this.state.realEstateState,
+                zip: this.state.realEstateZip,
+                rent: this.state.rentCheckbox,
+                purchaseDate: this.state.realEstatePurchaseDate,
+                purchasePrice: this.state.realEstatePurchasePrice,
+                activeAsset: this.state.realEstateActiveAsset,
         }
         RealEstateAPIManager.postRealEstate(newRealEstate)
         .then(() => this.props.history.push("/realestate"));
+        })
     }
 
     render() {
@@ -86,7 +93,7 @@ class RealEstateAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId">
+                        <Form.Control as="select" id="realEstateTypeId" onChange={this.handleFieldChange}>
                         {this.state.realEstateTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}

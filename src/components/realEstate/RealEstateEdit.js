@@ -40,7 +40,6 @@ class RealEstateEdit extends Component {
             this.setState({
                 realEstateName: item.name,
                 realEstateTypeId: item.reTypeId,
-                realEstateType: item.reType.type,
                 realEstateAddress: item.address,
                 realEstateCity: item.city,
                 realEstateState: item.state,
@@ -66,15 +65,19 @@ class RealEstateEdit extends Component {
 
     
     handleOtherInput = e => {
-        let route = "reTypes"
-        console.log("length", this.state.reTypes.length)
-        let reTypeId = this.state.reTypes.length+1
-        this.setState({reTypeId: reTypeId})
-        let newTypeObject = {
-            id: Number(this.state.reTypeId),
-            type: this.state.reType
+        if (this.state.realEstateType !== "") { 
+            let route = "reTypes"
+            console.log("length", this.state.realEstateTypes.length)
+            let reTypeId = this.state.realEstateTypes.length+1
+            this.setState({realEstateTypeId: reTypeId})
+            let newTypeObject = {
+                id: Number(this.state.realEstateTypeId),
+                type: this.state.realEstateType
+            }
+            return APIManager.post(route, newTypeObject)
+        } else {
+            return this.state.realEstateTypes
         }
-        return APIManager.post(route, newTypeObject)
     };
     
     handleCheckbox = e => {
@@ -107,6 +110,7 @@ class RealEstateEdit extends Component {
         RealEstateAPIManager.updateRealEstate(updatedRealEstate)
         .then(() => this.props.history.push("/realestate"));
     })
+
     }
 
     render() {
@@ -121,7 +125,7 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId" >
+                        <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
                         {this.state.realEstateTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
@@ -129,7 +133,7 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Or Enter Other Real Estate Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleOtherInput} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Street Address</Form.Label>
