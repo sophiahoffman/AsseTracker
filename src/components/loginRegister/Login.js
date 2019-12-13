@@ -1,17 +1,17 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import APIManager from '../../modules/APIManager'
+
+// Login allows user to enter in password and compares entered password to password in users table to determine if user can log in. If login is successful, user is redirected to WelcomeAsseTracker page.
 
 class Login extends Component {
     state = {
         userEmailAddress: localStorage.getItem("email"),
         userPassword: "",
         loadingStatus: false,
-    }
-
-    componentDidMount() {
-        console.log(this.props)
     }
 
     handleFieldChange = e => {

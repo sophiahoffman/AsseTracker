@@ -1,6 +1,7 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import RealEstateCard from './RealEstateCard';
 

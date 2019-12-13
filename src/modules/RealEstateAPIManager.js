@@ -1,3 +1,5 @@
+// @authored by Sophia Hoffman
+
 import APIManager from './APIManager';
 
 

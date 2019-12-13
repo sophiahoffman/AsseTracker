@@ -1,14 +1,19 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager'
 import APIManager from '../../modules/APIManager';
 
+// PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
+
 class PersonalPropertyAdd extends Component {
     state = {
         personalPropertyName: "",
-        personalPropertyTypeId: "",
+        personalPropertyTypeId: 1,
         personalPropertyTypes: [],
+        personalPropertyType: "",
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
@@ -20,6 +25,7 @@ class PersonalPropertyAdd extends Component {
         loadingStatus: false,
     };
 
+// requires get call on the types to populate the dropdown select
     componentDidMount() {
         let propType = 'ppTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
@@ -33,15 +39,11 @@ class PersonalPropertyAdd extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-
+// handleOtherInput is run at form submit. Creates new type based on whether or not there is any text entered in id="personalPropertyType"
     handleOtherInput = e => {
         let route = "ppTypes"
-        console.log("length", this.state.ppTypes.length)
-        let ppTypeId = this.state.ppTypes.length+1
-        this.setState({ppTypeId: ppTypeId})
         let newTypeObject = {
-            id: Number(this.state.ppTypeId),
-            type: this.state.ppType
+            type: this.state.personalPropertyType
         }
         return APIManager.post(route, newTypeObject)
     };
@@ -49,21 +51,42 @@ class PersonalPropertyAdd extends Component {
     constructNewPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        const newPersonalProperty = {
-            userId: Number(localStorage.getItem("userId")),
-            name: this.state.personalPropertyName,
-            ppTypeId: Number(this.state.personalPropertyTypeId),
-            description: this.state.personalPropertyDescription,
-            manufacturer: this.state.personalPropertyManufacturer,
-            model: this.state.personalPropertyModel,
-            location: this.state.personalPropertyLocation,
-            purchaseLocation: this.state.personalPropertyPurchaseLocation,
-            purchaseDate: this.state.personalPropertyPurchaseDate,
-            purchasePrice: this.state.personalPropertyPurchasePrice,
-            activeAsset: this.state.personalPropertyActiveAsset,
+        if (this.state.personalPropertyType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const newPersonalProperty = {
+                    userId: Number(localStorage.getItem("userId")),
+                    name: this.state.personalPropertyName,
+                    ppTypeId: Number(result.id),
+                    description: this.state.personalPropertyDescription,
+                    manufacturer: this.state.personalPropertyManufacturer,
+                    model: this.state.personalPropertyModel,
+                    location: this.state.personalPropertyLocation,
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    purchaseDate: this.state.personalPropertyPurchaseDate,
+                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    activeAsset: this.state.personalPropertyActiveAsset,
+                }
+                PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
+                .then(() => this.props.history.push("/personalproperty"));
+            })
+        } else {
+            const newPersonalProperty = {
+                userId: Number(localStorage.getItem("userId")),
+                name: this.state.personalPropertyName,
+                ppTypeId: Number(this.state.personalPropertyTypeId),
+                description: this.state.personalPropertyDescription,
+                manufacturer: this.state.personalPropertyManufacturer,
+                model: this.state.personalPropertyModel,
+                location: this.state.personalPropertyLocation,
+                purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                purchaseDate: this.state.personalPropertyPurchaseDate,
+                purchasePrice: this.state.personalPropertyPurchasePrice,
+                activeAsset: this.state.personalPropertyActiveAsset,
+            }
+            PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
+            .then(() => this.props.history.push("/personalproperty"));
         }
-        PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
-        .then(() => this.props.history.push("/personalproperty"));
     }
 
     render() {
@@ -76,7 +99,7 @@ class PersonalPropertyAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Item Type</Form.Label>
-                        <Form.Control as="select" id="personalPropertyTypeId">
+                        <Form.Control as="select" id="personalPropertyTypeId" onChange={this.handleFieldChange}>
                         {this.state.personalPropertyTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}

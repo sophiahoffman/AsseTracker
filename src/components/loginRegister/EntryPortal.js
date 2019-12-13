@@ -1,6 +1,11 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import APIManager from '../../modules/APIManager';
+
+
+// EntryPortal designed to be start to login process - user enters in email address and comparison made to users table to determine if an account has been previously established with that email address. If so, it redirects user to the login page; if not, it redirects to the registration page.
 
 class EntryPortal extends Component {
       

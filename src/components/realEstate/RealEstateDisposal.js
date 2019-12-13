@@ -1,9 +1,11 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 
-
+// RealEstateDisposal allows user to add additional information about getting rid of the property and then removes the property from view. Data regarding the specific item is essentially archived.
 class RealEstateDisposal extends Component {
     objectId = this.props.match.params.realEstateId
 
@@ -46,8 +48,7 @@ class RealEstateDisposal extends Component {
     render() {
         return (
             <div id="realEstateDisposalForm">
-                <h3 id="title_disposalForm">Disposal Form <br />
-                {this.state.realEstateName}</h3>
+                <h3 id="title_disposalForm">Disposal Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Disposal Date</Form.Label>

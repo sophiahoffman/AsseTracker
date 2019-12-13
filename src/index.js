@@ -1,3 +1,5 @@
+// @authored by Sophia Hoffman
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

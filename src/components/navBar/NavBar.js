@@ -1,12 +1,15 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Navbar, Nav } from 'react-bootstrap'
 
+// NavBar renders two versions based on value of userAuthenticated (logged in or not) from AsseTracker.js
+
 class NavBar extends Component {
 
     render() {
-        console.log("NavBar", this.props.userAuthenticated, this.props)
         if (this.props.userAuthenticated) {
             return (
                 <Navbar bg="dark" variant="dark">

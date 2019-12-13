@@ -4,14 +4,16 @@ import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
 import APIManager from '../../modules/APIManager';
 
+// PersonalPropertyEdit prefills current database data and allows user to overwrite the values and update the item in the personalproperty table using PATCH. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
+
 class PersonalPropertyEdit extends Component {
     objectId = this.props.match.params.personalPropertyId
 
     state = {
-        personalpropertyName: "",
+        personalPropertyName: "",
         personalPropertyTypeId: "",
         personalPropertyType: "",
-        personalpropertyTypes: [],
+        personalPropertyTypes: [],
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
@@ -37,7 +39,6 @@ class PersonalPropertyEdit extends Component {
             this.setState({
                 personalPropertyName: item.name,
                 personalPropertyTypeId: item.ppTypeId,
-                personalPropertyType: item.ppType.type,
                 personalPropertyDescription: item.description,
                 personalPropertyManufacturer: item.manufacturer,
                 personalPropertyModel: item.model,
@@ -57,15 +58,11 @@ class PersonalPropertyEdit extends Component {
         stateToChange[e.target.id] = e.target.value
         this.setState(stateToChange)
     };
-
+// handleOtherInput is run at form submit. Creates new type based on whether or not there is any text entered in id="personalPropertyType"
     handleOtherInput = e => {
         let route = "ppTypes"
-        console.log("length", this.state.ppTypes.length)
-        let ppTypeId = this.state.ppTypes.length+1
-        this.setState({ppTypeId: ppTypeId})
         let newTypeObject = {
-            id: Number(this.state.ppTypeId),
-            type: this.state.ppType
+            type: this.state.personalPropertyType
         }
         return APIManager.post(route, newTypeObject)
     };
@@ -73,43 +70,62 @@ class PersonalPropertyEdit extends Component {
     constructUpdatedPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput()
-        .then(result => {
+        if (this.state.personalPropertyType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const updatedPersonalProperty = {
+                    id: this.objectId,
+                    name: this.state.personalPropertyName,
+                    ppTypeId: Number(result.id),
+                    description: this.state.personalPropertyDescription,
+                    manufacturer: this.state.personalPropertyManufacturer,
+                    model: this.state.personalPropertyModel,
+                    location: this.state.personalPropertyLocation,
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    purchaseDate: this.state.personalPropertyPurchaseDate,
+                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    activeAsset: this.state.personalPropertyActiveAsset,
+                    disposalDate: this.state.personalPropertyDisposalDate,
+                    disposalPrice: this.state.personalPropertyDisposalPrice,
+                    disposalNotes: this.state.personalPropertyDisposalNotes,
+                }
+                PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+                .then(() => this.props.history.push("/personalproperty"));
+            })
+        } else {
             const updatedPersonalProperty = {
-                id: this.objectId,
-                userId: Number(localStorage.getItem("userId")),
-                name: this.state.personalPropertyName,
-                ppTypeId: Number(this.state.personalPropertyTypeId),
-                description: this.state.personalPropertyDescription,
-                manufacturer: this.state.personalPropertyManufacturer,
-                model: this.state.personalPropertyModel,
-                location: this.state.personalPropertyLocation,
-                purchaseLocation: this.state.personalPropertyPurchaseLocation,
-                purchaseDate: this.state.personalPropertyPurchaseDate,
-                purchasePrice: this.state.personalPropertyPurchasePrice,
-                activeAsset: this.state.personalPropertyActiveAsset,
-                disposalDate: this.state.personalPropertyDisposalDate,
-                disposalPrice: this.state.personalPropertyDisposalPrice,
-                disposalNotes: this.state.personalPropertyDisposalNotes,
-            }
-            PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-            .then(() => this.props.history.push("/personalproperty"));
-        })
+                    id: this.objectId,
+                    name: this.state.personalPropertyName,
+                    ppTypeId: Number(this.state.personalPropertyTypeId),
+                    description: this.state.personalPropertyDescription,
+                    manufacturer: this.state.personalPropertyManufacturer,
+                    model: this.state.personalPropertyModel,
+                    location: this.state.personalPropertyLocation,
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    purchaseDate: this.state.personalPropertyPurchaseDate,
+                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    activeAsset: this.state.personalPropertyActiveAsset,
+                    disposalDate: this.state.personalPropertyDisposalDate,
+                    disposalPrice: this.state.personalPropertyDisposalPrice,
+                    disposalNotes: this.state.personalPropertyDisposalNotes,
+                }
+                PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+                .then(() => this.props.history.push("/personalproperty"));
+        }
     }
 
     render() {
         return (
-            <div id="personalPropertyDisposalForm">
-                <h3 id="title_disposalForm">Disposal Form <br />
-                {this.state.personalPropertyName}</h3>
+            <div id="personalPropertyEditForm">
+                <h3 id="title_editForm">Property Edit Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" value={this.state.personalPropertyName} id="personalPropertyName" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" placeholder="Enter Name" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Item Type</Form.Label>
-                        <Form.Control as="select" id="personalPropertyTypeId">
+                        <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
                         {this.state.personalPropertyTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
@@ -117,7 +133,7 @@ class PersonalPropertyEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Or Enter Item Type (if not on the Select)</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="personalPropertyType" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" placeholder="Enter Type" value={this.state.personalPropertyType} id="personalPropertyType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Description</Form.Label>

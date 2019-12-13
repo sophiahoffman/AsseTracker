@@ -1,6 +1,7 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager'
 import PersonalPropertyCard from './PersonalPropertyCard';
 

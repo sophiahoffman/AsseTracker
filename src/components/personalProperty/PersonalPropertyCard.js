@@ -1,3 +1,5 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
@@ -22,8 +24,8 @@ class PersonalPropertyCard extends Component {
                         ${this.props.personalProperty.purchasePrice}<br />
                     </Card.Text>
             
-                        <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalProperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>
-                        <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalProperty/${this.props.personalProperty.id}/disposal`)}>Disposal</Button>
+                        <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>
+                        <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/disposal`)}>Disposal</Button>
                         <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.deletePersonalProperty(this.props.personalProperty.id)}>Delete</Button>
                     </Card.Body>
                 </div>

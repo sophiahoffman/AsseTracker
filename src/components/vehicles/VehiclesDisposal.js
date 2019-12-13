@@ -1,8 +1,11 @@
+// @authored by Sophia Hoffman
+
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 
+// VehiclesDisposal allows user to add additional information about getting rid of the property and then removes the property from view. Data regarding the specific item is essentially archived.
 class VehiclesDisposal extends Component {
     objectId = this.props.match.params.vehicleId
 
@@ -39,7 +42,7 @@ class VehiclesDisposal extends Component {
             activeAsset: false,
         }
         VehiclesAPIManager.updateVehicle(updatedVehicle)
-        .then(() => this.props.history.push("/vehicle"));
+        .then(() => this.props.history.push("/vehicles"));
     }
 
     render() {

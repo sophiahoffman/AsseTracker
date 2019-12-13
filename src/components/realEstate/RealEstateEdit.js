@@ -4,10 +4,13 @@ import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import APIManager from '../../modules/APIManager';
 
+// realEstateEdit prefills current database data and allows user to overwrite the values and update the item in the realEstate table using PATCH. First it gets the personal property types from reTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the reTypes table. That new typeId is added to the object and written to the realEstate table. 
+
 class RealEstateEdit extends Component {
     objectId = this.props.match.params.realEstateId;
 
     state = {
+        realEstateUserId: "",
         realEstateName: "",
         realEstateTypeId: "",
         realEstateTypes: [],
@@ -27,17 +30,15 @@ class RealEstateEdit extends Component {
     };
 
     componentDidMount() {
-        console.log("componentDidMount")
         let propType = 'reTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
-            console.log("getTypes results", results)
             this.setState({realEstateTypes: results})
-            console.log(this.state.realEstateTypes)
         })
         RealEstateAPIManager.getOneRealEstate(this.objectId)
         .then(item => {
             this.setState({
+                realEstateUserId: item.userId,
                 realEstateName: item.name,
                 realEstateTypeId: item.reTypeId,
                 realEstateAddress: item.address,
@@ -63,21 +64,14 @@ class RealEstateEdit extends Component {
         this.setState(stateToChange)
     };
 
-    
+//  posts to reTypes table if text is entered in the input field. Runs under constructNewRealEstate on form submit/button click    
     handleOtherInput = e => {
-        if (this.state.realEstateType !== "") { 
-            let route = "reTypes"
-            console.log("length", this.state.realEstateTypes.length)
-            let reTypeId = this.state.realEstateTypes.length+1
-            this.setState({realEstateTypeId: reTypeId})
-            let newTypeObject = {
-                id: Number(this.state.realEstateTypeId),
-                type: this.state.realEstateType
-            }
-            return APIManager.post(route, newTypeObject)
-        } else {
-            return this.state.realEstateTypes
+        let route = "reTypes"
+        let newTypeObject = {
+            id: Number(this.state.realEstateTypeId),
+            type: this.state.realEstateType
         }
+        return APIManager.post(route, newTypeObject)
     };
     
     handleCheckbox = e => {
@@ -89,35 +83,54 @@ class RealEstateEdit extends Component {
     constructUpdatedRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
-        this.handleOtherInput()
-        .then(result => {
+        if (this.state.realEstateType !== "") {
+            this.handleOtherInput()
+            .then(result => {
+                const updatedRealEstate = {
+                    id: this.objectId,
+                    name: this.state.realEstateName,
+                    reTypeId: Number(result.id),
+                    address: this.state.realEstateAddress,
+                    city: this.state.realEstateCity,
+                    state: this.state.realEstateState,
+                    zip: this.state.realEstateZip,
+                    rent: this.state.rentCheckbox,
+                    purchaseDate: this.state.realEstatePurchaseDate,
+                    purchasePrice: this.state.realEstatePurchasePrice,
+                    activeAsset: this.state.realEstateActiveAsset,
+                    disposalDate: this.state.realEstateDisposalDate,
+                    disposalPrice: this.state.realEstateDisposalPrice,
+                    disposalNotes: this.state.realEstateDisposalNotes,
+                }
+                RealEstateAPIManager.updateRealEstate(updatedRealEstate)
+                .then(() => this.props.history.push("/realestate"));
+            })
+        } else {
             const updatedRealEstate = {
-            id: this.objectId,
-            name: this.state.realEstateName,
-            reTypeId: Number(this.state.realEstateTypeId),
-            address: this.state.realEstateAddress,
-            city: this.state.realEstateCity,
-            state: this.state.realEstateState,
-            zip: this.state.realEstateZip,
-            rent: this.state.rentCheckbox,
-            purchaseDate: this.state.realEstatePurchaseDate,
-            purchasePrice: this.state.realEstatePurchasePrice,
-            activeAsset: this.state.realEstateActiveAsset,
-            disposalDate: this.state.realEstateDisposalDate,
-            disposalPrice: this.state.realEstateDisposalPrice,
-            disposalNotes: this.state.realEstateDisposalNotes,
+                id: this.objectId,
+                name: this.state.realEstateName,
+                reTypeId: Number(this.state.realEstateTypeId),
+                address: this.state.realEstateAddress,
+                city: this.state.realEstateCity,
+                state: this.state.realEstateState,
+                zip: this.state.realEstateZip,
+                rent: this.state.rentCheckbox,
+                purchaseDate: this.state.realEstatePurchaseDate,
+                purchasePrice: this.state.realEstatePurchasePrice,
+                activeAsset: this.state.realEstateActiveAsset,
+                disposalDate: this.state.realEstateDisposalDate,
+                disposalPrice: this.state.realEstateDisposalPrice,
+                disposalNotes: this.state.realEstateDisposalNotes,
+            }
+            RealEstateAPIManager.updateRealEstate(updatedRealEstate)
+            .then(() => this.props.history.push("/realestate"));
         }
-        RealEstateAPIManager.updateRealEstate(updatedRealEstate)
-        .then(() => this.props.history.push("/realestate"));
-    })
-
     }
 
     render() {
         return (
             <div id="realEstateUpdateForm">
-                <h3 id="title_updateForm">Update Form <br />
-                {this.state.realEstateName}</h3>
+                <h3 id="title_updateForm">Update Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
@@ -133,7 +146,7 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Or Enter Other Real Estate Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleOtherInput} />
+                        <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Street Address</Form.Label>
