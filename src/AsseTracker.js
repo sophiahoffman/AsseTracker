@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import './AsseTracker.css';
 import ApplicationViews from './ApplicationViews'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import NavBar from '../src/components/navBar/NavBar'
 
 // localStorage.setItem("userId", 1)
@@ -11,18 +11,17 @@ import NavBar from '../src/components/navBar/NavBar'
 class AsseTracker extends Component {
   state = {
     userEmailAddress: "",
-    userAuthenticated: false,
+    // userAuthenticated: false,
   }
 
-  componentDidMount() {
-    this.setUserState()
-    // this.setState({loadingStatus: false})
-  }
+  // componentDidMount() {
+  //   this.setUserState()
+  // }
 
   handleLogout = () => {
     localStorage.clear()
-    this.setUserState()
-    return <Redirect to="/" />
+    // this.setState({userAuthenticated: false})
+    this.props.history.push('/')
   }
 
   handleFieldChange = e => {
@@ -31,25 +30,26 @@ class AsseTracker extends Component {
       this.setState(stateToChange)
   };
 
-  setUserState = () => {
-    if (localStorage.getItem("userId")) {
-      this.setState({userAuthenticated: true})  
-    } else {
-      this.setState({userAuthenticated: false})
-    }
-  }
+isAuthenticated = () => localStorage.getItem("userId") !== null
+
+// setUserState = () => {
+//   console.log("isAuthenticatedAsseTracker", localStorage.getItem("userId") !== null)
+//     this.setState({
+//       userAuthenticated: this.isAuthenticated(),
+//     });
+//   }
 
   render() {
       return (
         <React.Fragment>
           <NavBar 
           {...this.props} 
-          userAuthenticated={this.state.userAuthenticated}
+          isAuthenticated={this.isAuthenticated}
           handleLogout={this.handleLogout} 
           {...this.props} />
           <ApplicationViews 
           {...this.props} 
-          userAuthenticated={this.state.userAuthenticated}
+          isAuthenticated={this.isAuthenticated}
           setUserState={this.setUserState}/>
         </React.Fragment>
       )
@@ -57,4 +57,4 @@ class AsseTracker extends Component {
   }
 }
 
-export default AsseTracker;
+export default withRouter(AsseTracker);

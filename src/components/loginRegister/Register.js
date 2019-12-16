@@ -36,9 +36,9 @@ class Register extends Component {
             }
             APIManager.post(`users`, newUser)
             .then(result => {
-                this.props.history.push('/welcome')
                 localStorage.setItem("userId", result.id)
-                this.props.setUserState()
+                this.props.history.push('/')
+                return this.props.isAuthenticated()
             })       
         } else {
 
