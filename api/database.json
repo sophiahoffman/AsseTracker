@@ -29,6 +29,18 @@
       "userPassword": "123",
       "userEmailAddress": "johndoe@gmail.com",
       "id": 5
+    },
+    {
+      "userName": "Moet Chandon",
+      "userPassword": "123",
+      "userEmailAddress": "sophiahoffman@gmail.com",
+      "id": 6
+    },
+    {
+      "userName": "janedoe",
+      "userPassword": "123",
+      "userEmailAddress": "janedoe@google.com",
+      "id": 7
     }
   ],
   "personalProperty": [
@@ -62,7 +74,7 @@
       "disposalDate": "6/9/2019",
       "disposalPrice": "5877.90",
       "disposalNotes": "Reactive zero defect website",
-      "activeAsset": false,
+      "activeAsset": true,
       "userId": 1,
       "ppTypeId": 1
     },
@@ -181,7 +193,7 @@
       "disposalDate": "12/6/2019",
       "disposalPrice": "9110.66",
       "disposalNotes": "Cloned intangible methodology",
-      "activeAsset": false,
+      "activeAsset": true,
       "userId": 1,
       "ppTypeId": 3
     },

@@ -1,7 +1,7 @@
 // @authored by Sophia Hoffman
 
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PersonalPropertyList from './components/personalProperty/PersonalPropertyList';
 import PersonalPropertyAdd from './components/personalProperty/PersonalPropertyAdd';
 import PersonalPropertyDisposal from './components/personalProperty/PersonalPropertyDisposal';
@@ -23,11 +23,13 @@ import EntryPortal from './components/loginRegister/EntryPortal';
 class ApplicationViews extends Component {
 
     render() {
+
+      console.log("appviews", this.props.isAuthenticated())
         return (
           <React.Fragment>
             <Route
               exact path="/" render={props => {
-                if (this.props.userAuthenticated) {
+                if (this.props.isAuthenticated()) {
                   return <WelcomeAsseTracker {...props} />
                   } else 
                   return <EntryPortal {...props} />
@@ -37,8 +39,11 @@ class ApplicationViews extends Component {
     
             <Route
               exact path="/login" render={props => {
-                if (localStorage.getItem("email")) {
-                  return <Login {...props} setUserState={this.props.setUserState}/>
+                if (this.props.isAuthenticated()) {
+                  return <WelcomeAsseTracker {...props} />
+                } else if (localStorage.getItem("email")) {
+                  return <Login {...props} 
+                  isAuthenticated={this.props.isAuthenticated} />
                 } else {
                   return <EntryPortal {...props} />
                 }
@@ -47,154 +52,159 @@ class ApplicationViews extends Component {
               
             <Route
               exact path="/register" render={props => {
-                  return <Register {...props} setUserState={this.props.setUserState} />
+                if (this.props.isAuthenticated()) {
+                  return <WelcomeAsseTracker {...props} />
+                } else if (localStorage.getItem("email")) {
+                  return <Register {...props} 
+                  isAuthenticated={this.props.isAuthenticated} />
+                } else {
+                  return <EntryPortal {...props} />
+                }
               }}
             />
 
             <Route
               exact path="/welcome" render={props => {
-                if (this.props.userAuthenticated) { 
+                if (this.props.isAuthenticated()) { 
                   return <WelcomeAsseTracker {...props} />
               } else {
-                return <Login {...props} />
+                return <EntryPortal {...props} />
               }}}
             />
 
 
             <Route
               exact path="/vehicles" render={props => {
-                // if (this.props.user) {
-                  return <VehiclesList {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                if (this.props.isAuthenticated()) {
+                  return <VehiclesList {...props} {...this.props} />
+                } else {
+                  return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/vehicles/:vehicleId(\d+)/edit" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return (
                   <VehiclesEdit 
                   {...props} 
                   {...this.props} 
                   />
                   )
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return <VehiclesDisposal {...props} {...this.props}/>
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                return  <Redirect to="/" />
+                }
               }}
             />
 
                 
             <Route
               exact path="/vehicles/new" render={props => {
-                // if (this.props.userValidated) {
-                  return <VehiclesAdd {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                if (this.props.isAuthenticated()) {
+                  return <VehiclesAdd {...props} {...this.props}/>
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
 
             <Route
               exact path="/personalproperty" render={props => {
-                // if (this.props.userValidated) {
-                  return <PersonalPropertyList {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                console.log("pp", this.props.isAuthenticated())
+                if (this.props.isAuthenticated()) {
+                  return <PersonalPropertyList {...props} {...this.props} />
+                } 
+                else {
+                 return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/edit" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return <PersonalPropertyEdit {...props} {...this.props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/disposal" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return <PersonalPropertyDisposal {...props} {...this.props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
 
                 
             <Route
               exact path="/personalproperty/new" render={props => {
-                // if (this.props.userValidated) {
-                  return <PersonalPropertyAdd {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                if (this.props.isAuthenticated()) {
+                  return <PersonalPropertyAdd {...props} {...this.props} />
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
 
             <Route
               exact path="/realestate" render={props => {
-                // if (this.props.userValidated) {
-                  return <RealEstateList {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                if (this.props.isAuthenticated()) {
+                  return <RealEstateList {...props} {...this.props}/>
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/realestate/:realEstateId(\d+)/edit" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return <RealEstateEdit {...props} {...this.props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
     
             <Route
               exact path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
-                // if (this.props.userValidated) {
+                if (this.props.isAuthenticated()) {
                   return <RealEstateDisposal {...props} {...this.props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
 
                 
             <Route
               exact path="/realestate/new" render={props => {
-                // if (this.props.userValidated) {
-                  return <RealEstateAdd {...props} />
-                // } else {
-                  // <Redirect to="/" />
-                // }
+                if (this.props.isAuthenticated()) {
+                  return <RealEstateAdd {...props} {...this.props} />
+                } else {
+                 return <Redirect to="/" />
+                }
               }}
             />
-
-
         </ React.Fragment>
       )
     }
-
-
 }
 
 export default ApplicationViews

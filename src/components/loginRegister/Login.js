@@ -24,10 +24,10 @@ class Login extends Component {
         this.setState({loadingStatus: true})
         APIManager.get(`users?email=${this.state.userEmailAddress}`)
         .then(result => {
-            if (result[0].password === this.state.userPassword)             {
-                this.props.history.push('/welcome')
+            if (result[0].password === this.state.userPassword) {
                 localStorage.setItem("userId", result[0].id)
-                this.props.setUserState()
+                this.props.history.push('/')
+                return this.props.isAuthenticated()
             } else {
                 window.alert('User email and password do not match')
             }

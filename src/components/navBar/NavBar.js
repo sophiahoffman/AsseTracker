@@ -10,7 +10,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 class NavBar extends Component {
 
     render() {
-        if (this.props.userAuthenticated) {
+        if (this.props.isAuthenticated()) {
             return (
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="/">AsseTracker</Navbar.Brand>
