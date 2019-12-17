@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore';
 
 // VehiclesEdit prefills current database data and allows user to overwrite the values and update the item in the vehicles table using PATCH. First it gets the personal property types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 
@@ -28,6 +29,8 @@ class VehiclesEdit extends Component {
         vehicleDisposalPrice: "",
         vehicleDisposalNotes: "",
         loadingStatus: false,
+        // Cloudinary added imageURL
+        vehicleImageUrl: "",
     };
 
     componentDidMount() {
@@ -51,6 +54,8 @@ class VehiclesEdit extends Component {
                 vehiclePurchaseDate: item.purchaseDate,
                 vehiclePurchasePrice: item.purchasePrice,
                 vehicleActiveAsset: item.activeAsset,
+                // Cloudinary: added image URL
+                vehicleImageUrl: item.imageUrl,
                 vehicleDisposalDate: item.disposalDate,
                 vehicleDisposalPrice: item.disposalPrice,
                 vehicleDisposalNotes: item.disposalNotes,})
@@ -70,6 +75,14 @@ class VehiclesEdit extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
+
+    uploadWidget = () => {
+        window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+        (error, result) => {
+            // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+            this.setState({vehicleImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+            });
+    }
 
     constructUpdatedVehicle = e => {
         e.preventDefault();
@@ -93,7 +106,9 @@ class VehiclesEdit extends Component {
                     activeAsset: this.state.vehicleActiveAsset,
                     disposalDate: this.state.vehicleDisposalDate,
                     disposalPrice: this.state.vehicleDisposalPrice,
-                    disposalNotes: this.state.vehicleDisposalNotes
+                    disposalNotes: this.state.vehicleDisposalNotes,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.vehicleImageUrl,
                 }
                 VehiclesAPIManager.updateVehicle(updatedVehicle)
                 .then(() => this.props.history.push("/vehicles"));
@@ -115,7 +130,9 @@ class VehiclesEdit extends Component {
                 activeAsset: this.state.vehicleActiveAsset,
                 disposalDate: this.state.vehicleDisposalDate,
                 disposalPrice: this.state.vehicleDisposalPrice,
-                disposalNotes: this.state.vehicleDisposalNotes
+                disposalNotes: this.state.vehicleDisposalNotes,
+                // Cloudinary: added image URL
+                imageUrl: this.state.vehicleImageUrl,
             }
             VehiclesAPIManager.updateVehicle(updatedVehicle)
             .then(() => this.props.history.push("/vehicles"));
@@ -179,6 +196,11 @@ class VehiclesEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.vehiclePurchasePrice} id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>
                         Submit
             </Button>

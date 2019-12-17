@@ -9,35 +9,13 @@ import NavBar from '../src/components/navBar/NavBar'
 // localStorage.setItem("userId", 1)
 
 class AsseTracker extends Component {
-  state = {
-    userEmailAddress: "",
-    // userAuthenticated: false,
-  }
-
-  // componentDidMount() {
-  //   this.setUserState()
-  // }
 
   handleLogout = () => {
     localStorage.clear()
-    // this.setState({userAuthenticated: false})
     this.props.history.push('/')
   }
 
-  handleFieldChange = e => {
-      const stateToChange = {};
-      stateToChange[e.target.id] = e.target.value
-      this.setState(stateToChange)
-  };
-
-isAuthenticated = () => localStorage.getItem("userId") !== null
-
-// setUserState = () => {
-//   console.log("isAuthenticatedAsseTracker", localStorage.getItem("userId") !== null)
-//     this.setState({
-//       userAuthenticated: this.isAuthenticated(),
-//     });
-//   }
+  isAuthenticated = () => localStorage.getItem("userId") !== null
 
   render() {
       return (
@@ -49,11 +27,9 @@ isAuthenticated = () => localStorage.getItem("userId") !== null
           {...this.props} />
           <ApplicationViews 
           {...this.props} 
-          isAuthenticated={this.isAuthenticated}
-          setUserState={this.setUserState}/>
+          isAuthenticated={this.isAuthenticated} />
         </React.Fragment>
       )
-    
   }
 }
 

@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager'
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore';
+import './PersonalPropertyAdd.css';
 
 // PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
@@ -23,6 +25,8 @@ class PersonalPropertyAdd extends Component {
         personalPropertyPurchasePrice: "",
         personalPropertyActiveAsset: true,
         loadingStatus: false,
+        // Cloudinary added imageURL
+        personalPropertyImageUrl: "",
     };
 
 // requires get call on the types to populate the dropdown select
@@ -48,6 +52,14 @@ class PersonalPropertyAdd extends Component {
         return APIManager.post(route, newTypeObject)
     };
 
+    uploadWidget = () => {
+        window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+        (error, result) => {
+            // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+            this.setState({personalPropertyImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+        });
+    }
+
     constructNewPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
@@ -66,6 +78,8 @@ class PersonalPropertyAdd extends Component {
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: this.state.personalPropertyPurchasePrice,
                     activeAsset: this.state.personalPropertyActiveAsset,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.personalPropertyImageUrl,
                 }
                 PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
                 .then(() => this.props.history.push("/personalproperty"));
@@ -83,6 +97,8 @@ class PersonalPropertyAdd extends Component {
                 purchaseDate: this.state.personalPropertyPurchaseDate,
                 purchasePrice: this.state.personalPropertyPurchasePrice,
                 activeAsset: this.state.personalPropertyActiveAsset,
+                // Cloudinary: added image URL
+                imageUrl: this.state.personalPropertyImageUrl,
             }
             PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
             .then(() => this.props.history.push("/personalproperty"));
@@ -131,12 +147,17 @@ class PersonalPropertyAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Date" id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
+                        <Form.Control type="date" placeholder="Enter Purchase Date" id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.imageUrl} alt=""/><br />
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewPersonalProperty}>
                         Submit
             </Button>

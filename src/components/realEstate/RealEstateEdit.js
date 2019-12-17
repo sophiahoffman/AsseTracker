@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore';
 
 // realEstateEdit prefills current database data and allows user to overwrite the values and update the item in the realEstate table using PATCH. First it gets the personal property types from reTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the reTypes table. That new typeId is added to the object and written to the realEstate table. 
 
@@ -27,6 +28,8 @@ class RealEstateEdit extends Component {
         realEstateDisposalNotes: "",
         realEstateActiveAsset: true,
         loadingStatus: false,
+        // Cloudinary added imageURL
+        realEstateImageUrl: "",
     };
 
     componentDidMount() {
@@ -53,6 +56,8 @@ class RealEstateEdit extends Component {
                 realEstateDisposalNotes: item.disposalNotes,
                 realEstateActiveAsset: item.activeAsset,
                 loadingStatus: false,
+                // Cloudinary: added image URL
+                realEstateImageUrl: item.imageUrl,
                 })
         })
     }
@@ -80,6 +85,14 @@ class RealEstateEdit extends Component {
         this.setState(stateToChange)
     }
 
+    uploadWidget = () => {
+    window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+    (error, result) => {
+        // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+        this.setState({realEstateImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+        });
+    }
+
     constructUpdatedRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
@@ -98,6 +111,8 @@ class RealEstateEdit extends Component {
                     purchaseDate: this.state.realEstatePurchaseDate,
                     purchasePrice: this.state.realEstatePurchasePrice,
                     activeAsset: this.state.realEstateActiveAsset,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.realEstateImageUrl,
                     disposalDate: this.state.realEstateDisposalDate,
                     disposalPrice: this.state.realEstateDisposalPrice,
                     disposalNotes: this.state.realEstateDisposalNotes,
@@ -118,6 +133,8 @@ class RealEstateEdit extends Component {
                 purchaseDate: this.state.realEstatePurchaseDate,
                 purchasePrice: this.state.realEstatePurchasePrice,
                 activeAsset: this.state.realEstateActiveAsset,
+                // Cloudinary: added image URL
+                imageUrl: this.state.realEstateImageUrl,
                 disposalDate: this.state.realEstateDisposalDate,
                 disposalPrice: this.state.realEstateDisposalPrice,
                 disposalNotes: this.state.realEstateDisposalNotes,
@@ -180,6 +197,11 @@ class RealEstateEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
                         Submit
             </Button>
