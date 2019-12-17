@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore';
 
 // PersonalPropertyEdit prefills current database data and allows user to overwrite the values and update the item in the personalproperty table using PATCH. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
@@ -26,9 +27,12 @@ class PersonalPropertyEdit extends Component {
         personalPropertyDisposalPrice: "",
         personalPropertyDisposalNotes: "",
         loadingStatus: false,
+        // Cloudinary added imageURL
+        personalPropertyImageUrl: "",
     };
 
     componentDidMount() {
+        console.log("objectId", this.objectId)
         let propType = 'ppTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
@@ -47,6 +51,8 @@ class PersonalPropertyEdit extends Component {
                 personalPropertyPurchaseDate: item.purchaseDate,
                 personalPropertyPurchasePrice: item.purchasePrice,
                 personalPropertyActiveAsset: item.activeAsset,
+                // Cloudinary: added image URL
+                personalPropertyImageUrl: item.imageUrl,
                 personalPropertyDisposalDate: item.disposalDate,
                 personalPropertyDisposalPrice: item.disposalPrice,
                 personalPropertyDisposalNotes: item.disposalNotes,})
@@ -67,6 +73,14 @@ class PersonalPropertyEdit extends Component {
         return APIManager.post(route, newTypeObject)
     };
 
+    uploadWidget = () => {
+        window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+        (error, result) => {
+            // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+            this.setState({personalPropertyImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+        });
+    }
+
     constructUpdatedPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
@@ -85,6 +99,8 @@ class PersonalPropertyEdit extends Component {
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: this.state.personalPropertyPurchasePrice,
                     activeAsset: this.state.personalPropertyActiveAsset,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
                     disposalPrice: this.state.personalPropertyDisposalPrice,
                     disposalNotes: this.state.personalPropertyDisposalNotes,
@@ -105,6 +121,8 @@ class PersonalPropertyEdit extends Component {
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: this.state.personalPropertyPurchasePrice,
                     activeAsset: this.state.personalPropertyActiveAsset,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
                     disposalPrice: this.state.personalPropertyDisposalPrice,
                     disposalNotes: this.state.personalPropertyDisposalNotes,
@@ -163,6 +181,11 @@ class PersonalPropertyEdit extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.personalPropertyImageUrl} alt=""/><br />
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>
                         Submit
             </Button>

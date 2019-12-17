@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import './RealEstateCard'
 
 class RealEstateCard extends Component {
     render () {
@@ -13,7 +14,10 @@ class RealEstateCard extends Component {
              <Card>
                 <div className = "card-content">
                 <Card.Body className="realEstate-content">
-                    <Card.Title>{this.props.realEstate.name}</Card.Title><hr />
+                    
+                    <Card.Title>
+                    <img class="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />
+                    {this.props.realEstate.name}</Card.Title><hr />
                     <Card.Text>
                         {this.props.realEstate.reType.type}<br /> 
                         {this.props.realEstate.address}<br />
@@ -41,7 +45,8 @@ class RealEstateCard extends Component {
                  <Card>
                     <div className = "card-content">
                     <Card.Body className="realEstate-content">
-                        <Card.Title>{this.props.realEstate.name}</Card.Title><hr />
+                        <Card.Title>
+                            <img class="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />{this.props.realEstate.name}</Card.Title><hr />
                         <Card.Text>
                             {this.props.realEstate.reType.type}<br /> 
                             {this.props.realEstate.address}<br />

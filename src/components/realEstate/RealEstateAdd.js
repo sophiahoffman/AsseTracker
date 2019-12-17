@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager'
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore';
+import './RealEstateAdd'
 
 // RealEstateAdd takes input from user and writes a new item to the realEstate table. First it gets the real estate types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the realEstate table. 
 class RealEstateAdd extends Component {
@@ -23,6 +25,8 @@ class RealEstateAdd extends Component {
         realEstateActiveAsset: true,
         rentCheckbox: false,
         loadingStatus: false,
+        // Cloudinary added imageURL
+        realEstateImageUrl: "",
     };
 // gets real estate types for the select
     componentDidMount() {
@@ -53,6 +57,14 @@ class RealEstateAdd extends Component {
         this.setState(stateToChange)
     }
 
+    uploadWidget = () => {
+    window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+    (error, result) => {
+        // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+        this.setState({realEstateImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+        });
+    }
+
     constructNewRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
@@ -68,6 +80,8 @@ class RealEstateAdd extends Component {
                     state: this.state.realEstateState,
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.realEstateImageUrl,
                     purchaseDate: this.state.realEstatePurchaseDate,
                     purchasePrice: this.state.realEstatePurchasePrice,
                     activeAsset: this.state.realEstateActiveAsset,
@@ -85,6 +99,8 @@ class RealEstateAdd extends Component {
                 state: this.state.realEstateState,
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
+                // Cloudinary: added image URL
+                imageUrl: this.state.realEstateImageUrl,
                 purchaseDate: this.state.realEstatePurchaseDate,
                 purchasePrice: this.state.realEstatePurchasePrice,
                 activeAsset: this.state.realEstateActiveAsset,
@@ -146,6 +162,11 @@ class RealEstateAdd extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>
                         Submit
             </Button>

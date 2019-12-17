@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import './PersonalPropertyCard.css'
 
 class PersonalPropertyCard extends Component {
     render() {
@@ -12,7 +13,10 @@ class PersonalPropertyCard extends Component {
              <Card>
                 <div className = "card-content">
                 <Card.Body className="personalProperty-content">
-                    <Card.Title>{this.props.personalProperty.name}</Card.Title><hr />
+                    <Card.Title>
+                    <img class="uploadImage" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br />
+                    {this.props.personalProperty.name}
+                    </Card.Title><hr />
                     <Card.Text>
                         {this.props.personalProperty.ppType.type}<br /> 
                         {this.props.personalProperty.description}<br /> 

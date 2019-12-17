@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
+import Cloudinary from '../../ignore'
+import './VehiclesAdd'
 
 // vehiclesAdd takes input from user and writes a new item to the vehicles table. First it gets the vehicle types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 class VehiclesAdd extends Component {
@@ -25,7 +27,9 @@ class VehiclesAdd extends Component {
         vehiclePurchaseDate: "",
         vehiclePurchasePrice: "",
         vehicleActiveAsset: true,
-        loadingStatus: false,
+        loadingStatus: false,        
+        // Cloudinary added imageURL
+        vehicleImageUrl: "",
     };
 // gets vehicle types for the select input
     componentDidMount() {
@@ -50,6 +54,15 @@ class VehiclesAdd extends Component {
         return APIManager.post(route, newTypeObject)
     };
 
+    uploadWidget = () => {
+        window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
+        (error, result) => {
+            // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
+            this.setState({vehicleImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+            });
+    }
+
+
     constructNewVehicle = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
@@ -70,6 +83,8 @@ class VehiclesAdd extends Component {
                     purchaseDate: this.state.vehiclePurchaseDate,
                     purchasePrice: this.state.vehiclePurchasePrice,
                     activeAsset: this.state.vehicleActiveAsset,
+                    // Cloudinary: added image URL
+                    imageUrl: this.state.vehicleImageUrl,
                 }
                 VehiclesAPIManager.postVehicle(newVehicle)
                 .then(() => this.props.history.push("/vehicles"));            
@@ -89,6 +104,8 @@ class VehiclesAdd extends Component {
                 purchaseDate: this.state.vehiclePurchaseDate,
                 purchasePrice: this.state.vehiclePurchasePrice,
                 activeAsset: this.state.vehicleActiveAsset,
+                // Cloudinary: added image URL
+                imageUrl: this.state.vehicleImageUrl,
             }
             VehiclesAPIManager.postVehicle(newVehicle)
             .then(() => this.props.history.push("/vehicles"));  
@@ -151,6 +168,11 @@ class VehiclesAdd extends Component {
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Price" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
+                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                    <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">
+                        Add Image
+                    </Button>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewVehicle}>
                         Submit
                     </Button>

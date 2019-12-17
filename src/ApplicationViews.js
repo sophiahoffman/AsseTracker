@@ -76,7 +76,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/vehicles" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <VehiclesList {...props} {...this.props} />
+                  return <VehiclesList {...props}/>
                 } else {
                   return <Redirect to="/" />
                 }
@@ -89,7 +89,6 @@ class ApplicationViews extends Component {
                   return (
                   <VehiclesEdit 
                   {...props} 
-                  {...this.props} 
                   />
                   )
                 } else {
@@ -101,7 +100,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <VehiclesDisposal {...props} {...this.props}/>
+                  return <VehiclesDisposal {...props} />
                 } else {
                 return  <Redirect to="/" />
                 }
@@ -112,7 +111,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/vehicles/new" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <VehiclesAdd {...props} {...this.props}/>
+                  return <VehiclesAdd {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -123,7 +122,7 @@ class ApplicationViews extends Component {
               exact path="/personalproperty" render={props => {
                 console.log("pp", this.props.isAuthenticated())
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyList {...props} {...this.props} />
+                  return <PersonalPropertyList {...props} />
                 } 
                 else {
                  return <Redirect to="/" />
@@ -134,7 +133,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyEdit {...props} {...this.props} />
+                  return <PersonalPropertyEdit {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -144,7 +143,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyDisposal {...props} {...this.props} />
+                  return <PersonalPropertyDisposal {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -155,7 +154,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/personalproperty/new" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyAdd {...props} {...this.props} />
+                  return <PersonalPropertyAdd {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -165,7 +164,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realestate" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <RealEstateList {...props} {...this.props}/>
+                  return <RealEstateList {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -175,7 +174,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realestate/:realEstateId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <RealEstateEdit {...props} {...this.props} />
+                  return <RealEstateEdit {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -185,7 +184,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <RealEstateDisposal {...props} {...this.props} />
+                  return <RealEstateDisposal {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
@@ -196,7 +195,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realestate/new" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <RealEstateAdd {...props} {...this.props} />
+                  return <RealEstateAdd {...props} />
                 } else {
                  return <Redirect to="/" />
                 }
