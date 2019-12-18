@@ -76,7 +76,7 @@ class PersonalPropertyAdd extends Component {
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.personalPropertyImageUrl,
@@ -95,7 +95,7 @@ class PersonalPropertyAdd extends Component {
                 location: this.state.personalPropertyLocation,
                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
                 purchaseDate: this.state.personalPropertyPurchaseDate,
-                purchasePrice: this.state.personalPropertyPurchasePrice,
+                purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                 activeAsset: this.state.personalPropertyActiveAsset,
                 // Cloudinary: added image URL
                 imageUrl: this.state.personalPropertyImageUrl,
@@ -151,10 +151,10 @@ class PersonalPropertyAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Price" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
+                        <Form.Control type="number" step=".01" placeholder="Enter Purchase Price" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.imageUrl} alt=""/><br />
+                    <img align="center" className="uploadImage" src={this.state.personalPropertyimageUrl} alt=""/><br />
                     <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">
                         Add Image
                     </Button>
