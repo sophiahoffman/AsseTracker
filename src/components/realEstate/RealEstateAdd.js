@@ -83,7 +83,7 @@ class RealEstateAdd extends Component {
                     // Cloudinary: added image URL
                     imageUrl: this.state.realEstateImageUrl,
                     purchaseDate: this.state.realEstatePurchaseDate,
-                    purchasePrice: this.state.realEstatePurchasePrice,
+                    purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                     activeAsset: this.state.realEstateActiveAsset,
                 }
                 RealEstateAPIManager.postRealEstate(newRealEstate)
@@ -102,7 +102,7 @@ class RealEstateAdd extends Component {
                 // Cloudinary: added image URL
                 imageUrl: this.state.realEstateImageUrl,
                 purchaseDate: this.state.realEstatePurchaseDate,
-                purchasePrice: this.state.realEstatePurchasePrice,
+                purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                 activeAsset: this.state.realEstateActiveAsset,
             }
             RealEstateAPIManager.postRealEstate(newRealEstate)
@@ -116,7 +116,7 @@ class RealEstateAdd extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
+                        <Form.Control autofocus="autofocus" type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>

@@ -37,7 +37,7 @@ class PersonalPropertyDisposal extends Component {
         const updatedPersonalProperty = {
             id: this.objectId,
             disposalDate: this.state.personalPropertyDisposalDate,
-            disposalPrice: this.state.personalPropertyDisposalPrice,
+            disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
             disposalNotes: this.state.personalPropertyDisposalNotes,
             activeAsset: false,
         }
@@ -52,7 +52,7 @@ class PersonalPropertyDisposal extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Disposal Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Disposal Date" id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
+                        <Form.Control autofocus="autofocus" type="text" placeholder="Enter Disposal Date" id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Disposal Price</Form.Label>

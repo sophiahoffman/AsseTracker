@@ -97,12 +97,12 @@ class PersonalPropertyEdit extends Component {
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
-                    disposalPrice: this.state.personalPropertyDisposalPrice,
+                    disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
                     disposalNotes: this.state.personalPropertyDisposalNotes,
                 }
                 PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
@@ -119,12 +119,12 @@ class PersonalPropertyEdit extends Component {
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: this.state.personalPropertyPurchasePrice,
+                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
-                    disposalPrice: this.state.personalPropertyDisposalPrice,
+                    disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
                     disposalNotes: this.state.personalPropertyDisposalNotes,
                 }
                 PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
@@ -139,7 +139,7 @@ class PersonalPropertyEdit extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
+                        <Form.Control autofocus="autofocus" type="text" placeholder="Enter Name" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Item Type</Form.Label>

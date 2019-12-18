@@ -81,7 +81,7 @@ class VehiclesAdd extends Component {
                     location: this.state.vehicleLocation,
                     purchaseLocation: this.state.vehiclePurchaseLocation,
                     purchaseDate: this.state.vehiclePurchaseDate,
-                    purchasePrice: this.state.vehiclePurchasePrice,
+                    purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                     activeAsset: this.state.vehicleActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.vehicleImageUrl,
@@ -102,7 +102,7 @@ class VehiclesAdd extends Component {
                 location: this.state.vehicleLocation,
                 purchaseLocation: this.state.vehiclePurchaseLocation,
                 purchaseDate: this.state.vehiclePurchaseDate,
-                purchasePrice: this.state.vehiclePurchasePrice,
+                purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                 activeAsset: this.state.vehicleActiveAsset,
                 // Cloudinary: added image URL
                 imageUrl: this.state.vehicleImageUrl,
@@ -118,7 +118,7 @@ class VehiclesAdd extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" id="vehicleName" onChange={this.handleFieldChange} />
+                        <Form.Control autofocus="autofocus" type="text" placeholder="Enter Name" id="vehicleName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
