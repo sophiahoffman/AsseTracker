@@ -37,7 +37,7 @@ class VehiclesDisposal extends Component {
         const updatedVehicle = {
             id: this.objectId,
             disposalDate: this.state.vehicleDisposalDate,
-            disposalPrice: this.state.vehicleDisposalPrice,
+            disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
             disposalNotes: this.state.vehicleDisposalNotes,
             activeAsset: false,
         }

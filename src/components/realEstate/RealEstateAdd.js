@@ -83,7 +83,7 @@ class RealEstateAdd extends Component {
                     // Cloudinary: added image URL
                     imageUrl: this.state.realEstateImageUrl,
                     purchaseDate: this.state.realEstatePurchaseDate,
-                    purchasePrice: this.state.realEstatePurchasePrice,
+                    purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                     activeAsset: this.state.realEstateActiveAsset,
                 }
                 RealEstateAPIManager.postRealEstate(newRealEstate)
@@ -102,7 +102,7 @@ class RealEstateAdd extends Component {
                 // Cloudinary: added image URL
                 imageUrl: this.state.realEstateImageUrl,
                 purchaseDate: this.state.realEstatePurchaseDate,
-                purchasePrice: this.state.realEstatePurchasePrice,
+                purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                 activeAsset: this.state.realEstateActiveAsset,
             }
             RealEstateAPIManager.postRealEstate(newRealEstate)

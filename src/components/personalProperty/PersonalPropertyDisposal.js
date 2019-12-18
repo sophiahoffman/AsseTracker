@@ -37,7 +37,7 @@ class PersonalPropertyDisposal extends Component {
         const updatedPersonalProperty = {
             id: this.objectId,
             disposalDate: this.state.personalPropertyDisposalDate,
-            disposalPrice: this.state.personalPropertyDisposalPrice,
+            disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
             disposalNotes: this.state.personalPropertyDisposalNotes,
             activeAsset: false,
         }
