@@ -16,7 +16,7 @@ class RealEstateCard extends Component {
                 <Card.Body className="realEstate-content">
                     
                     <Card.Title>
-                    <img class="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />
+                    <img className="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />
                     {this.props.realEstate.name}</Card.Title><hr />
                     <Card.Text>
                         {this.props.realEstate.reType.type}<br /> 
@@ -46,7 +46,7 @@ class RealEstateCard extends Component {
                     <div className = "card-content">
                     <Card.Body className="realEstate-content">
                         <Card.Title>
-                            <img class="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />{this.props.realEstate.name}</Card.Title><hr />
+                            <img className="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />{this.props.realEstate.name}</Card.Title><hr />
                         <Card.Text>
                             {this.props.realEstate.reType.type}<br /> 
                             {this.props.realEstate.address}<br />

@@ -116,7 +116,7 @@ class RealEstateAdd extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
+                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
@@ -164,12 +164,13 @@ class RealEstateAdd extends Component {
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">
-                        Add Image
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
                     </Button>
-                    <Button variant="primary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>
-                        Submit
-            </Button>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.history.goBack}>Cancel
+                    </Button>
                 </Form>
             </div>
         )

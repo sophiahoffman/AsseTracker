@@ -109,12 +109,12 @@ class RealEstateEdit extends Component {
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
                     purchaseDate: this.state.realEstatePurchaseDate,
-                    purchasePrice: this.state.realEstatePurchasePrice,
+                    purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                     activeAsset: this.state.realEstateActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.realEstateImageUrl,
                     disposalDate: this.state.realEstateDisposalDate,
-                    disposalPrice: this.state.realEstateDisposalPrice,
+                    disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
                     disposalNotes: this.state.realEstateDisposalNotes,
                 }
                 RealEstateAPIManager.updateRealEstate(updatedRealEstate)
@@ -131,12 +131,12 @@ class RealEstateEdit extends Component {
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
                 purchaseDate: this.state.realEstatePurchaseDate,
-                purchasePrice: this.state.realEstatePurchasePrice,
+                purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
                 activeAsset: this.state.realEstateActiveAsset,
                 // Cloudinary: added image URL
                 imageUrl: this.state.realEstateImageUrl,
                 disposalDate: this.state.realEstateDisposalDate,
-                disposalPrice: this.state.realEstateDisposalPrice,
+                disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
                 disposalNotes: this.state.realEstateDisposalNotes,
             }
             RealEstateAPIManager.updateRealEstate(updatedRealEstate)
@@ -151,7 +151,7 @@ class RealEstateEdit extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Name" value={this.state.realEstateName} id="realEstateName" onChange={this.handleFieldChange} />
+                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" value={this.state.realEstateName} id="realEstateName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
@@ -199,12 +199,13 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">
-                        Add Image
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
                     </Button>
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>
-                        Submit
-            </Button>
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.history.goBack}>Cancel
+                    </Button>
                 </Form>
             </div>
         )

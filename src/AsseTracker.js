@@ -27,7 +27,8 @@ class AsseTracker extends Component {
           {...this.props} />
           <ApplicationViews 
           {...this.props} 
-          isAuthenticated={this.isAuthenticated} />
+          isAuthenticated={this.isAuthenticated} 
+          handleLogout={this.handleLogout} />
         </React.Fragment>
       )
   }

@@ -42,8 +42,7 @@ class ApplicationViews extends Component {
                 if (this.props.isAuthenticated()) {
                   return <WelcomeAsseTracker {...props} />
                 } else if (localStorage.getItem("email")) {
-                  return <Login {...props} 
-                  isAuthenticated={this.props.isAuthenticated} />
+                  return <Login {...this.props} />
                 } else {
                   return <EntryPortal {...props} />
                 }
@@ -55,8 +54,7 @@ class ApplicationViews extends Component {
                 if (this.props.isAuthenticated()) {
                   return <WelcomeAsseTracker {...props} />
                 } else if (localStorage.getItem("email")) {
-                  return <Register {...props} 
-                  isAuthenticated={this.props.isAuthenticated} />
+                  return <Register {...this.props} />
                 } else {
                   return <EntryPortal {...props} />
                 }
@@ -88,7 +86,7 @@ class ApplicationViews extends Component {
                 if (this.props.isAuthenticated()) {
                   return (
                   <VehiclesEdit 
-                  {...props} 
+                  {...this.props} 
                   />
                   )
                 } else {
@@ -133,7 +131,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyEdit {...props} />
+                  return <PersonalPropertyEdit {...this.props} />
                 } else {
                  return <Redirect to="/" />
                 }

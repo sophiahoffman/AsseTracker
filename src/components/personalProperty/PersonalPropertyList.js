@@ -37,7 +37,7 @@ class PersonalPropertyList extends Component {
                 <div className="button-new personalProperty-section-content" align="center">
                     <Button variant="secondary" type="button" className="newPersonalPropertyBtn" onClick={() => this.props.history.push("personalproperty/new")}>Add New Item</Button>
                 </div>
-                <div className="personalProperty-container-cards" align="center">
+                <div className="personalProperty-container-cards container-cards" align="center">
                     {this.state.personalProperty.map(personalProperty => 
                         <PersonalPropertyCard 
                         key={personalProperty.id}
