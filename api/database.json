@@ -181,23 +181,6 @@
       "ppTypeId": 2
     },
     {
-      "id": 10,
-      "name": "ohoyte9",
-      "description": "Automated clear-thinking orchestration",
-      "manufacturer": "Lotus",
-      "model": "52959-126",
-      "location": "646 Orin Hill",
-      "purchaseLocation": "Pollich and Sons",
-      "purchaseDate": "12/13/2018",
-      "purchasePrice": "7474.58",
-      "disposalDate": "12/6/2019",
-      "disposalPrice": "9110.66",
-      "disposalNotes": "Cloned intangible methodology",
-      "activeAsset": true,
-      "userId": 1,
-      "ppTypeId": 3
-    },
-    {
       "userId": 1,
       "name": "guitar1",
       "ppTypeId": 1,
@@ -237,14 +220,44 @@
       "ppTypeId": 1,
       "description": "tiffany engagement ring",
       "manufacturer": "tiffany",
-      "model": "diamond emerald",
+      "model": "elsa peretti",
       "location": "jewelry box",
       "purchaseLocation": "tiffanys",
-      "purchaseDate": "2012-12-12",
+      "purchaseDate": "2019-12-17",
       "purchasePrice": "3500",
       "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/dvxyx4d6pin6mgkglg9b",
+      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/r1afps9x184me6dn7mkp",
       "id": 14
+    },
+    {
+      "userId": 1,
+      "name": "guitar1",
+      "ppTypeId": 5,
+      "description": "gibson guitar",
+      "manufacturer": "gibson",
+      "model": "guitar",
+      "location": "home",
+      "purchaseLocation": "store",
+      "purchaseDate": "2019-12-01",
+      "purchasePrice": "2500.0150",
+      "activeAsset": true,
+      "imageUrl": "",
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "name": "guitar1",
+      "ppTypeId": 5,
+      "description": "guitar",
+      "manufacturer": "gibson",
+      "model": "guitar",
+      "location": "efgh",
+      "purchaseLocation": "tiffanys",
+      "purchaseDate": "2019-12-01",
+      "purchasePrice": "3500.00",
+      "activeAsset": true,
+      "imageUrl": "",
+      "id": 16
     }
   ],
   "ppTypes": [
@@ -817,6 +830,23 @@
       "disposalDate": "12/12/2012",
       "disposalPrice": "100000",
       "disposalNotes": "lost money"
+    },
+    {
+      "userId": 1,
+      "name": "calling all cars",
+      "vehicleTypeId": 1,
+      "vin": "WAUAH94F27N989445",
+      "license": "123459",
+      "year": "1991",
+      "make": "Mazda",
+      "model": "Familia",
+      "location": "6 e monroe st apt 1503",
+      "purchaseLocation": "sam linder honda",
+      "purchaseDate": "12/12/1969",
+      "purchasePrice": "12500.26",
+      "activeAsset": true,
+      "imageUrl": "",
+      "id": 18
     }
   ],
   "vehicleTypes": [

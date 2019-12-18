@@ -12,7 +12,7 @@ class VehiclesCard extends Component {
              <Card>
                 <div className = "card-content">
                 <Card.Body className="vehicle-content">
-                    <Card.Title><img class="uploadImage" src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br />
+                    <Card.Title><img className="uploadImage" src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br />
                     {this.props.vehicle.name}</Card.Title><hr />
                     <Card.Text>
                         {this.props.vehicle.vehicleType.type}<br /> 

@@ -37,7 +37,7 @@ class RealEstateDisposal extends Component {
         const updatedRealEstate = {
             id: this.objectId,
             disposalDate: this.state.realEstateDisposalDate,
-            disposalPrice: this.state.realEstateDisposalPrice,
+            disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
             disposalNotes: this.state.realEstateDisposalNotes,
             activeAsset: false,
         }

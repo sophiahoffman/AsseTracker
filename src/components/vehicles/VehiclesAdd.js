@@ -81,7 +81,7 @@ class VehiclesAdd extends Component {
                     location: this.state.vehicleLocation,
                     purchaseLocation: this.state.vehiclePurchaseLocation,
                     purchaseDate: this.state.vehiclePurchaseDate,
-                    purchasePrice: this.state.vehiclePurchasePrice,
+                    purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                     activeAsset: this.state.vehicleActiveAsset,
                     // Cloudinary: added image URL
                     imageUrl: this.state.vehicleImageUrl,
@@ -102,7 +102,7 @@ class VehiclesAdd extends Component {
                 location: this.state.vehicleLocation,
                 purchaseLocation: this.state.vehiclePurchaseLocation,
                 purchaseDate: this.state.vehiclePurchaseDate,
-                purchasePrice: this.state.vehiclePurchasePrice,
+                purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                 activeAsset: this.state.vehicleActiveAsset,
                 // Cloudinary: added image URL
                 imageUrl: this.state.vehicleImageUrl,
