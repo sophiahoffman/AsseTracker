@@ -38,7 +38,7 @@ class RealEstateList extends Component {
                 <div className="button-new realEstate-section-content" align="center">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
-                <div className="realEstate-container-cards" align="center">
+                <div className="realEstate-container-cards container-cards" align="center">
                     {this.state.realEstate.map(realEstate =>
                         <RealEstateCard 
                         key={realEstate.id}

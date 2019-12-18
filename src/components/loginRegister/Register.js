@@ -70,6 +70,9 @@ class Register extends Component {
                 </Form>
                 <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
                 </Button>
+                <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                onClick={this.props.handleLogout}>Cancel
+                </Button>
             </div>
         )
     }

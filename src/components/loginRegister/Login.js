@@ -45,6 +45,9 @@ class Login extends Component {
                 </Form>
                 <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
                 </Button>
+                <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                onClick={this.props.handleLogout}>Cancel
+                </Button>
             </div>
         )
     }

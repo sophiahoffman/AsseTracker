@@ -111,7 +111,7 @@ class PersonalPropertyAdd extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control autofocus="autofocus" type="text" placeholder="Enter Name" id="personalPropertyName" onChange={this.handleFieldChange} />
+                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="personalPropertyName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="col-sm-2 col-form-label">Select Item Type</Form.Label>
@@ -155,12 +155,13 @@ class PersonalPropertyAdd extends Component {
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.personalPropertyimageUrl} alt=""/><br />
-                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">
-                        Add Image
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button" disabled={this.state.loadingStatus}>Add Image
                     </Button>
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewPersonalProperty}>
-                        Submit
-            </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} onClick={this.constructNewPersonalProperty}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.history.goBack}>Cancel
+                    </Button>
                 </Form>
             </div>
         )
