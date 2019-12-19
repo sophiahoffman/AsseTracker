@@ -86,7 +86,7 @@ class ApplicationViews extends Component {
                 if (this.props.isAuthenticated()) {
                   return (
                   <VehiclesEdit 
-                  {...this.props} 
+                  {...props} 
                   />
                   )
                 } else {
@@ -131,7 +131,7 @@ class ApplicationViews extends Component {
             <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
-                  return <PersonalPropertyEdit {...this.props} />
+                  return <PersonalPropertyEdit {...props} />
                 } else {
                  return <Redirect to="/" />
                 }

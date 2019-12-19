@@ -21,3 +21,24 @@
   color: #09d3ac;
 }
 
+.row-form-label {
+  font-weight: 500;
+  padding-right: 25px;
+}
+
+Button {
+  padding-top: 15px;
+  min-width: 100px;
+  max-width: 300px;
+}
+
+.form-fields {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 1;
+}
+

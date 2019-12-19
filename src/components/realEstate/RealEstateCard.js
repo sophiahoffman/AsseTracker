@@ -54,7 +54,7 @@ class RealEstateCard extends Component {
                             {this.props.realEstate.state}<br />
                             {this.props.realEstate.zip}<br />
                             {this.props.realEstate.purchaseDate}<br />
-                            {this.props.realEstate.purchasePrice}<br />
+                            ${this.props.realEstate.purchasePrice}<br />
                         </Card.Text>
                 
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>

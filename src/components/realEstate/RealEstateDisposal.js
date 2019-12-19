@@ -51,15 +51,15 @@ class RealEstateDisposal extends Component {
                 <h3 id="title_disposalForm">Disposal Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Disposal Date</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Disposal Date" id="realEstateDisposalDate" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
+                        <Form.Control autoFocus="autofocus" type="date" placeholder="Enter Disposal Date" id="realEstateDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Disposal Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Disposal Price" id="realEstateDisposalPrice" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
+                        <Form.Control type="number" placeholder="Enter Disposal Price" id="realEstateDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Disposal Notes</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" placeholder="Enter Disposal Notes" id="realEstateDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>Submit

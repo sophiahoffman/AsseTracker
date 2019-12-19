@@ -145,11 +145,11 @@ class VehiclesEdit extends Component {
                 <h3 id="title_updateForm">Update Form</h3>
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" value={this.state.vehicleName} id="vehicleName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
                         <Form.Control as="select" id="vehicleTypeId" value={this.state.vehicleTypeId} onChange={this.handleFieldChange}>
                         {this.state.vehicleTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
@@ -157,44 +157,44 @@ class VehiclesEdit extends Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Or Enter Other Vehicle Type</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Or Enter Other Vehicle Type</Form.Label>
                         <Form.Control type="text" placeholder="Enter Type" id="vehicleType" value={this.state.vehicleType} onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">VIN</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">VIN</Form.Label>
                         <Form.Control type="text" placeholder="Enter VIN" value={this.state.vehicleVin} id="vehicleVin" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">License</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">License</Form.Label>
                         <Form.Control type="text" placeholder="Enter License" value={this.state.vehicleLicense} id="vehicleLicense" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Year</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Year</Form.Label>
                         <Form.Control type="text" placeholder="Enter Year" value={this.state.vehicleYear} id="vehicleYear" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Make</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Make</Form.Label>
                         <Form.Control type="text" placeholder="Enter Make" value={this.state.vehicleMake} id="vehicleMake" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Model</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
                         <Form.Control type="text" placeholder="Enter Model" value={this.state.vehicleModel} id="vehicleModel" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Car Physical Location</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Car Physical Location</Form.Label>
                         <Form.Control type="text" placeholder="Enter Location" value={this.state.vehicleLocation} id="vehicleLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Location</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
                         <Form.Control type="text" placeholder="Enter Purchase Location" value={this.state.vehiclePurchaseLocation} id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Date" value={this.state.vehiclePurchaseDate} id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                        <Form.Control type="date" placeholder="Enter Purchase Date" value={this.state.vehiclePurchaseDate} id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.vehiclePurchasePrice} id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                        <Form.Control type="number" placeholder="Enter Purchase Price" value={this.state.vehiclePurchasePrice} id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />

@@ -115,11 +115,11 @@ class RealEstateAdd extends Component {
             <div id="newRealEstateForm">
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="realEstateName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Select Property Type</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
                         <Form.Control as="select" id="realEstateTypeId" onChange={this.handleFieldChange}>
                         {this.state.realEstateTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
@@ -127,23 +127,23 @@ class RealEstateAdd extends Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Or Enter Other Real Estate Type</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
                         <Form.Control type="text" placeholder="Enter Type" id="realEstateType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Street Address</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
                         <Form.Control type="text" placeholder="Enter Street Address" id="realEstateAddress" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">City</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
                         <Form.Control type="text" placeholder="Enter City" id="realEstateCity" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">State</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
                         <Form.Control type="text" placeholder="Enter State" id="realEstateState" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Zip</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
                         <Form.Control type="text" placeholder="Enter Zip" id="realEstateZip" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group>
@@ -155,12 +155,12 @@ class RealEstateAdd extends Component {
                         id="rentCheckbox" />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Date" id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                        <Form.Control type="date" placeholder="Enter Purchase Date" id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Price" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                        <Form.Control type="number" placeholder="Enter Purchase Price" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />

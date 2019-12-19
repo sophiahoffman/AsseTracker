@@ -24,7 +24,7 @@ class VehiclesCard extends Component {
                         {this.props.vehicle.location}<br />
                         {this.props.vehicle.purchaseDate}<br />
                         {this.props.vehicle.purchaseLocation}<br />
-                        {this.props.vehicle.purchasePrice}<br />
+                        ${this.props.vehicle.purchasePrice}<br />
                     </Card.Text>
             
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/edit`)}>Edit</Button>

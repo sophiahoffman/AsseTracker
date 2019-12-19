@@ -1,0 +1,25 @@
+.entry-portal-background {
+    padding-top: 50px;   
+    min-width: 300px;
+    min-height: 300px;
+    background-image: url("../../assets/AsseTracker-logos_transparent.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: .85;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 1;
+}
+
+
+
+#userEmailAddress {
+    text-align: center;
+}

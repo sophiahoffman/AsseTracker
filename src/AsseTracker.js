@@ -20,15 +20,19 @@ class AsseTracker extends Component {
   render() {
       return (
         <React.Fragment>
+          <div className="navBar">
           <NavBar 
           {...this.props} 
           isAuthenticated={this.isAuthenticated}
           handleLogout={this.handleLogout} 
-          {...this.props} />
+           />
+           </div>
+           <div className="applicationViews">
           <ApplicationViews 
           {...this.props} 
           isAuthenticated={this.isAuthenticated} 
           handleLogout={this.handleLogout} />
+          </div>
         </React.Fragment>
       )
   }

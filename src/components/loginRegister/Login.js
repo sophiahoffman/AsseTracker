@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import APIManager from '../../modules/APIManager'
+import './Login.css'
 
 // Login allows user to enter in password and compares entered password to password in users table to determine if user can log in. If login is successful, user is redirected to WelcomeAsseTracker page.
 
@@ -36,10 +37,10 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="form-fields">
                 <Form>
                 <Form.Group className="col-md-12 form-group form-inline">
-                    <Form.Label className="col-sm-2 col-form-label">Enter Password</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Enter Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter Password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 </Form>
