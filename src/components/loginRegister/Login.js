@@ -37,11 +37,11 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="form-fields">
+            <div className="login-form-fields">
                 <Form>
-                <Form.Group className="col-md-12 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Enter Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" id="userPassword" onChange={this.handleFieldChange} />
+                <Form.Group>
+                    <Form.Label className="row-form-label">Enter Your Password</Form.Label>
+                    <Form.Control type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 </Form>
                 <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit

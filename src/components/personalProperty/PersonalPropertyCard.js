@@ -14,8 +14,9 @@ class PersonalPropertyCard extends Component {
                 <div className = "card-content">
                 <Card.Body className="personalProperty-content">
                     <Card.Title>
-                    <img className="uploadImage" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br />
-                    {this.props.personalProperty.name}
+                        {(this.props.personalProperty.imageUrl !== "") 
+                        ? <><img className="asset-image" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br /></>
+                        : null }
                     </Card.Title><hr />
                     <Card.Text>
                         {this.props.personalProperty.ppType.type}<br /> 

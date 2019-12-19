@@ -1,0 +1,4 @@
+.vehicle-section-content {
+    display: flex;
+    flex-direction: row;
+}

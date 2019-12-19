@@ -46,7 +46,10 @@ class RealEstateCard extends Component {
                     <div className = "card-content">
                     <Card.Body className="realEstate-content">
                         <Card.Title>
-                            <img className="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br />{this.props.realEstate.name}</Card.Title><hr />
+                        {(this.props.realEstate.imageUrl !== "") 
+                        ? <><img className="uploadImage" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br /></>
+                        : null }
+                            {this.props.realEstate.name}</Card.Title><hr />
                         <Card.Text>
                             {this.props.realEstate.reType.type}<br /> 
                             {this.props.realEstate.address}<br />

@@ -13,6 +13,7 @@ class EntryPortal extends Component {
   state = {
     userEmailAddress: "",
     loadingStatus: true,
+    logoUrl: require("../../assets/AsseTracker-logos_black.png")
   }
 
   handleFieldChange = e => {
@@ -40,12 +41,13 @@ class EntryPortal extends Component {
       return (
         <>
         <div className="entry-portal-background">
+          <img id="portal-logo" src={this.state.logoUrl} alt="logo"></img>
         </div>
         <div className="entry-portal-fields">
           <Form>
-            <Form.Group className="col-md-12 form-group form-block">
-                <Form.Label className="row-sm-2 row-form-label">Enter Email Address</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email Address" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
+            <Form.Group >
+                <Form.Label className=" row-form-label">Enter Your Email Address</Form.Label>
+                <Form.Control type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
             </Form>
             <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit

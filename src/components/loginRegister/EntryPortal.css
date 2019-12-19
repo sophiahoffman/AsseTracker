@@ -1,25 +1,30 @@
-.entry-portal-background {
-    padding-top: 50px;   
-    min-width: 300px;
-    min-height: 300px;
-    background-image: url("../../assets/AsseTracker-logos_transparent.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+#portal-logo {
+    display: flex;
+    flex-direction: column; 
+    width: 250px;
+    height: 250px;
     opacity: .85;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
 }
 
-.form-fields {
+.entry-portal-fields {
     display: flex;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
     justify-content: center;
     text-align: center;
-    opacity: 1;
-}
+    max-width: 500px;
+    min-width: 300px;
+    margin:auto;
+    /* opacity: 1; */
+  }
 
-
-
-#userEmailAddress {
-    text-align: center;
-}
+/* .row-form-label {
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin: auto;
+} */
