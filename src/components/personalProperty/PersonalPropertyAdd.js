@@ -26,7 +26,7 @@ class PersonalPropertyAdd extends Component {
         personalPropertyActiveAsset: true,
         loadingStatus: false,
         // Cloudinary added imageURL
-        personalPropertyImageUrl: "",
+        personalPropertyImageUrl: require("../../assets/personal_property.png"),
     };
 
 // requires get call on the types to populate the dropdown select

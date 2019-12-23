@@ -26,7 +26,7 @@ class RealEstateAdd extends Component {
         rentCheckbox: false,
         loadingStatus: false,
         // Cloudinary added imageURL
-        realEstateImageUrl: "",
+        realEstateImageUrl: require("../../assets/real_estate.png"),
     };
 // gets real estate types for the select
     componentDidMount() {

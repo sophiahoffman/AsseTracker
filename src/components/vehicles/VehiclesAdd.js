@@ -29,7 +29,7 @@ class VehiclesAdd extends Component {
         vehicleActiveAsset: true,
         loadingStatus: false,        
         // Cloudinary added imageURL
-        vehicleImageUrl: "",
+        vehicleImageUrl: require("../../vehicle.png"),
     };
 // gets vehicle types for the select input
     componentDidMount() {
