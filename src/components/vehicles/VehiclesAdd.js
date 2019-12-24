@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
 import Cloudinary from '../../ignore'
-import './VehiclesAdd'
+import '../../AsseTracker.css'
 
 // vehiclesAdd takes input from user and writes a new item to the vehicles table. First it gets the vehicle types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 class VehiclesAdd extends Component {
@@ -29,7 +29,7 @@ class VehiclesAdd extends Component {
         vehicleActiveAsset: true,
         loadingStatus: false,        
         // Cloudinary added imageURL
-        vehicleImageUrl: "",
+        vehicleImageUrl: require("../../assets/vehicle.png"),
     };
 // gets vehicle types for the select input
     componentDidMount() {
@@ -114,70 +114,73 @@ class VehiclesAdd extends Component {
 
     render() {
         return (
-            <div id="newVehicleForm">
-                <Form>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="vehicleName" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Select Vehicle Type</Form.Label>
-                        <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
-                        {this.state.vehicleTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                        ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Or Enter Other Vehicle Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">VIN</Form.Label>
-                        <Form.Control type="text" placeholder="Enter VIN" id="vehicleVin" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">License</Form.Label>
-                        <Form.Control type="text" placeholder="Enter License" id="vehicleLicense" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Year</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Year" id="vehicleYear" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Make</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Make" id="vehicleMake" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Model</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Model" id="vehicleModel" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Car Physical Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Location" id="vehicleLocation" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Location" id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Date" id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Price" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />
-                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
+            <div className="new-form">
+                <h6 id="title_updateForm">{this.state.vehicleName}</h6>  
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="text" id="vehicleName" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
+                    <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
+                    {this.state.vehicleTypes.map(type => (
+                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Vehicle Type</Form.Label>
+                    <Form.Control type="text" id="vehicleType" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">VIN</Form.Label>
+                    <Form.Control type="text" id="vehicleVin" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">License</Form.Label>
+                    <Form.Control type="text" id="vehicleLicense" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Year</Form.Label>
+                    <Form.Control type="text" id="vehicleYear" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Make</Form.Label>
+                    <Form.Control type="text" id="vehicleMake" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
+                    <Form.Control type="text" id="vehicleModel" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Vehicle Physical Location</Form.Label>
+                    <Form.Control type="text" id="vehicleLocation" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
+                    <Form.Control type="text" id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                    <Form.Control type="date" id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                    <Form.Control type="number" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                <img src={this.state.vehicleImageUrl} alt=""/><br />
+                <div className="image-upload-div">
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="button">Add Image
                     </Button>
+                </div>
+                <div className="button-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewVehicle}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel
                     </Button>
-                </Form>
+                </div>
             </div>
         )
     }

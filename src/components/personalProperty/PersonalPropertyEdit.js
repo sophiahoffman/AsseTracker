@@ -134,63 +134,66 @@ class PersonalPropertyEdit extends Component {
 
     render() {
         return (
-            <div id="personalPropertyEditForm">
-                <h3 id="title_editForm">Property Edit Form</h3>
-                <Form>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Name</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Select Item Type</Form.Label>
-                        <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
-                        {this.state.personalPropertyTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                        ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Or Enter Item Type (if not on the Select)</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" value={this.state.personalPropertyType} id="personalPropertyType" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Description</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Description" value={this.state.personalPropertyDescription} id="personalPropertyDescription" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Manufacturer</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Manufacturer" value={this.state.personalPropertyManufacturer} id="personalPropertyManufacturer" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Model</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Model" value={this.state.personalPropertyModel} id="personalPropertyModel" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Physical Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Physical Location" value={this.state.personalPropertyLocation} id="personalPropertyLocation" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Location" value={this.state.personalPropertyPurchaseLocation}  id="personalPropertyPurchaseLocation" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Date" value={this.state.personalPropertyPurchaseDate} id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="col-sm-2 col-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Price" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.personalPropertyImageUrl} alt=""/><br />
+            <div className="update-form">
+                <h6 id="title_editForm">{this.state.personalPropertyName}</h6>
+
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="text" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
+                    <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
+                    {this.state.personalPropertyTypes.map(type => (
+                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Item Type</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyType} id="personalPropertyType" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Description</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyDescription} id="personalPropertyDescription" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Manufacturer</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyManufacturer} id="personalPropertyManufacturer" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyModel} id="personalPropertyModel" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyLocation} id="personalPropertyLocation" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
+                    <Form.Control type="text" value={this.state.personalPropertyPurchaseLocation}  id="personalPropertyPurchaseLocation" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                    <Form.Control type="date" value={this.state.personalPropertyPurchaseDate} id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                    <Form.Control type="number" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                <img align="center" src={this.state.personalPropertyImageUrl} alt=""/><br />
+                <div className="image-upload-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
                     </Button>
+                </div>
+                <div className="button-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel
                     </Button>
-                </Form>
+                </div>
             </div>
         )
     }

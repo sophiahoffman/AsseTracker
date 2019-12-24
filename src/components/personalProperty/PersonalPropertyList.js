@@ -34,7 +34,7 @@ class PersonalPropertyList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="button-new personalProperty-section-content" align="center">
+                <div className="button-new personalProperty-section-content">
                     <Button variant="secondary" type="button" className="newPersonalPropertyBtn" onClick={() => this.props.history.push("personalproperty/new")}>Add New Item</Button>
                 </div>
                 <div className="personalProperty-container-cards container-cards" align="center">

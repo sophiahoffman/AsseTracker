@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import APIManager from '../../modules/APIManager'
+import './Login.css'
+import '../../AsseTracker.css'
 
 // Login allows user to enter in password and compares entered password to password in users table to determine if user can log in. If login is successful, user is redirected to WelcomeAsseTracker page.
 
@@ -36,18 +38,19 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <Form>
+            <div className="new-form">
                 <Form.Group className="col-md-12 form-group form-inline">
-                    <Form.Label className="col-sm-2 col-form-label">Enter Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" id="userPassword" onChange={this.handleFieldChange} />
+                <Form.Label className="row-sm-2 row-form-label">Enter Your Password</Form.Label>
+                    <Form.Control type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
-                </Form>
-                <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
-                </Button>
-                <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                onClick={this.props.handleLogout}>Cancel
-                </Button>
+                
+                <div className="button-div col-md-12 form-group ">
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.handleLogout}>Cancel
+                    </Button>
+                </div>
             </div>
         )
     }

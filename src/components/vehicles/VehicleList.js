@@ -32,7 +32,7 @@ class VehicleList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="button-new vehicle-section-content" align="center">
+                <div className="button-new vehicle-section-content">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("vehicles/new")}>Add New Vehicle</Button>
                 </div>
                 <div className="vehicle-container-cards container-cards" align="center">

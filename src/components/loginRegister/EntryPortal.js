@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import APIManager from '../../modules/APIManager';
+import './EntryPortal.css'
 
 
 // EntryPortal designed to be start to login process - user enters in email address and comparison made to users table to determine if an account has been previously established with that email address. If so, it redirects user to the login page; if not, it redirects to the registration page.
@@ -12,6 +13,7 @@ class EntryPortal extends Component {
   state = {
     userEmailAddress: "",
     loadingStatus: true,
+    logoUrl: require("../../assets/AsseTracker-logos_black.png")
   }
 
   handleFieldChange = e => {
@@ -37,16 +39,19 @@ class EntryPortal extends Component {
 
   render() {
       return (
-        <div>
-          <Form>
+        <>
+        <div className="entry-portal-background">
+          <img id="portal-logo" src={this.state.logoUrl} alt="logo"></img>
+        </div>
+        <div className="new-form">
             <Form.Group className="col-md-12 form-group form-inline">
-                <Form.Label className="col-sm-2 col-form-label">Enter Email Address</Form.Label>
-                <Form.Control type="email" placeholder="Enter Email Address" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
+                <Form.Label className="row-sm-2 row-form-label">Enter Your Email Address</Form.Label>
+                <Form.Control type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
-            </Form>
             <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
             </Button>
         </div>
+        </>
       )
     }
   
