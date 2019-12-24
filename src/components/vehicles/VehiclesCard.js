@@ -30,9 +30,12 @@ class VehiclesCard extends Component {
                         ${this.props.vehicle.purchasePrice}<br />
                     </Card.Text>
             
+                    <div className="button-div">
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/edit`)}>Edit</Button>
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/disposal`)}>Disposal</Button>
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
+                    
+                    </div>
                     </Card.Body>
                 </article>
 

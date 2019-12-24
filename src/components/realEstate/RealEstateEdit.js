@@ -101,11 +101,11 @@ class RealEstateEdit extends Component {
             .then(result => {
                 const updatedRealEstate = {
                     id: this.objectId,
-                    name: this.state.realEstateName,
+                    name: this.state.realEstateName.toUpperCase(),
                     reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress,
-                    city: this.state.realEstateCity,
-                    state: this.state.realEstateState,
+                    address: this.state.realEstateAddress.toUpperCase(),
+                    city: this.state.realEstateCity.toUpperCase(),
+                    state: this.state.realEstateState.toUpperCase(),
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
                     purchaseDate: this.state.realEstatePurchaseDate,
@@ -115,7 +115,7 @@ class RealEstateEdit extends Component {
                     imageUrl: this.state.realEstateImageUrl,
                     disposalDate: this.state.realEstateDisposalDate,
                     disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.realEstateDisposalNotes,
+                    disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
                 }
                 RealEstateAPIManager.updateRealEstate(updatedRealEstate)
                 .then(() => this.props.history.push("/realestate"));
@@ -123,11 +123,11 @@ class RealEstateEdit extends Component {
         } else {
             const updatedRealEstate = {
                 id: this.objectId,
-                name: this.state.realEstateName,
+                name: this.state.realEstateName.toUpperCase(),
                 reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress,
-                city: this.state.realEstateCity,
-                state: this.state.realEstateState,
+                address: this.state.realEstateAddress.toUpperCase(),
+                city: this.state.realEstateCity.toUpperCase(),
+                state: this.state.realEstateState.toUpperCase(),
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
                 purchaseDate: this.state.realEstatePurchaseDate,
@@ -137,7 +137,7 @@ class RealEstateEdit extends Component {
                 imageUrl: this.state.realEstateImageUrl,
                 disposalDate: this.state.realEstateDisposalDate,
                 disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                disposalNotes: this.state.realEstateDisposalNotes,
+                disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
             }
             RealEstateAPIManager.updateRealEstate(updatedRealEstate)
             .then(() => this.props.history.push("/realestate"));
@@ -191,11 +191,11 @@ class RealEstateEdit extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="date" placeholder="Enter Purchase Date" value={this.state.realEstatePurchaseDate} id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
+                        <Form.Control type="date" value={this.state.realEstatePurchaseDate} id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="number" placeholder="Enter Purchase Price" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
+                        <Form.Control type="number" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />

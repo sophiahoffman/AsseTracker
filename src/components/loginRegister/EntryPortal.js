@@ -43,13 +43,11 @@ class EntryPortal extends Component {
         <div className="entry-portal-background">
           <img id="portal-logo" src={this.state.logoUrl} alt="logo"></img>
         </div>
-        <div className="entry-portal-fields">
-          <Form>
-            <Form.Group >
-                <Form.Label className=" row-form-label">Enter Your Email Address</Form.Label>
+        <div className="new-form">
+            <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Label className="row-sm-2 row-form-label">Enter Your Email Address</Form.Label>
                 <Form.Control type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
-            </Form>
             <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
             </Button>
         </div>

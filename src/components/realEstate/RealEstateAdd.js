@@ -7,6 +7,7 @@ import RealEstateAPIManager from '../../modules/RealEstateAPIManager'
 import APIManager from '../../modules/APIManager';
 import Cloudinary from '../../ignore';
 import './RealEstateAdd'
+import '../../AsseTracker.css'
 
 // RealEstateAdd takes input from user and writes a new item to the realEstate table. First it gets the real estate types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the realEstate table. 
 class RealEstateAdd extends Component {
@@ -73,11 +74,11 @@ class RealEstateAdd extends Component {
             .then(result => {
                 const newRealEstate = {
                     userId: Number(localStorage.getItem("userId")),
-                    name: this.state.realEstateName,
+                    name: this.state.realEstateName.toUpperCase(),
                     reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress,
-                    city: this.state.realEstateCity,
-                    state: this.state.realEstateState,
+                    address: this.state.realEstateAddress.toUpperCase(),
+                    city: this.state.realEstateCity.toUpperCase(),
+                    state: this.state.realEstateState.toUpperCase(),
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
                     // Cloudinary: added image URL
@@ -92,11 +93,11 @@ class RealEstateAdd extends Component {
         } else {
             const newRealEstate = {
                 userId: Number(localStorage.getItem("userId")),
-                name: this.state.realEstateName,
+                name: this.state.realEstateName.toUpperCase(),
                 reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress,
-                city: this.state.realEstateCity,
-                state: this.state.realEstateState,
+                address: this.state.realEstateAddress.toUpperCase(),
+                city: this.state.realEstateCity.toUpperCase(),
+                state: this.state.realEstateState.toUpperCase(),
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
                 // Cloudinary: added image URL
@@ -112,8 +113,8 @@ class RealEstateAdd extends Component {
 
     render() {
         return (
-            <div id="newRealEstateForm">
-                <Form>
+            <div className="new-form">
+                {/* <Form> */}
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" id="realEstateName" onChange={this.handleFieldChange} />
@@ -146,7 +147,7 @@ class RealEstateAdd extends Component {
                         <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
                         <Form.Control type="text" id="realEstateZip" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Check 
                         name="realEstateRent"
                         label="Check if you're renting"
@@ -163,15 +164,20 @@ class RealEstateAdd extends Component {
                         <Form.Control type="number" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>Submit
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                    onClick={this.props.history.goBack}>Cancel
-                    </Button>
-                </Form>
+
+                        <img className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
+                    <div className="image-upload-div">
+                        <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)}>Replace Image
+                        </Button>
+                    </div>
+                    <div className="button-div">
+                        <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>Submit
+                        </Button>
+                        <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                        onClick={this.props.history.goBack}>Cancel
+                        </Button>
+                    </div>
+                {/* </Form> */}
             </div>
         )
     }

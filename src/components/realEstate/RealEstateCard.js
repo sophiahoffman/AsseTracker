@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
-import './RealEstateCard'
+import '../../AsseTracker.css'
 
 class RealEstateCard extends Component {
     render () {
@@ -60,9 +60,12 @@ class RealEstateCard extends Component {
                             ${this.props.realEstate.purchasePrice}<br />
                         </Card.Text>
                 
+                        <div className="button-div">
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
+                        
+                        </div>
                         </Card.Body>
                     </div>
     

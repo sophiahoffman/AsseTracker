@@ -38,7 +38,7 @@ class VehiclesDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.vehicleDisposalDate,
             disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
-            disposalNotes: this.state.vehicleDisposalNotes,
+            disposalNotes: this.state.vehicleDisposalNotes.toUpperCase(),
             activeAsset: false,
         }
         VehiclesAPIManager.updateVehicle(updatedVehicle)

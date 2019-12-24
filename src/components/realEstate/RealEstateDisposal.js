@@ -38,7 +38,7 @@ class RealEstateDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.realEstateDisposalDate,
             disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-            disposalNotes: this.state.realEstateDisposalNotes,
+            disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
             activeAsset: false,
         }
         RealEstateAPIManager.updateRealEstate(updatedRealEstate)

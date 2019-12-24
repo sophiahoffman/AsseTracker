@@ -29,9 +29,12 @@ class PersonalPropertyCard extends Component {
                         ${this.props.personalProperty.purchasePrice}<br />
                     </Card.Text>
             
+                    <div className="button-div">
                         <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>
                         <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/disposal`)}>Disposal</Button>
                         <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.deletePersonalProperty(this.props.personalProperty.id)}>Delete</Button>
+                    
+                    </div>
                     </Card.Body>
                 </div>
 

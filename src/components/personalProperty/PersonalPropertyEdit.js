@@ -89,13 +89,13 @@ class PersonalPropertyEdit extends Component {
             .then(result => {
                 const updatedPersonalProperty = {
                     id: this.objectId,
-                    name: this.state.personalPropertyName,
+                    name: this.state.personalPropertyName.toUpperCase(),
                     ppTypeId: Number(result.id),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    location: this.state.personalPropertyLocation,
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    description: this.state.personalPropertyDescription.toUpperCase(),
+                    manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
+                    model: this.state.personalPropertyModel.toUpperCase(),
+                    location: this.state.personalPropertyLocation.toUpperCase(),
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
@@ -103,7 +103,7 @@ class PersonalPropertyEdit extends Component {
                     imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
                     disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.personalPropertyDisposalNotes,
+                    disposalNotes: this.state.personalPropertyDisposalNotes.toUpperCase(),
                 }
                 PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
                 .then(() => this.props.history.push("/personalproperty"));
@@ -111,13 +111,13 @@ class PersonalPropertyEdit extends Component {
         } else {
             const updatedPersonalProperty = {
                     id: this.objectId,
-                    name: this.state.personalPropertyName,
+                    name: this.state.personalPropertyName.toUpperCase(),
                     ppTypeId: Number(this.state.personalPropertyTypeId),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    location: this.state.personalPropertyLocation,
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    description: this.state.personalPropertyDescription.toUpperCase(),
+                    manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
+                    model: this.state.personalPropertyModel.toUpperCase(),
+                    location: this.state.personalPropertyLocation.toUpperCase(),
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
@@ -125,7 +125,7 @@ class PersonalPropertyEdit extends Component {
                     imageUrl: this.state.personalPropertyImageUrl,
                     disposalDate: this.state.personalPropertyDisposalDate,
                     disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.personalPropertyDisposalNotes,
+                    disposalNotes: this.state.personalPropertyDisposalNotes.toUpperCase(),
                 }
                 PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
                 .then(() => this.props.history.push("/personalproperty"));

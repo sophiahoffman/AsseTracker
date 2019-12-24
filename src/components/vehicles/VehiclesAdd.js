@@ -6,7 +6,7 @@ import Form from 'react-bootstrap/Form'
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import APIManager from '../../modules/APIManager';
 import Cloudinary from '../../ignore'
-import './VehiclesAdd'
+import '../../AsseTracker.css'
 
 // vehiclesAdd takes input from user and writes a new item to the vehicles table. First it gets the vehicle types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 class VehiclesAdd extends Component {
@@ -71,15 +71,15 @@ class VehiclesAdd extends Component {
             .then(result => {
                 const newVehicle = {
                     userId: Number(localStorage.getItem("userId")),
-                    name: this.state.vehicleName,
+                    name: this.state.vehicleName.toUpperCase(),
                     vehicleTypeId: Number(result.id),
-                    vin: this.state.vehicleVin,
-                    license: this.state.vehicleLicense,
+                    vin: this.state.vehicleVin.toUpperCase(),
+                    license: this.state.vehicleLicense.toUpperCase(),
                     year: this.state.vehicleYear,
-                    make: this.state.vehicleMake,
-                    model: this.state.vehicleModel,
-                    location: this.state.vehicleLocation,
-                    purchaseLocation: this.state.vehiclePurchaseLocation,
+                    make: this.state.vehicleMake.toUpperCase(),
+                    model: this.state.vehicleModel.toUpperCase(),
+                    location: this.state.vehicleLocation.toUpperCase(),
+                    purchaseLocation: this.state.vehiclePurchaseLocation.toUpperCase(),
                     purchaseDate: this.state.vehiclePurchaseDate,
                     purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                     activeAsset: this.state.vehicleActiveAsset,
@@ -92,15 +92,15 @@ class VehiclesAdd extends Component {
         } else {
             const newVehicle = {
                 userId: Number(localStorage.getItem("userId")),
-                name: this.state.vehicleName,
+                name: this.state.vehicleName.toUpperCase(),
                 vehicleTypeId: Number(this.state.vehicleTypeId),
-                vin: this.state.vehicleVin,
-                license: this.state.vehicleLicense,
+                vin: this.state.vehicleVin.toUpperCase(),
+                license: this.state.vehicleLicense.toUpperCase(),
                 year: this.state.vehicleYear,
-                make: this.state.vehicleMake,
-                model: this.state.vehicleModel,
-                location: this.state.vehicleLocation,
-                purchaseLocation: this.state.vehiclePurchaseLocation,
+                make: this.state.vehicleMake.toUpperCase(),
+                model: this.state.vehicleModel.toUpperCase(),
+                location: this.state.vehicleLocation.toUpperCase(),
+                purchaseLocation: this.state.vehiclePurchaseLocation.toUpperCase(),
                 purchaseDate: this.state.vehiclePurchaseDate,
                 purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
                 activeAsset: this.state.vehicleActiveAsset,
@@ -114,8 +114,7 @@ class VehiclesAdd extends Component {
 
     render() {
         return (
-            <div id="newVehicleForm">
-                <Form>
+            <div className="new-form">
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" id="vehicleName" onChange={this.handleFieldChange} />
@@ -169,15 +168,18 @@ class VehiclesAdd extends Component {
                         <Form.Control type="number" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />
-                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewVehicle}>Submit
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                    onClick={this.props.history.goBack}>Cancel
-                    </Button>
-                </Form>
+                    <img src={this.state.vehicleImageUrl} alt=""/><br />
+                    <div className="image-upload-div">
+                        <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="button">Add Image
+                        </Button>
+                    </div>
+                    <div className="button-div">
+                        <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewVehicle}>Submit
+                        </Button>
+                        <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                        onClick={this.props.history.goBack}>Cancel
+                        </Button>
+                    </div>
             </div>
         )
     }

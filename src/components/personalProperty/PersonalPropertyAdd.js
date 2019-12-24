@@ -7,6 +7,7 @@ import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager
 import APIManager from '../../modules/APIManager';
 import Cloudinary from '../../ignore';
 import './PersonalPropertyAdd.css';
+import '../../AsseTracker.css';
 
 // PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
@@ -68,13 +69,13 @@ class PersonalPropertyAdd extends Component {
             .then(result => {
                 const newPersonalProperty = {
                     userId: Number(localStorage.getItem("userId")),
-                    name: this.state.personalPropertyName,
+                    name: this.state.personalPropertyName.toUpperCase(),
                     ppTypeId: Number(result.id),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    location: this.state.personalPropertyLocation,
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                    description: this.state.personalPropertyDescription.toUpperCase(),
+                    manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
+                    model: this.state.personalPropertyModel.toUpperCase(),
+                    location: this.state.personalPropertyLocation.toUpperCase(),
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
@@ -87,13 +88,13 @@ class PersonalPropertyAdd extends Component {
         } else {
             const newPersonalProperty = {
                 userId: Number(localStorage.getItem("userId")),
-                name: this.state.personalPropertyName,
+                name: this.state.personalPropertyName.toUpperCase(),
                 ppTypeId: Number(this.state.personalPropertyTypeId),
-                description: this.state.personalPropertyDescription,
-                manufacturer: this.state.personalPropertyManufacturer,
-                model: this.state.personalPropertyModel,
-                location: this.state.personalPropertyLocation,
-                purchaseLocation: this.state.personalPropertyPurchaseLocation,
+                description: this.state.personalPropertyDescription.toUpperCase(),
+                manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
+                model: this.state.personalPropertyModel.toUpperCase(),
+                location: this.state.personalPropertyLocation.toUpperCase(),
+                purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
                 purchaseDate: this.state.personalPropertyPurchaseDate,
                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                 activeAsset: this.state.personalPropertyActiveAsset,
@@ -107,8 +108,7 @@ class PersonalPropertyAdd extends Component {
 
     render() {
         return (
-            <div id="newPersonalPropertyForm">
-                <Form>
+            <div className="new-form">
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" id="personalPropertyName" onChange={this.handleFieldChange} />
@@ -122,7 +122,7 @@ class PersonalPropertyAdd extends Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Or Enter Item Type (if not on the Select)</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Or Enter Other Item Type</Form.Label>
                         <Form.Control type="text" id="personalPropertyType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
@@ -154,15 +154,18 @@ class PersonalPropertyAdd extends Component {
                         <Form.Control type="number" step=".01" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.personalPropertyimageUrl} alt=""/><br />
-                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button" disabled={this.state.loadingStatus}>Add Image
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} onClick={this.constructNewPersonalProperty}>Submit
-                    </Button>
-                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                    onClick={this.props.history.goBack}>Cancel
-                    </Button>
-                </Form>
+                    <img className="uploadImage" src={this.state.personalPropertyImageUrl} alt=""/><br />
+                    <div className="image-upload-div">
+                        <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button" disabled={this.state.loadingStatus}>Add Image
+                        </Button>
+                    </div>
+                    <div className="button-div">
+                        <Button variant="secondary" type="button" disabled={this.state.loadingStatus} onClick={this.constructNewPersonalProperty}>Submit
+                        </Button>
+                        <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                        onClick={this.props.history.goBack}>Cancel
+                        </Button>
+                    </div>
             </div>
         )
     }

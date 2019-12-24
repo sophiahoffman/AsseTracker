@@ -57,15 +57,15 @@ class Register extends Component {
                 <Form>
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter User Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter User Name" id="userName" onChange={this.handleFieldChange} />
+                    <Form.Control type="text" id="userName" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" id="userPassword" onChange={this.handleFieldChange} />
+                    <Form.Control type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter Password Again</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" id="userPassword2" onChange={this.handleFieldChange} />
+                    <Form.Control type="password" id="userPassword2" onChange={this.handleFieldChange} />
                 </Form.Group>
                 </Form>
                 <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
