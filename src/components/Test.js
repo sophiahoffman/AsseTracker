@@ -15,7 +15,7 @@ render () {
 <Modal className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <Modal className="modal-dialog" role="document">
       <ModalHeader className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h6 className="modal-title" id="exampleModalLabel">Modal title</h6>
         <Button type="button" className="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </Button>

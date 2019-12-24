@@ -39,7 +39,7 @@ class RealEstateDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.realEstateDisposalDate,
             disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-            disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
+            disposalNotes: this.state.realEstateDisposalNotes,
             activeAsset: false,
         }
         RealEstateAPIManager.updateRealEstate(updatedRealEstate)
@@ -49,7 +49,7 @@ class RealEstateDisposal extends Component {
     render() {
         return (
             <div className="disposal-form">
-                <h4 id="title_disposalForm">{this.state.realEstateName}</h4>
+                <h6 className="title_disposalForm">{this.state.realEstateName}</h6>
 
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>

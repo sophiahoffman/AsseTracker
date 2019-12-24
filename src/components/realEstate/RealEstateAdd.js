@@ -74,11 +74,11 @@ class RealEstateAdd extends Component {
             .then(result => {
                 const newRealEstate = {
                     userId: Number(localStorage.getItem("userId")),
-                    name: this.state.realEstateName.toUpperCase(),
+                    name: this.state.realEstateName,
                     reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress.toUpperCase(),
-                    city: this.state.realEstateCity.toUpperCase(),
-                    state: this.state.realEstateState.toUpperCase(),
+                    address: this.state.realEstateAddress,
+                    city: this.state.realEstateCity,
+                    state: this.state.realEstateState,
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
                     // Cloudinary: added image URL
@@ -93,11 +93,11 @@ class RealEstateAdd extends Component {
         } else {
             const newRealEstate = {
                 userId: Number(localStorage.getItem("userId")),
-                name: this.state.realEstateName.toUpperCase(),
+                name: this.state.realEstateName,
                 reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress.toUpperCase(),
-                city: this.state.realEstateCity.toUpperCase(),
-                state: this.state.realEstateState.toUpperCase(),
+                address: this.state.realEstateAddress,
+                city: this.state.realEstateCity,
+                state: this.state.realEstateState,
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
                 // Cloudinary: added image URL
@@ -114,70 +114,69 @@ class RealEstateAdd extends Component {
     render() {
         return (
             <div className="new-form">
-                {/* <Form> */}
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" id="realEstateName" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId" onChange={this.handleFieldChange}>
-                        {this.state.realEstateTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                        ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
-                        <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
-                        <Form.Control type="text" id="realEstateAddress" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
-                        <Form.Control type="text" id="realEstateCity" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
-                        <Form.Control type="text" id="realEstateState" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
-                        <Form.Control type="text" id="realEstateZip" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Check 
-                        name="realEstateRent"
-                        label="Check if you're renting"
-                        checked={this.state.rentCheckbox}
-                        onChange={this.handleCheckbox}
-                        id="rentCheckbox" />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="date" id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="number" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="text" id="realEstateName" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
+                    <Form.Control as="select" id="realEstateTypeId" onChange={this.handleFieldChange}>
+                    {this.state.realEstateTypes.map(type => (
+                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
+                    <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
+                    <Form.Control type="text" id="realEstateAddress" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
+                    <Form.Control type="text" id="realEstateCity" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
+                    <Form.Control type="text" id="realEstateState" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
+                    <Form.Control type="text" id="realEstateZip" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Check 
+                    name="realEstateRent"
+                    label="Check if you're renting"
+                    checked={this.state.rentCheckbox}
+                    onChange={this.handleCheckbox}
+                    id="rentCheckbox" />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                    <Form.Control type="date" id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                    <Form.Control type="number" id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
 
-                        <img className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
-                    <div className="image-upload-div">
-                        <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)}>Replace Image
-                        </Button>
-                    </div>
-                    <div className="button-div">
-                        <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>Submit
-                        </Button>
-                        <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                        onClick={this.props.history.goBack}>Cancel
-                        </Button>
-                    </div>
-                {/* </Form> */}
+                    <img src={this.state.realEstateImageUrl} alt=""/><br />
+                <div className="image-upload-div">
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)}>Replace Image
+                    </Button>
+                </div>
+                <div className="button-div">
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructNewRealEstate}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.history.goBack}>Cancel
+                    </Button>
+                </div>
             </div>
         )
     }

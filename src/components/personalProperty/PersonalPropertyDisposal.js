@@ -39,7 +39,7 @@ class PersonalPropertyDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.personalPropertyDisposalDate,
             disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-            disposalNotes: this.state.personalPropertyDisposalNotes.toUpperCase(),
+            disposalNotes: this.state.personalPropertyDisposalNotes(),
             activeAsset: false,
         }
         PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
@@ -49,7 +49,7 @@ class PersonalPropertyDisposal extends Component {
     render() {
         return (
             <div className="disposal-form">
-                <h4 id="title_disposalForm">{this.state.personalPropertyName}</h4>
+                <h6 id="title_disposalForm">{this.state.personalPropertyName}</h6>
 
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>

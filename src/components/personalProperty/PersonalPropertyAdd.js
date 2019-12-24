@@ -69,13 +69,13 @@ class PersonalPropertyAdd extends Component {
             .then(result => {
                 const newPersonalProperty = {
                     userId: Number(localStorage.getItem("userId")),
-                    name: this.state.personalPropertyName.toUpperCase(),
+                    name: this.state.personalPropertyName,
                     ppTypeId: Number(result.id),
-                    description: this.state.personalPropertyDescription.toUpperCase(),
-                    manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
-                    model: this.state.personalPropertyModel.toUpperCase(),
-                    location: this.state.personalPropertyLocation.toUpperCase(),
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
+                    description: this.state.personalPropertyDescription,
+                    manufacturer: this.state.personalPropertyManufacturer,
+                    model: this.state.personalPropertyModel,
+                    location: this.state.personalPropertyLocation,
+                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                     activeAsset: this.state.personalPropertyActiveAsset,
@@ -88,13 +88,13 @@ class PersonalPropertyAdd extends Component {
         } else {
             const newPersonalProperty = {
                 userId: Number(localStorage.getItem("userId")),
-                name: this.state.personalPropertyName.toUpperCase(),
+                name: this.state.personalPropertyName,
                 ppTypeId: Number(this.state.personalPropertyTypeId),
-                description: this.state.personalPropertyDescription.toUpperCase(),
-                manufacturer: this.state.personalPropertyManufacturer.toUpperCase(),
-                model: this.state.personalPropertyModel.toUpperCase(),
-                location: this.state.personalPropertyLocation.toUpperCase(),
-                purchaseLocation: this.state.personalPropertyPurchaseLocation.toUpperCase(),
+                description: this.state.personalPropertyDescription,
+                manufacturer: this.state.personalPropertyManufacturer,
+                model: this.state.personalPropertyModel,
+                location: this.state.personalPropertyLocation,
+                purchaseLocation: this.state.personalPropertyPurchaseLocation,
                 purchaseDate: this.state.personalPropertyPurchaseDate,
                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
                 activeAsset: this.state.personalPropertyActiveAsset,
@@ -154,7 +154,7 @@ class PersonalPropertyAdd extends Component {
                         <Form.Control type="number" step=".01" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img className="uploadImage" src={this.state.personalPropertyImageUrl} alt=""/><br />
+                    <img src={this.state.personalPropertyImageUrl} alt=""/><br />
                     <div className="image-upload-div">
                         <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button" disabled={this.state.loadingStatus}>Add Image
                         </Button>

@@ -101,11 +101,11 @@ class RealEstateEdit extends Component {
             .then(result => {
                 const updatedRealEstate = {
                     id: this.objectId,
-                    name: this.state.realEstateName.toUpperCase(),
+                    name: this.state.realEstateName,
                     reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress.toUpperCase(),
-                    city: this.state.realEstateCity.toUpperCase(),
-                    state: this.state.realEstateState.toUpperCase(),
+                    address: this.state.realEstateAddress,
+                    city: this.state.realEstateCity,
+                    state: this.state.realEstateState,
                     zip: this.state.realEstateZip,
                     rent: this.state.rentCheckbox,
                     purchaseDate: this.state.realEstatePurchaseDate,
@@ -115,7 +115,7 @@ class RealEstateEdit extends Component {
                     imageUrl: this.state.realEstateImageUrl,
                     disposalDate: this.state.realEstateDisposalDate,
                     disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
+                    disposalNotes: this.state.realEstateDisposalNotes,
                 }
                 RealEstateAPIManager.updateRealEstate(updatedRealEstate)
                 .then(() => this.props.history.push("/realestate"));
@@ -123,11 +123,11 @@ class RealEstateEdit extends Component {
         } else {
             const updatedRealEstate = {
                 id: this.objectId,
-                name: this.state.realEstateName.toUpperCase(),
+                name: this.state.realEstateName,
                 reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress.toUpperCase(),
-                city: this.state.realEstateCity.toUpperCase(),
-                state: this.state.realEstateState.toUpperCase(),
+                address: this.state.realEstateAddress,
+                city: this.state.realEstateCity,
+                state: this.state.realEstateState,
                 zip: this.state.realEstateZip,
                 rent: this.state.rentCheckbox,
                 purchaseDate: this.state.realEstatePurchaseDate,
@@ -137,7 +137,7 @@ class RealEstateEdit extends Component {
                 imageUrl: this.state.realEstateImageUrl,
                 disposalDate: this.state.realEstateDisposalDate,
                 disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                disposalNotes: this.state.realEstateDisposalNotes.toUpperCase(),
+                disposalNotes: this.state.realEstateDisposalNotes,
             }
             RealEstateAPIManager.updateRealEstate(updatedRealEstate)
             .then(() => this.props.history.push("/realestate"));
@@ -146,67 +146,69 @@ class RealEstateEdit extends Component {
 
     render() {
         return (
-            <div id="realEstateUpdateForm">
-                <h3 id="title_updateForm">Update Form</h3>
-                <Form>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" value={this.state.realEstateName} id="realEstateName" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
-                        <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
-                        {this.state.realEstateTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                        ))}
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
-                        <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
-                        <Form.Control type="text" value={this.state.realEstateAddress} id="realEstateAddress" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
-                        <Form.Control type="text" value={this.state.realEstateCity} id="realEstateCity" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
-                        <Form.Control type="text" value={this.state.realEstateState} id="realEstateState" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
-                        <Form.Control type="text" value={this.state.realEstateZip} id="realEstateZip" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Check 
-                        name="realEstateRent"
-                        label="Check if you're renting"
-                        checked={this.state.rentCheckbox}
-                        onChange={this.handleCheckbox}
-                        id="rentCheckbox" />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="date" value={this.state.realEstatePurchaseDate} id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="number" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img align="center" className="uploadImage" src={this.state.realEstateImageUrl} alt=""/><br />
+            <div className="update-form">
+                <h6 id="title_updateForm">{this.state.realEstateName}</h6>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="text" value={this.state.realEstateName} id="realEstateName" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
+                    <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
+                    {this.state.realEstateTypes.map(type => (
+                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
+                    <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
+                    <Form.Control type="text" value={this.state.realEstateAddress} id="realEstateAddress" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
+                    <Form.Control type="text" value={this.state.realEstateCity} id="realEstateCity" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
+                    <Form.Control type="text" value={this.state.realEstateState} id="realEstateState" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
+                    <Form.Control type="text" value={this.state.realEstateZip} id="realEstateZip" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Check 
+                    name="realEstateRent"
+                    label="Check if you're renting"
+                    checked={this.state.rentCheckbox}
+                    onChange={this.handleCheckbox}
+                    id="rentCheckbox" />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
+                    <Form.Control type="date" value={this.state.realEstatePurchaseDate} id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
+                    <Form.Control type="number" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
+                <img src={this.state.realEstateImageUrl} alt=""/><br />
+                <div className="image-upload-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
                     </Button>
+                </div>
+                <div className="button-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel
                     </Button>
-                </Form>
+                </div>
             </div>
         )
     }

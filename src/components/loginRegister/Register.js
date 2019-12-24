@@ -52,7 +52,7 @@ class Register extends Component {
                 <header align="center">
                 <h2>hello {this.state.userEmailAddress}</h2>
                 <h2>Please enter the following information to create an account and access</h2>
-                <h3>AsseTracker</h3>
+                <h6>AsseTracker</h6>
                 </header>
                 <Form>
                 <Form.Group className="col-md-12 form-group form-inline">

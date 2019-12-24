@@ -39,7 +39,7 @@ class VehiclesDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.vehicleDisposalDate,
             disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
-            disposalNotes: this.state.vehicleDisposalNotes.toUpperCase(),
+            disposalNotes: this.state.vehicleDisposalNotes,
             activeAsset: false,
         }
         VehiclesAPIManager.updateVehicle(updatedVehicle)
@@ -49,7 +49,7 @@ class VehiclesDisposal extends Component {
     render() {
         return (
             <div className="disposal-form">
-                <h4 id="title_disposalForm">{this.state.vehicleName}</h4>
+                <h6 className="title_disposalForm">{this.state.vehicleName}</h6>
 
                 <Form.Group className="col-md-12 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
