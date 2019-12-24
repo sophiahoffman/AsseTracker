@@ -6,6 +6,13 @@
   height: 40vmin;
 }
 
+.applicationViews {
+  align-items:center;
+  justify-content: center;
+  margin: auto;
+  justify-items: center;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -33,6 +40,16 @@ Button {
   padding-top: 15px;
   min-width: 100px;
   max-width: 300px;
+}
+
+.button-new {
+  padding-top: 15px;
+  min-width: 100px;
+  max-width: 300px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 img {

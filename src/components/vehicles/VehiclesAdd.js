@@ -29,7 +29,7 @@ class VehiclesAdd extends Component {
         vehicleActiveAsset: true,
         loadingStatus: false,        
         // Cloudinary added imageURL
-        vehicleImageUrl: require("../../vehicle.png"),
+        vehicleImageUrl: require("../../assets/vehicle.png"),
     };
 // gets vehicle types for the select input
     componentDidMount() {
@@ -118,7 +118,7 @@ class VehiclesAdd extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="text" placeholder="Enter Name" id="vehicleName" onChange={this.handleFieldChange} />
+                        <Form.Control autoFocus="autofocus" type="text" id="vehicleName" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
@@ -130,43 +130,43 @@ class VehiclesAdd extends Component {
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Or Enter Other Vehicle Type</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Type" id="vehicleType" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleType" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">VIN</Form.Label>
-                        <Form.Control type="text" placeholder="Enter VIN" id="vehicleVin" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleVin" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">License</Form.Label>
-                        <Form.Control type="text" placeholder="Enter License" id="vehicleLicense" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleLicense" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Year</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Year" id="vehicleYear" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleYear" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Make</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Make" id="vehicleMake" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleMake" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Model" id="vehicleModel" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleModel" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Car Physical Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Location" id="vehicleLocation" onChange={this.handleFieldChange} />
+                        <Form.Label className="row-sm-2 row-form-label">Vehicle Physical Location</Form.Label>
+                        <Form.Control type="text" id="vehicleLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Purchase Location" id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
-                        <Form.Control type="date" placeholder="Enter Purchase Date" id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
+                        <Form.Control type="date" id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
-                        <Form.Control type="number" placeholder="Enter Purchase Price" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
+                        <Form.Control type="number" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                     <img align="center" className="uploadImage" src={this.state.vehicleImageUrl} alt=""/><br />

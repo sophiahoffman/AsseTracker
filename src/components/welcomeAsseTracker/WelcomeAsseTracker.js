@@ -7,7 +7,10 @@ class WelcomeAsseTracker extends Component {
         realEstateArray: [],
         vehiclesArray: [],
         personalPropertyArray: [],
-        userId: localStorage.getItem("userId")
+        userId: localStorage.getItem("userId"),
+        personalPropertyImage: require("../../assets/personal_property.png"),
+        realEstateImage: require("../../assets/real_estate.png"),
+        vehicleImage: require("../../assets/vehicle.png")
     }
 
     componentDidMount() {
@@ -32,9 +35,9 @@ class WelcomeAsseTracker extends Component {
         return (
             <div>
             Welcome to AsseTracker!!! <br />
-            Total of ACTIVE personal property: {this.sumAssetPrice(this.state.personalPropertyArray)} <br />
-            Total of ACTIVE real estate: {this.sumAssetPrice(this.state.realEstateArray)} <br />
-            Total of ACTIVE vehicles: {this.sumAssetPrice(this.state.vehiclesArray)} <br />
+            <img src={this.state.personalPropertyImage} alt="personalPropertyImage" />Total of ACTIVE personal property: {this.sumAssetPrice(this.state.personalPropertyArray)} <br />
+            <img src={this.state.realEstateImage} alt="realEstateImage" />Total of ACTIVE real estate: {this.sumAssetPrice(this.state.realEstateArray)} <br />
+            <img src={this.state.vehicleImage} alt="vehicleImage" />Total of ACTIVE vehicles: {this.sumAssetPrice(this.state.vehiclesArray)} <br />
             </div>
         )
     }

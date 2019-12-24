@@ -36,7 +36,7 @@ class RealEstateList extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="realEstate-section-content" align="center">
+                <div className="button-new realEstate-section-content" align="center">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
                 <div className="realEstate-container-cards container-cards" align="center">

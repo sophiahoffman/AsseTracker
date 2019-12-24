@@ -53,15 +53,15 @@ class VehiclesDisposal extends Component {
                 <Form>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="date" placeholder="Enter Disposal Date" id="vehicleDisposalDate" onChange={this.handleFieldChange} />
+                        <Form.Control autoFocus="autofocus" type="date" id="vehicleDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
-                        <Form.Control type="number" placeholder="Enter Disposal Price" id="vehicleDisposalPrice" onChange={this.handleFieldChange} />
+                        <Form.Control type="number" id="vehicleDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-12 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Disposal Notes" id="vehicleDisposalNotes" onChange={this.handleFieldChange} />
+                        <Form.Control type="text" id="vehicleDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedVehicle}>Submit
                     </Button>
