@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
+import '../../AsseTracker.css'
 
 // RealEstateDisposal allows user to add additional information about getting rid of the property and then removes the property from view. Data regarding the specific item is essentially archived.
 class RealEstateDisposal extends Component {
@@ -47,27 +48,29 @@ class RealEstateDisposal extends Component {
 
     render() {
         return (
-            <div id="realEstateDisposalForm">
-                <h3 id="title_disposalForm">Disposal Form</h3>
-                <Form>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="date" id="realEstateDisposalDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
-                        <Form.Control type="number" id="realEstateDisposalPrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
-                        <Form.Control type="text" id="realEstateDisposalNotes" onChange={this.handleFieldChange} />
-                    </Form.Group>
+            <div className="disposal-form">
+                <h4 id="title_disposalForm">{this.state.realEstateName}</h4>
+
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="date" id="realEstateDisposalDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
+                    <Form.Control type="number" id="realEstateDisposalPrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
+                    <Form.Control type="text" id="realEstateDisposalNotes" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <div className="button-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel
                     </Button>
-                </Form>
+                </div>
+
             </div>
         )
     }

@@ -1,9 +1,10 @@
 // @authored by Sophia Hoffman
 
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
+import '../../AsseTracker.css';
 
 // PersonalPropertyDisposal allows user to add additional information about getting rid of the property and then removes the property from view. Data regarding the specific item is essentially archived.
 class PersonalPropertyDisposal extends Component {
@@ -47,27 +48,29 @@ class PersonalPropertyDisposal extends Component {
 
     render() {
         return (
-            <div id="personalPropertyDisposalForm">
-                <h3 id="title_disposalForm">Disposal Form</h3>
-                <Form>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
-                        <Form.Control autoFocus="autofocus" type="date" id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
-                        <Form.Control type="number" id="personalPropertyDisposalPrice" onChange={this.handleFieldChange} />
-                    </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
-                        <Form.Control type="text" id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
-                    </Form.Group>
+            <div className="disposal-form">
+                <h4 id="title_disposalForm">{this.state.personalPropertyName}</h4>
+
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
+                    <Form.Control autoFocus="autofocus" type="date" id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
+                    <Form.Control type="number" id="personalPropertyDisposalPrice" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
+                    <Form.Control type="text" id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <div className="button-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedPersonalProperty}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel
                     </Button>
-                </Form>
+                </div>
+
             </div>
         )
     }

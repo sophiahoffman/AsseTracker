@@ -91,7 +91,7 @@ img {
   padding-top: 15px;
 }
 
-.new-form {
+.new-form, .disposal-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
