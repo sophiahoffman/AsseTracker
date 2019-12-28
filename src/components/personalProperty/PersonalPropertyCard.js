@@ -50,7 +50,7 @@ class PersonalPropertyCard extends Component {
                         </div>
                         <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">Purchase Price</h6>
-                            <h6 className="card-property">${this.props.personalProperty.purchasePrice}</h6> 
+                            <h6 className="card-property">${Number(this.props.personalProperty.purchasePrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h6> 
                         </div>
                     </div>
             
