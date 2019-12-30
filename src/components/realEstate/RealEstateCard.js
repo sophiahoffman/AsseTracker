@@ -46,18 +46,18 @@ class RealEstateCard extends Component {
                             </div>
                             <div className="col-md-12 col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">Purchase Price</h6>
-                                <h6 className="card-property">${this.props.realEstate.purchasePrice}</h6> 
+                                <h6 className="card-property">${Number(this.props.realEstate.purchasePrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h6> 
                             </div>
                             </> :
                             null}
-                    
-                            <div className="button-div">
-                                <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
-                                <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
-                                <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
-                            
-                            </div>
+                        </div> 
+                        <div className="button-div">
+                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
+                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
+                            <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
+                        
                         </div>
+                        
                     </div>
                 </div>
             </React.Fragment>
