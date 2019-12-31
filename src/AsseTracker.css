@@ -75,7 +75,7 @@ Button {
   padding-top: 15px;
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 30%;
   align-items: center;
   justify-items: center;
   justify-content: center;
@@ -94,22 +94,71 @@ Button {
 }
 
 img {
-  width: 10%;
+  width: 20%;
   border-radius: 50%;
   justify-content: center;
   margin: auto;
-  padding-top: 15px;
 }
 
-.new-form, .disposal-form, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
+.new-form, .disposal-form, .card-content, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align:center;
-  width: 50%;
+  width: 60%;
   margin: auto;
   padding-top: 25px;
+}
+
+.card-image {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  justify-content: center;
+  margin: auto;
+  padding-top: 15px;
+}
+.card-format-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-self: flex-end;
+  text-align:center;
+  width: inherit;
+  margin: auto;
+  padding-top: 25px;
+}
+
+.container-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  margin: auto;
+  padding: 25px;
+}
+
+.card-title-small {
+  width: inherit;
+  height: 150px;
+}
+
+.card-small, .card-content-small {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  margin: auto;
+}
+
+
+.card {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .radio-inline {

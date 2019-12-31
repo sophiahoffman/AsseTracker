@@ -109,11 +109,11 @@ class PersonalPropertyAdd extends Component {
     render() {
         return (
             <div className="new-form">
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                         <Form.Control autoFocus="autofocus" type="text" id="personalPropertyName" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                         <Form.Control as="select" id="personalPropertyTypeId" onChange={this.handleFieldChange}>
                         {this.state.personalPropertyTypes.map(type => (
@@ -121,35 +121,35 @@ class PersonalPropertyAdd extends Component {
                         ))}
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Or Enter Other Item Type</Form.Label>
                         <Form.Control type="text" id="personalPropertyType" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Description</Form.Label>
                         <Form.Control type="text" id="personalPropertyDescription" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Manufacturer</Form.Label>
                         <Form.Control type="text" id="personalPropertyManufacturer" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
                         <Form.Control type="text" id="personalPropertyModel" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
                         <Form.Control type="text" id="personalPropertyLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
                         <Form.Control type="text" id="personalPropertyPurchaseLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
                         <Form.Control type="date" id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
                         <Form.Control type="number" step=".01" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>

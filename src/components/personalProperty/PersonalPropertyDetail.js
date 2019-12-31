@@ -65,9 +65,10 @@ class PersonalPropertyCard extends Component {
         <React.Fragment>
             <div className="card">
                 <div className = "card-content">
+
                     <Card.Title className="card-format">
                         {(this.state.personalPropertyImageUrl !== "") 
-                        ? <><img className="asset-image" src={this.state.personalPropertyImageUrl} alt={this.state.personalPropertyName} /><br /></>
+                        ? <><img src={this.state.personalPropertyImageUrl} alt={this.state.personalPropertyName} /><br /></>
                         : null }
                         {this.state.personalPropertyName}
                     </Card.Title><hr />
@@ -128,6 +129,7 @@ class PersonalPropertyCard extends Component {
                             :
                             null}  
                             <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.deletePersonalProperty(this.objectId)}>Delete</Button>
+
                         </div>                        
                     </div>
                 </div>

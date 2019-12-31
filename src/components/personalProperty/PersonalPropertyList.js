@@ -90,7 +90,7 @@ class PersonalPropertyList extends Component {
                     {/* <Button variant="secondary" type="submit">Display</Button> */}
                 </form>
 
-                <div className="personalProperty-container-cards container-cards" align="center">
+                <div className="personalProperty-container-cards container-cards">
                     {this.state.personalProperty.map(personalProperty => 
                         <PersonalPropertyCard 
                         key={personalProperty.id}

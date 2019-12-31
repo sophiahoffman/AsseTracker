@@ -12,23 +12,22 @@ class PersonalPropertyCard extends Component {
     return (
         <React.Fragment>
             <div className="card">
-                <div className = "card-content">
+                <div className = "card-content-small">
                 <a href={'personalproperty/'+this.props.personalProperty.id}>
-                    <Card.Title>
+                    <Card.Title className="card-title-small">
                         {(this.props.personalProperty.imageUrl !== "") 
-                        ? <><img className="asset-image" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br /></>
+                        ? <><img className="card-image" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br /></>
                         : null }
                         {this.props.personalProperty.name}
                     </Card.Title>
                     </a>
-                    {/* <div className="card-format">
-                    
+                    {/* <div className="card-format"> */}
+                    {/* 
                         <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">Property Type</h6>
                             <h6 className="card-property">{this.props.personalProperty.ppType.type}</h6> 
-                        </div>
-                        <div className="col-md-12 form-group">
-                            <h6 className="row-sm-10 row-form-label">Description</h6>
+                        </div> */}
+                        <div className="col-md-12 card-format-small">
                             <h6 className="card-property">{this.props.personalProperty.description}</h6> 
                         </div>
                         {/* <div className="col-md-12 form-group">

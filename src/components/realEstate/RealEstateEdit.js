@@ -148,11 +148,11 @@ class RealEstateEdit extends Component {
         return (
             <div className="update-form">
                 <h6 id="title_updateForm">{this.state.realEstateName}</h6>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                     <Form.Control autoFocus="autofocus" type="text" value={this.state.realEstateName} id="realEstateName" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
                     <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
                     {this.state.realEstateTypes.map(type => (
@@ -160,23 +160,23 @@ class RealEstateEdit extends Component {
                     ))}
                     </Form.Control>
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
                     <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Street Address</Form.Label>
                     <Form.Control type="text" value={this.state.realEstateAddress} id="realEstateAddress" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">City</Form.Label>
                     <Form.Control type="text" value={this.state.realEstateCity} id="realEstateCity" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">State</Form.Label>
                     <Form.Control type="text" value={this.state.realEstateState} id="realEstateState" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Zip</Form.Label>
                     <Form.Control type="text" value={this.state.realEstateZip} id="realEstateZip" onChange={this.handleFieldChange} />
                 </Form.Group>
@@ -188,25 +188,25 @@ class RealEstateEdit extends Component {
                     onChange={this.handleCheckbox}
                     id="rentCheckbox" />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
                     <Form.Control type="date" value={this.state.realEstatePurchaseDate} id="realEstatePurchaseDate" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
                     <Form.Control type="number" value={this.state.realEstatePurchasePrice} id="realEstatePurchasePrice" onChange={this.handleFieldChange} />
                 </Form.Group>
                 {!this.state.realEstateActiveAsset ? 
                 <>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
                         <Form.Control type="date" value={this.state.realEstateDisposalDate}  id="realEstateDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
                         <Form.Control type="number" value={this.state.realEstateDisposalPrice} id="realEstateDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" value={this.state.realEstateDisposalNotes} id="realEstateDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>

@@ -137,11 +137,11 @@ class PersonalPropertyEdit extends Component {
             <div className="update-form">
                 <h6 id="title_editForm">{this.state.personalPropertyName}</h6>
 
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                     <Form.Control autoFocus="autofocus" type="text" id="personalPropertyName" value={this.state.personalPropertyName} onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                     <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
                     {this.state.personalPropertyTypes.map(type => (
@@ -149,49 +149,49 @@ class PersonalPropertyEdit extends Component {
                     ))}
                     </Form.Control>
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Or Enter Other Item Type</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyType} id="personalPropertyType" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Description</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyDescription} id="personalPropertyDescription" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Manufacturer</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyManufacturer} id="personalPropertyManufacturer" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyModel} id="personalPropertyModel" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyLocation} id="personalPropertyLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyPurchaseLocation}  id="personalPropertyPurchaseLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
                     <Form.Control type="date" value={this.state.personalPropertyPurchaseDate} id="personalPropertyPurchaseDate" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
                     <Form.Control type="number" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                 </Form.Group>
                 {!this.state.personalPropertyActiveAsset ? 
                 <>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
                         <Form.Control type="date" value={this.state.personalPropertyDisposalDate}  id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
                         <Form.Control type="number" value={this.state.personalPropertyDisposalPrice} id="personalPropertyDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" value={this.state.personalPropertyDisposalNotes} id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>

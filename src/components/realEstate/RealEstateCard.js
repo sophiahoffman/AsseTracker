@@ -1,7 +1,6 @@
 // @authored by Sophia Hoffman
 
 import React, { Component } from 'react';
-import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import '../../AsseTracker.css'
 
@@ -9,26 +8,26 @@ class RealEstateCard extends Component {
     render () {
         return (
             <React.Fragment>
-                <div className="card">
-                    <div className = "card-content">
+                <div className="card card-small">
+                    <div className = "card-content-small">
                     <a href={'realestate/'+ this.props.realEstate.id}>
-                        <Card.Title>
+                        <Card.Title className="card-title-small">
                         {(this.props.realEstate.imageUrl !== "") 
-                        ? <><img src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br /></>
+                        ? <><img className="card-image" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br /></>
                         : null }
                             {this.props.realEstate.name}
                         </Card.Title>
                         </a>
-                        {/* <div className="card-format">
-                            <div className="col-md-12 form-group">
+                        <div className="card-format-small">
+                            {/* <div className="col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">Property Type</h6>
                                 <h6 className="card-property">{this.props.realEstate.reType.type}</h6> 
-                            </div>
+                            </div> */}
                             <div className="col-md-12 col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">Address</h6>
                                 <h6 className="card-property">{this.props.realEstate.address}</h6> 
                             </div>
-                            <div className="col-md-12 col-md-12 form-group">
+                            {/* <div className="col-md-12 col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">City</h6>
                                 <h6 className="card-property">{this.props.realEstate.city}</h6> 
                             </div>
@@ -39,7 +38,8 @@ class RealEstateCard extends Component {
                             <div className="col-md-12 col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">Zip Code</h6>
                                 <h6 className="card-property">{this.props.realEstate.zip}</h6> 
-                            </div>
+                            </div> */}
+                            {/* 
                             {!this.props.realEstate.rent ? 
                             <>
                             <div className="col-md-12 col-md-12 form-group">
@@ -77,8 +77,8 @@ class RealEstateCard extends Component {
                             :
                             null}  
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
-                        
-                        </div> */}
+                        */}
+                        </div> 
                         
                     </div>
                 </div>

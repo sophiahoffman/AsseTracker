@@ -9,12 +9,12 @@ class VehiclesCard extends Component {
     render () {
         return (
         <React.Fragment>
-            <div className="card">
-                <div className = "card-content">
+            <div className="card-small">
+                <div className = "card-content-small">
                     <a href={'vehicles/'+ this.props.vehicle.id}>
-                    <Card.Title className="f4">
+                    <Card.Title className="card-title-small">
                         {(this.props.vehicle.imageUrl !== "") 
-                        ? <><img src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br /></>
+                        ? <><img className="card-image" src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br /></>
                         : null }
                         {this.props.vehicle.name}
                     </Card.Title>
