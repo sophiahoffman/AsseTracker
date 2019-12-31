@@ -101,7 +101,7 @@ img {
   padding-top: 15px;
 }
 
-.new-form, .disposal-form, .card-format, .card-line, .entry-portal-page, .update-form {
+.new-form, .disposal-form, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -110,4 +110,15 @@ img {
   width: 50%;
   margin: auto;
   padding-top: 25px;
+}
+
+.radio-inline {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: auto;
+  justify-content: space-between;
+  width: 50%;
+  font-size: 16px;
+  font-weight: 500;
 }

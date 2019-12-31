@@ -1,32 +1,67 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
+import { Radio, RadioGroup} from 'react-radio-group';
 import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
 import VehiclesCard from './VehiclesCard';
 
 class VehicleList extends Component {
     state = {
         vehicles: [],
-        loadingStatus: true
+        loadingStatus: true,
+        selectedValue: "active"
     }
 
     componentDidMount() {
-        this.setVehicleState()
+        console.log(this.state.selectedValue)
+        this.setVehiclesState()
     }
 
-    setVehicleState = () => {
+    setVehiclesState = () => {
         this.setState({loadingStatus: false})
-        VehiclesAPIManager.getAllVehicles()
-        .then(vehicles => {
-            this.setState({
-            vehicles: vehicles,
-            })
-        })
+        if (this.state.selectedValue === "active") {
+            return (
+                VehiclesAPIManager.getActiveVehicles()
+                .then(vehicles => {
+                    this.setState({
+                    vehicles: vehicles,
+                    })
+                })
+            )
+        } else if (this.state.selectedValue === "disposed") {
+            return (
+                VehiclesAPIManager.getDisposedVehicles()
+                .then(vehicles => {
+                    this.setState({
+                    vehicles: vehicles,
+                    })
+                })
+            )
+        } else {
+            return (
+                VehiclesAPIManager.getAllVehicles()
+                .then(vehicles => {
+                    this.setState({
+                    vehicles: vehicles,
+                    })
+                })
+            )
+        }
+    }
+
+    updateVehiclesState = e => {
+        this.setState({loadingStatus: true})
+        e.preventDefault();
+        this.setVehiclesState()
+    }
+
+    handleChange = value => {
+    this.setState({selectedValue: value});
     }
 
     deleteVehicle = vehicleId => {
         this.setState({loadingStatus: true})
         VehiclesAPIManager.deleteVehicle(vehicleId)
-        .then(() => this.setVehicleState())
+        .then(() => this.setVehiclesState())
     }
 
     render() {
@@ -35,6 +70,20 @@ class VehicleList extends Component {
                 <div className="button-new vehicle-section-content">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("vehicles/new")}>Add New Vehicle</Button>
                 </div>
+                <form className="form-radio" onSubmit={this.updateVehiclesState}>
+                    <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+                        <label>
+                            <Radio value="active" className="radio-button"  />  Active
+                        </label>
+                        <label>
+                            <Radio value="disposed" className="radio-button"  />  Disposed
+                        </label>
+                        <label>
+                            <Radio value="all" className="radio-button"  />  All
+                        </label>
+                    </RadioGroup>
+                    <Button variant="secondary" type="submit">Display</Button>
+                </form>                
                 <div className="vehicle-container-cards container-cards" align="center">
                     {this.state.vehicles.map(vehicle => 
                         <VehiclesCard 
