@@ -10,7 +10,7 @@ class PersonalPropertyCard extends Component {
     render() {
     return (
         <React.Fragment>
-            <div className="card personalPropertyCard">
+            <div className="card">
                 <div className = "card-content">
                     <Card.Title>
                         {(this.props.personalProperty.imageUrl !== "") 

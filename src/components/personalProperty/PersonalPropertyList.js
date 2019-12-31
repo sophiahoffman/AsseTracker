@@ -51,6 +51,7 @@ class PersonalPropertyList extends Component {
     }
 
     updatePersonalPropertyState = e => {
+        this.setState({loadingStatus: true})
         e.preventDefault();
         this.setPersonalPropertyState()
     }
@@ -72,22 +73,20 @@ class PersonalPropertyList extends Component {
             <React.Fragment>
                 <div className="button-new personalProperty-section-content">
                     <Button variant="secondary" type="button" className="newPersonalPropertyBtn" onClick={() => this.props.history.push("personalproperty/new")}>Add New Item</Button>
-                    <hr />
                 </div>
-            <form className="form-radio" onSubmit={this.updatePersonalPropertyState}>
-
-                <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
-                    <label>
-                        <Radio value="active" className="radio-button"  />  Active
-                    </label>
-                    <label>
-                        <Radio value="disposed" className="radio-button"  />  Disposed
-                    </label>
-                    <label>
-                        <Radio value="all" className="radio-button"  />  All
-                    </label>
-                </RadioGroup>
-                <Button variant="secondary" type="submit">Display</Button>
+                <form className="form-radio" onSubmit={this.updatePersonalPropertyState}>
+                    <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
+                        <label>
+                            <Radio value="active" className="radio-button"  />  Active
+                        </label>
+                        <label>
+                            <Radio value="disposed" className="radio-button"  />  Disposed
+                        </label>
+                        <label>
+                            <Radio value="all" className="radio-button"  />  All
+                        </label>
+                    </RadioGroup>
+                    <Button variant="secondary" type="submit">Display</Button>
                 </form>
 
                 <div className="personalProperty-container-cards container-cards" align="center">

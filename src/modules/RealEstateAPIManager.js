@@ -8,7 +8,15 @@ export default {
     userId: localStorage.getItem("userId"),
 
     getAllRealEstate () {
+        let route = `${this.component}?userId=${this.userId}&&_expand=reType&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },
+    getActiveRealEstate () {
         let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=reType&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },
+    getDisposedRealEstate () {
+        let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=reType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getOneRealEstate (objectId) {

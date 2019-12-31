@@ -7,10 +7,18 @@ export default {
     component: "vehicles",
     userId: localStorage.getItem("userId"),
 
-    getAllVehicles () {
+    getActiveVehicles () {
         let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
+    getDisposedVehicles () {
+    let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+    return APIManager.get(route);
+    },
+    getAllVehicles () {
+        let route = `${this.component}?userId=${this.userId}&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },    
     getOneVehicle (objectId) {
         let route = `${this.component}/${objectId}?_expand=vehicleType`
         return APIManager.get(route);

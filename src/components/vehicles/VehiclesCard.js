@@ -9,9 +9,8 @@ class VehiclesCard extends Component {
     render () {
         return (
         <React.Fragment>
-            <div>
-                <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
-                <div className="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+            <div className="card">
+                <div className = "card-content">
                     <Card.Title className="f4">
                         {(this.props.vehicle.imageUrl !== "") 
                         ? <><img src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br /></>
@@ -68,8 +67,7 @@ class VehiclesCard extends Component {
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
                     
                     </div>
-                    </div>
-                </article>
+                </div>
             </div>
         </React.Fragment>
         )

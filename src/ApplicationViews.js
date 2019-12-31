@@ -23,8 +23,6 @@ import EntryPortal from './components/loginRegister/EntryPortal';
 class ApplicationViews extends Component {
 
     render() {
-
-      console.log("appviews", this.props.isAuthenticated())
         return (
           <React.Fragment>
             <Route
@@ -118,7 +116,6 @@ class ApplicationViews extends Component {
 
             <Route
               exact path="/personalproperty" render={props => {
-                console.log("pp", this.props.isAuthenticated())
                 if (this.props.isAuthenticated()) {
                   return <PersonalPropertyList {...props} />
                 } 
@@ -162,7 +159,6 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realestate" render={props => {
                 if (this.props.isAuthenticated()) {
-                  console.log("realestatepath")
                   return <RealEstateList {...props} />
                 } else {
                  return <Redirect to="/" />
@@ -173,7 +169,6 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realestate/:realEstateId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
-                                    console.log("realestateeditpath")
                   return <RealEstateEdit {...props} />
                 } else {
                  return <Redirect to="/" />
@@ -184,7 +179,6 @@ class ApplicationViews extends Component {
             <Route
               exact path="/realEstate/:realEstateId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
-                                                      console.log("realestatedisposalpath")
                   return <RealEstateDisposal {...props} />
                 } else {
                  return <Redirect to="/" />
