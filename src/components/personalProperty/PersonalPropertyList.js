@@ -15,21 +15,22 @@ class PersonalPropertyList extends Component {
     }
 
     componentDidMount() {
-            this.setPersonalPropertyState()
+        const value = this.state.SelectedValue
+        this.setPersonalPropertyState(value)
     }
 
-    setPersonalPropertyState = () => {
+    setPersonalPropertyState = value => {
         this.setState({loadingStatus: false})
-        if (this.state.selectedValue === "active") {
+        if (value === "all") {
             return (
-                PersonalPropertyAPIManager.getActivePersonalProperty()
+                PersonalPropertyAPIManager.getAllPersonalProperty()
                 .then(personalProperty => {
                     this.setState({
                     personalProperty: personalProperty,
                     })
                 })
             )
-        } else if (this.state.selectedValue === "disposed") {
+        } else if (value === "disposed") {
             return (
                 PersonalPropertyAPIManager.getDisposedPersonalProperty()
                 .then(personalProperty => {
@@ -40,7 +41,7 @@ class PersonalPropertyList extends Component {
             )
         } else {
             return (
-                PersonalPropertyAPIManager.getAllPersonalProperty()
+                PersonalPropertyAPIManager.getActivePersonalProperty()
                 .then(personalProperty => {
                     this.setState({
                     personalProperty: personalProperty,
@@ -57,9 +58,9 @@ class PersonalPropertyList extends Component {
     }
 
     handleChange = value => {
-    this.setState({selectedValue: value});
-    console.log("selected value", this.state.selectedValue)
-  }
+        this.setState({selectedValue: value});
+        this.setPersonalPropertyState(value)
+    }
 
      
     deletePersonalProperty = personalPropertyId => {
@@ -74,7 +75,7 @@ class PersonalPropertyList extends Component {
                 <div className="button-new personalProperty-section-content">
                     <Button variant="secondary" type="button" className="newPersonalPropertyBtn" onClick={() => this.props.history.push("personalproperty/new")}>Add New Item</Button>
                 </div>
-                <form className="form-radio" onSubmit={this.updatePersonalPropertyState}>
+                <form className="form-radio">
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
@@ -86,7 +87,7 @@ class PersonalPropertyList extends Component {
                             <Radio value="all" className="radio-button"  />  All
                         </label>
                     </RadioGroup>
-                    <Button variant="secondary" type="submit">Display</Button>
+                    {/* <Button variant="secondary" type="submit">Display</Button> */}
                 </form>
 
                 <div className="personalProperty-container-cards container-cards" align="center">

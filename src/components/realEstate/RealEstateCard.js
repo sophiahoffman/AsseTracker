@@ -50,10 +50,30 @@ class RealEstateCard extends Component {
                             </div>
                             </> :
                             null}
+                            {!this.props.realEstate.activeAsset ? 
+                            <>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Date</h6>
+                                <h6 className="card-property">{this.props.realEstate.disposalDate}</h6> 
+                            </div>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Price</h6>
+                                <h6 className="card-property">${Number(this.props.realEstate.disposalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h6> 
+                            </div>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Notes</h6>
+                                <h6 className="card-property">{this.props.realEstate.disposalNotes}</h6> 
+                            </div>
+                            </> :
+                            null}
+                            
                         </div> 
                         <div className="button-div">
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/edit`)}>Edit</Button>
+                            {this.props.realEstate.activeAsset ?     
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realestate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
+                            :
+                            null}  
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
                         
                         </div>

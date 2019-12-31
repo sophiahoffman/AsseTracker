@@ -181,10 +181,26 @@ class PersonalPropertyEdit extends Component {
                     <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
                     <Form.Control type="number" value={this.state.personalPropertyPurchasePrice} id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                 </Form.Group>
+                {!this.state.personalPropertyActiveAsset ? 
+                <>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
+                        <Form.Control type="date" value={this.state.personalPropertyDisposalDate}  id="personalPropertyDisposalDate" onChange={this.handleFieldChange} />
+                    </Form.Group>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
+                        <Form.Control type="number" value={this.state.personalPropertyDisposalPrice} id="personalPropertyDisposalPrice" onChange={this.handleFieldChange} />
+                    </Form.Group>
+                    <Form.Group className="col-md-12 form-group form-inline">
+                        <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
+                        <Form.Control type="text" value={this.state.personalPropertyDisposalNotes} id="personalPropertyDisposalNotes" onChange={this.handleFieldChange} />
+                    </Form.Group>
+                </> :
+                null} 
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                 <img align="center" src={this.state.personalPropertyImageUrl} alt=""/><br />
                 <div className="image-upload-div">
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Add Image
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Replace Image
                     </Button>
                 </div>
                 <div className="button-div">

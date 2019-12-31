@@ -59,11 +59,30 @@ class VehiclesCard extends Component {
                             <h6 className="row-sm-10 row-form-label">Purchase Price</h6>
                             <h6 className="card-property">${Number(this.props.vehicle.purchasePrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h6> 
                         </div>
+                        {!this.props.vehicle.activeAsset ? 
+                            <>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Date</h6>
+                                <h6 className="card-property">{this.props.vehicle.disposalDate}</h6> 
+                            </div>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Price</h6>
+                                <h6 className="card-property">${Number(this.props.vehicle.disposalPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h6> 
+                            </div>
+                            <div className="col-md-12 col-md-12 form-group">
+                                <h6 className="row-sm-10 row-form-label">Disposal Notes</h6>
+                                <h6 className="card-property">{this.props.vehicle.disposalNotes}</h6> 
+                            </div>
+                            </> :
+                            null}
                     </div>
             
                     <div className="button-div">
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/edit`)}>Edit</Button>
+                        {this.props.vehicle.activeAsset ?
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/disposal`)}>Disposal</Button>
+                        :
+                        null}
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
                     
                     </div>

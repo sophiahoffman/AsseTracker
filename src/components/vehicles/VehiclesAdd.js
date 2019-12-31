@@ -171,7 +171,7 @@ class VehiclesAdd extends Component {
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
                 <img src={this.state.vehicleImageUrl} alt=""/><br />
                 <div className="image-upload-div">
-                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="button">Add Image
+                    <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="button">Replace Image
                     </Button>
                 </div>
                 <div className="button-div">
