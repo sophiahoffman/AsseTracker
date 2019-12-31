@@ -15,20 +15,21 @@ class RealEstateList extends Component {
     }
 
     componentDidMount() {
-        this.setRealEstateState()
+        const value = this.state.SelectedValue
+        this.setRealEstateState(value)
     }
-    setRealEstateState = () => {
+    setRealEstateState = value => {
         this.setState({loadingStatus: false})
-        if (this.state.selectedValue === "active") {
+        if (value === "all") {
             return (
-                RealEstateAPIManager.getActiveRealEstate()
+                RealEstateAPIManager.getAllRealEstate()
                 .then(realEstate => {
                     this.setState({
                     realEstate: realEstate,
                     })
                 })
             )
-        } else if (this.state.selectedValue === "disposed") {
+        } else if (value === "disposed") {
             return (
                 RealEstateAPIManager.getDisposedRealEstate()
                 .then(realEstate => {
@@ -39,7 +40,7 @@ class RealEstateList extends Component {
             )
         } else {
             return (
-                RealEstateAPIManager.getAllRealEstate()
+                RealEstateAPIManager.getActiveRealEstate()
                 .then(realEstate => {
                     this.setState({
                     realEstate: realEstate,
@@ -49,14 +50,9 @@ class RealEstateList extends Component {
         }
     }
 
-    updateRealEstateState = e => {
-        this.setState({loadingStatus: true})
-        e.preventDefault();
-        this.setRealEstateState()
-    }
-
     handleChange = value => {
-    this.setState({selectedValue: value});
+        this.setState({selectedValue: value});
+        this.setRealEstateState(value);
     }
     
     deleteRealEstate = realEstateId => {
@@ -71,7 +67,7 @@ class RealEstateList extends Component {
                 <div className="button-new realEstate-section-content">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
-                <form className="form-radio" onSubmit={this.updateRealEstateState}>
+                <form className="form-radio">
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
@@ -83,7 +79,7 @@ class RealEstateList extends Component {
                             <Radio value="all" className="radio-button"  />  All
                         </label>
                     </RadioGroup>
-                    <Button variant="secondary" type="submit">Display</Button>
+                    {/* <Button variant="secondary" type="submit">Display</Button> */}
                 </form>
                 <div className="realEstate-container-cards container-cards" align="center">
                     {this.state.realEstate.map(realEstate =>

@@ -12,22 +12,22 @@ class VehicleList extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.selectedValue)
-        this.setVehiclesState()
+        const value = this.state.selectedValue
+        this.setVehiclesState(value)
     }
 
-    setVehiclesState = () => {
+    setVehiclesState = value => {
         this.setState({loadingStatus: false})
-        if (this.state.selectedValue === "active") {
+        if (value === "all") {
             return (
-                VehiclesAPIManager.getActiveVehicles()
+                VehiclesAPIManager.getAllVehicles()
                 .then(vehicles => {
                     this.setState({
                     vehicles: vehicles,
                     })
                 })
             )
-        } else if (this.state.selectedValue === "disposed") {
+        } else if (value === "disposed") {
             return (
                 VehiclesAPIManager.getDisposedVehicles()
                 .then(vehicles => {
@@ -38,7 +38,7 @@ class VehicleList extends Component {
             )
         } else {
             return (
-                VehiclesAPIManager.getAllVehicles()
+                VehiclesAPIManager.getActiveVehicles()
                 .then(vehicles => {
                     this.setState({
                     vehicles: vehicles,
@@ -55,7 +55,8 @@ class VehicleList extends Component {
     }
 
     handleChange = value => {
-    this.setState({selectedValue: value});
+        this.setState({selectedValue: value});
+        this.setVehiclesState(value);
     }
 
     deleteVehicle = vehicleId => {
@@ -70,7 +71,7 @@ class VehicleList extends Component {
                 <div className="button-new vehicle-section-content">
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("vehicles/new")}>Add New Vehicle</Button>
                 </div>
-                <form className="form-radio" onSubmit={this.updateVehiclesState}>
+                <form className="form-radio">
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
@@ -82,7 +83,7 @@ class VehicleList extends Component {
                             <Radio value="all" className="radio-button"  />  All
                         </label>
                     </RadioGroup>
-                    <Button variant="secondary" type="submit">Display</Button>
+                    {/* <Button variant="secondary" type="submit">Display</Button> */}
                 </form>                
                 <div className="vehicle-container-cards container-cards" align="center">
                     {this.state.vehicles.map(vehicle => 
