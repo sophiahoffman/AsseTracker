@@ -142,12 +142,12 @@ class VehiclesEdit extends Component {
     render() {
         return (
             <div className="update-form">
-                <h6 id="title_updateForm">{this.state.vehicleName}</h6> 
-                <Form.Group className="col-md-12 form-group form-inline">
+                <h6 id="title-update-Form">{this.state.vehicleName}</h6> 
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
                     <Form.Control autoFocus="autofocus" type="text" value={this.state.vehicleName} id="vehicleName" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
                     <Form.Control as="select" id="vehicleTypeId" value={this.state.vehicleTypeId} onChange={this.handleFieldChange}>
                     {this.state.vehicleTypes.map(type => (
@@ -155,57 +155,57 @@ class VehiclesEdit extends Component {
                     ))}
                     </Form.Control>
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Or Enter Other Vehicle Type</Form.Label>
                     <Form.Control type="text" id="vehicleType" value={this.state.vehicleType} onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">VIN</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleVin} id="vehicleVin" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">License</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleLicense} id="vehicleLicense" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Year</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleYear} id="vehicleYear" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Make</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleMake} id="vehicleMake" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleModel} id="vehicleModel" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Car Physical Location</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleLocation} id="vehicleLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Location</Form.Label>
                     <Form.Control type="text" value={this.state.vehiclePurchaseLocation} id="vehiclePurchaseLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Date</Form.Label>
                     <Form.Control type="date" value={this.state.vehiclePurchaseDate} id="vehiclePurchaseDate" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Purchase Price</Form.Label>
                     <Form.Control type="number" value={this.state.vehiclePurchasePrice} id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                 </Form.Group>
                 {!this.state.vehicleActiveAsset ? 
                 <>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Date</Form.Label>
                         <Form.Control type="date" value={this.state.vehicleDisposalDate}  id="vehicleDisposalDate" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Price</Form.Label>
                         <Form.Control type="number" value={this.state.vehicleDisposalPrice} id="vehicleDisposalPrice" onChange={this.handleFieldChange} />
                     </Form.Group>
-                    <Form.Group className="col-md-12 form-group form-inline">
+                    <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Disposal Notes</Form.Label>
                         <Form.Control type="text" value={this.state.vehicleDisposalNotes} id="vehicleDisposalNotes" onChange={this.handleFieldChange} />
                     </Form.Group>
