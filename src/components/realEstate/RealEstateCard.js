@@ -11,13 +11,15 @@ class RealEstateCard extends Component {
             <React.Fragment>
                 <div className="card">
                     <div className = "card-content">
+                    <a href={'realestate/'+ this.props.realEstate.id}>
                         <Card.Title>
                         {(this.props.realEstate.imageUrl !== "") 
                         ? <><img src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br /></>
                         : null }
                             {this.props.realEstate.name}
-                        </Card.Title><hr />
-                        <div className="card-format">
+                        </Card.Title>
+                        </a>
+                        {/* <div className="card-format">
                             <div className="col-md-12 form-group">
                                 <h6 className="row-sm-10 row-form-label">Property Type</h6>
                                 <h6 className="card-property">{this.props.realEstate.reType.type}</h6> 
@@ -76,7 +78,7 @@ class RealEstateCard extends Component {
                             null}  
                             <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
                         
-                        </div>
+                        </div> */}
                         
                     </div>
                 </div>

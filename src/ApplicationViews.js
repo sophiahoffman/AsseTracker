@@ -6,14 +6,17 @@ import PersonalPropertyList from './components/personalProperty/PersonalProperty
 import PersonalPropertyAdd from './components/personalProperty/PersonalPropertyAdd';
 import PersonalPropertyDisposal from './components/personalProperty/PersonalPropertyDisposal';
 import PersonalPropertyEdit from './components/personalProperty/PersonalPropertyEdit';
+import PersonalPropertyDetail from './components/personalProperty/PersonalPropertyDetail';
 import VehiclesList from './components/vehicles/VehicleList';
 import VehiclesAdd from './components/vehicles/VehiclesAdd';
 import VehiclesDisposal from './components/vehicles/VehiclesDisposal';
 import VehiclesEdit from './components/vehicles/VehiclesEdit';
+import VehiclesDetail from './components/vehicles/VehiclesDetail';
 import RealEstateList from './components/realEstate/RealEstateList';
 import RealEstateAdd from './components/realEstate/RealEstateAdd';
 import RealEstateDisposal from './components/realEstate/RealEstateDisposal';
 import RealEstateEdit from './components/realEstate/RealEstateEdit';
+import RealEstateDetail from './components/realEstate/RealEstateDetail';
 import WelcomeAsseTracker from './components/welcomeAsseTracker/WelcomeAsseTracker';
 import Login from './components/loginRegister/Login';
 import Register from './components/loginRegister/Register';
@@ -94,6 +97,19 @@ class ApplicationViews extends Component {
             />
     
             <Route
+              exact path="/vehicles/:vehicleId(\d+)" render={props => {
+                if (this.props.isAuthenticated()) {
+                  return (<VehiclesDetail 
+                  {...props} 
+                  />
+                  )
+                } else {
+                return <Redirect to="/" />
+                }
+              }}
+            />
+    
+            <Route
               exact path="/vehicles/:vehicleId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
                   return <VehiclesDisposal {...props} />
@@ -136,6 +152,16 @@ class ApplicationViews extends Component {
             />
     
             <Route
+              exact path="/personalproperty/:personalPropertyId(\d+)" render={props => {
+                if (this.props.isAuthenticated()) {
+                  return <PersonalPropertyDetail {...props} />
+                } else {
+                 return <Redirect to="/" />
+                }
+              }}
+            />
+    
+            <Route
               exact path="/personalproperty/:personalPropertyId(\d+)/disposal" render={props => {
                 if (this.props.isAuthenticated()) {
                   return <PersonalPropertyDisposal {...props} />
@@ -170,6 +196,17 @@ class ApplicationViews extends Component {
               exact path="/realestate/:realEstateId(\d+)/edit" render={props => {
                 if (this.props.isAuthenticated()) {
                   return <RealEstateEdit {...props} />
+                } else {
+                 return <Redirect to="/" />
+                }
+              }}
+            />
+    
+            <Route
+              exact path="/realestate/:realEstateId(\d+)" render={props => {
+                if (this.props.isAuthenticated()) {
+                  return <RealEstateDetail {...props}
+                  />
                 } else {
                  return <Redirect to="/" />
                 }
