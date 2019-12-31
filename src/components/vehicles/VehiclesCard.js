@@ -11,13 +11,15 @@ class VehiclesCard extends Component {
         <React.Fragment>
             <div className="card">
                 <div className = "card-content">
+                    <a href={'vehicles/'+ this.props.vehicle.id}>
                     <Card.Title className="f4">
                         {(this.props.vehicle.imageUrl !== "") 
                         ? <><img src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br /></>
                         : null }
                         {this.props.vehicle.name}
-                    </Card.Title><hr />
-                    <div className="card-format">
+                    </Card.Title>
+                    </a>
+                    {/* <div className="card-format">
                     
                         <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">Vehicle Type</h6>
@@ -85,7 +87,7 @@ class VehiclesCard extends Component {
                         null}
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
                     
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </React.Fragment>
