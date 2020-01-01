@@ -161,7 +161,7 @@ class RealEstateEdit extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Real Estate Type</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Type</Form.Label>
                     <Form.Control type="text" id="realEstateType" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">

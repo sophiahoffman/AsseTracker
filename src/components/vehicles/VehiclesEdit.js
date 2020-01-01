@@ -156,7 +156,7 @@ class VehiclesEdit extends Component {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Vehicle Type</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Or Enter Other Type</Form.Label>
                     <Form.Control type="text" id="vehicleType" value={this.state.vehicleType} onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -180,7 +180,7 @@ class VehiclesEdit extends Component {
                     <Form.Control type="text" value={this.state.vehicleModel} id="vehicleModel" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Car Physical Location</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleLocation} id="vehicleLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">

@@ -19,33 +19,23 @@ class VehiclesCard extends Component {
                         {this.props.vehicle.name}
                     </Card.Title>
                     </a>
-                    {/* <div className="card-format">
+                    <div className="card-format-small">
                     
-                        <div className="col-md-12 form-group">
+                        {/* <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">Vehicle Type</h6>
                             <h6 className="card-property">{this.props.vehicle.vehicleType.type}</h6> 
+                        </div> */}
+                        <div className="col-md-12">
+                            <h6 className="card-property-small">{this.props.vehicle.vin}</h6> 
                         </div>
-                        <div className="col-md-12 form-group">
-                            <h6 className="row-sm-10 row-form-label">VIN</h6>
-                            <h6 className="card-property">{this.props.vehicle.vin}</h6> 
-                        </div>
-                        <div className="col-md-12 form-group">
+                        {/* <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">License Number</h6>
                             <h6 className="card-property">{this.props.vehicle.license}</h6> 
+                        </div> */}
+                        <div className="col-md-12">
+                            <h6 className="card-property-small">{this.props.vehicle.year} {this.props.vehicle.make} {this.props.vehicle.model}</h6> 
                         </div>
-                        <div className="col-md-12 form-group">
-                            <h6 className="row-sm-10 row-form-label">Year</h6>
-                            <h6 className="card-property">{this.props.vehicle.year}</h6> 
-                        </div>
-                        <div className="col-md-12 form-group">
-                            <h6 className="row-sm-10 row-form-label">Make</h6>
-                            <h6 className="card-property">{this.props.vehicle.make}</h6> 
-                        </div>
-                        <div className="col-md-12 form-group">
-                            <h6 className="row-sm-10 row-form-label">Model</h6>
-                            <h6 className="card-property">{this.props.vehicle.model}</h6> 
-                        </div>
-                        <div className="col-md-12 form-group">
+                        {/* <div className="col-md-12 form-group">
                             <h6 className="row-sm-10 row-form-label">Vehicle Physical Location</h6>
                             <h6 className="card-property">{this.props.vehicle.location}</h6> 
                         </div>
@@ -86,8 +76,8 @@ class VehiclesCard extends Component {
                         :
                         null}
                         <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
-                    
-                    </div> */}
+                    */}
+                    </div>  
                 </div>
             </div>
         </React.Fragment>
