@@ -100,7 +100,7 @@ img {
   margin: auto;
 }
 
-.new-form, .disposal-form, .card-content, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
+.new-form, .form-register, .disposal-form, .card-content, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -123,8 +123,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  align-self: flex-end;
-  text-align:center;
+  align-items: center;
+  text-align: center;
   width: inherit;
   margin: auto;
   padding-top: 25px;
@@ -134,7 +134,7 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   text-align:center;
   margin: auto;
   padding: 25px;
@@ -145,7 +145,7 @@ img {
   height: 150px;
 }
 
-.card-small, .card-content-small {
+.card-small {
   width: 250px;
   height: 250px;
   display: flex;
@@ -153,8 +153,34 @@ img {
   justify-content: space-between;
   align-items:center;
   margin: auto;
+  border: 1px solid rgba(0,0,0,.125);
+  border-top-color: rgba(0, 0, 0, 0.125);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-right-color: rgba(0, 0, 0, 0.125);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-bottom-color: rgba(0, 0, 0, 0.125);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-left-color: rgba(0, 0, 0, 0.125);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  border-radius: .25rem;
 }
 
+.card-property-small {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  margin: auto;
+}
 
 .card {
   margin-left: 10px;

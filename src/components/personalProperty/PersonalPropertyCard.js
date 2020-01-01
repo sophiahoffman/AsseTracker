@@ -11,7 +11,7 @@ class PersonalPropertyCard extends Component {
     render() {
     return (
         <React.Fragment>
-            <div className="card">
+            <div className="card-small">
                 <div className = "card-content-small">
                 <a href={'personalproperty/'+this.props.personalProperty.id}>
                     <Card.Title className="card-title-small">
