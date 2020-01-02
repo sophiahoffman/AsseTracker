@@ -1,3 +1,26 @@
+**AsseTracker** is a client-side app that allows the user to keep a catalog of high-value assets such as real estate, vehicles and jewelry. It allows the user to record purchase and disposal information. It originated from a need to keep track of high-value items for insurance purposes.
+
+To use AsseTracker:
+- Clone Github repository
+- Navigate to directory
+- Make a copy of the database.json.example file
+- Rename copy to database.json
+- Start json server
+- npm start to start services - default to port 3000
+
+There are 3 asset category groupings:  
+Real Estate  
+Vehicles  
+Personal Property  
+
+Here is the ERD for the app:
+![AsseTracker ERD](AsseTrackerERD.PNG)
+
+Enjoy!
+
+
+
+Additional information regarding React...
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
