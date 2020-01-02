@@ -44,7 +44,7 @@ class EntryPortal extends Component {
           <img id="portal-logo" src={this.state.logoUrl} alt="logo"></img>
         </div>
         <div className="new-form">
-            <Form.Group className="col-md-12 form-group form-inline">
+            <Form.Group className="col-md-8 form-group form-inline">
                 <Form.Label className="row-sm-2 row-form-label">Enter Your Email Address</Form.Label>
                 <Form.Control type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
