@@ -53,25 +53,26 @@ class Register extends Component {
                 <h2>hello {this.state.userEmailAddress}</h2>
                 <h2>Please enter the following information to create an account</h2>
                 </header>
-                <Form>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter User Name</Form.Label>
-                    <Form.Control type="text" id="userName" onChange={this.handleFieldChange} />
+                    <Form.Control autoFocus="autofocus" type="text" id="userName" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter Password</Form.Label>
-                    <Form.Control type="password" id="userPassword" onChange={this.handleFieldChange} />
+                    <Form.Control autoFocus="autofocus" type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
-                <Form.Group className="col-md-12 form-group form-inline">
+                <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Enter Password Again</Form.Label>
-                    <Form.Control type="password" id="userPassword2" onChange={this.handleFieldChange} />
+                    <Form.Control autoFocus="autofocus" type="password" id="userPassword2" onChange={this.handleFieldChange} />
                 </Form.Group>
-                </Form>
-                <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
-                </Button>
-                <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
-                onClick={this.props.handleLogout}>Cancel
-                </Button>
+
+                <div className="button-div">
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.createUser}>Submit
+                    </Button>
+                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    onClick={this.props.handleLogout}>Cancel
+                    </Button>
+                </div>
             </div>
         )
     }
