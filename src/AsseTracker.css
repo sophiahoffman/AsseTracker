@@ -127,6 +127,14 @@ img {
   margin: auto;
 }
 
+.detail-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  justify-content: center;
+  margin: auto;
+  padding-top: 15px;
+}
 .new-form, .form-register, .disposal-form, .card-content, .card-format, .card-line, .entry-portal-page, .update-form, .form-radio {
   display: flex;
   flex-direction: column;
@@ -160,6 +168,7 @@ img {
 .container-cards {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   text-align:center;
@@ -179,7 +188,7 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items:center;
-  margin: auto;
+  margin: 10px;
   border: 1px solid rgba(0,0,0,.125);
   border-top-color: rgba(0, 0, 0, 0.125);
   border-top-style: solid;

@@ -22,7 +22,7 @@ class PersonalPropertyCard extends Component {
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
                     {(this.props.personalProperty.imageUrl !== "") 
-                    ? <><img src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br /></>
+                    ? <><img className="detail-image" src={this.props.personalProperty.imageUrl} alt={this.props.personalProperty.name} /><br /></>
                     : null }
                     {this.props.personalProperty.name}
                 </Modal.Title>
