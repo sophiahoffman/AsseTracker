@@ -90,7 +90,7 @@ class RealEstateEdit extends Component {
     (error, result) => {
         // Just like other input forms, changing state so that the imageUrl property will contain the URL of the uploaded image
             if (result) {
-                this.setState({personalPropertyImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
+                this.setState({realEstateImageUrl: `https://res.cloudinary.com/anymouse/image/upload/v1576529805/${result[0].public_id}`})
             } else {
                 window.close()           
             }        
