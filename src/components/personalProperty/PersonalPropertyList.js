@@ -18,7 +18,7 @@ class PersonalPropertyList extends Component {
         const value = this.state.SelectedValue
         this.setPersonalPropertyState(value)
     }
-
+// sets state array value depending on the active, disposed or all value selected by user with radio buttons
     setPersonalPropertyState = value => {
         this.setState({loadingStatus: false})
         if (value === "all") {
@@ -54,7 +54,7 @@ class PersonalPropertyList extends Component {
     updatePersonalPropertyState = e => {
         this.setState({loadingStatus: true})
         e.preventDefault();
-        this.setPersonalPropertyState()
+        this.setPersonalPropertyState(this.state.selectedValue)
     }
 
     handleChange = value => {
@@ -66,7 +66,7 @@ class PersonalPropertyList extends Component {
     deletePersonalProperty = personalPropertyId => {
         this.setState({loadingStatus: true})        
         PersonalPropertyAPIManager.deletePersonalProperty(personalPropertyId)
-        .then(() => this.setPersonalPropertyState())
+        .then(() => this.setPersonalPropertyState(this.state.selectedValue))
     }
 
     render() {
@@ -76,6 +76,7 @@ class PersonalPropertyList extends Component {
                     <Button variant="secondary" type="button" className="newPersonalPropertyBtn" onClick={() => this.props.history.push("personalproperty/new")}>Add New Item</Button>
                 </div>
                 <form className="form-radio">
+                    <h6>Assets to Display:</h6>
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
@@ -96,7 +97,8 @@ class PersonalPropertyList extends Component {
                         key={personalProperty.id}
                         personalProperty={personalProperty}
                         deletePersonalProperty = {this.deletePersonalProperty}
-                        {...this.props} />)}
+                        {...this.props}
+                         />)}
                 </div>
             </React.Fragment>
             

@@ -11,7 +11,6 @@ class VehiclesCard extends Component {
         return (
             <Modal
             {...props}
-            {...this.props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered

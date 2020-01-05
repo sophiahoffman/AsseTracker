@@ -65,6 +65,7 @@ class PersonalPropertyAdd extends Component {
         });
     }
 
+// if else statement allows for different object posted if user enters custom property type
     constructNewPersonalProperty = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});

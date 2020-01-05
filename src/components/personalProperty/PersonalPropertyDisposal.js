@@ -39,7 +39,7 @@ class PersonalPropertyDisposal extends Component {
             id: this.objectId,
             disposalDate: this.state.personalPropertyDisposalDate,
             disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-            disposalNotes: this.state.personalPropertyDisposalNotes(),
+            disposalNotes: this.state.personalPropertyDisposalNotes,
             activeAsset: false,
         }
         PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)

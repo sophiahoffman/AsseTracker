@@ -32,7 +32,6 @@ class PersonalPropertyEdit extends Component {
     };
 
     componentDidMount() {
-        console.log("objectId", this.objectId)
         let propType = 'ppTypes?_sort=id&&_order=asc'
         APIManager.get(propType)
         .then(results => {
@@ -72,7 +71,7 @@ class PersonalPropertyEdit extends Component {
         }
         return APIManager.post(route, newTypeObject)
     };
-
+// Cloudinary widget to upload images
     uploadWidget = () => {
         window.cloudinary.openUploadWidget({ cloud_name: Cloudinary.cloudName, upload_preset: Cloudinary.uploadPreset, tags:['atag']},
         (error, result) => {

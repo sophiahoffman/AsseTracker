@@ -55,10 +55,17 @@ class RealEstateList extends Component {
         this.setRealEstateState(value);
     }
     
+    
+    updateVehicleState = e => {
+        this.setState({loadingStatus: true})
+        e.preventDefault();
+        this.setRealEstateState(this.state.selectedValue)
+    }
+
     deleteRealEstate = realEstateId => {
         this.setState({loadingStatus: true})
         RealEstateAPIManager.deleteRealEstate(realEstateId)
-        .then(() => this.setRealEstateState())
+        .then(() => this.setRealEstateState(this.state.selectedValue))
     }
 
     render() {
@@ -68,6 +75,7 @@ class RealEstateList extends Component {
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("realestate/new")}>Add New Property</Button>
                 </div>
                 <form className="form-radio">
+                    <h6>Assets to Display:</h6>
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
