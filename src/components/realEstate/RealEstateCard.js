@@ -12,7 +12,6 @@ class RealEstateCard extends Component {
         return (
             <Modal
             {...props}
-            {...this.props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
@@ -80,7 +79,7 @@ class RealEstateCard extends Component {
                     <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.history.push(`/realEstate/${this.props.realEstate.id}/disposal`)}>Disposal</Button>
                     :
                     null}  
-                    <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleterealEstate(this.props.realEstate.id)}>Delete</Button>
+                    <Button variant="secondary" type="button" className="realEstate-button" onClick={() => this.props.deleteRealEstate(this.props.realEstate.id)}>Delete</Button>
 
                 </div>  
             </Modal.Body>

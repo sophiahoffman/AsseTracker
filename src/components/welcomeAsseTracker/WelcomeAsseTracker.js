@@ -43,17 +43,17 @@ class WelcomeAsseTracker extends Component {
                 {/* {Number(this.state.realEstateTotal)+Number(this.state.vehiclesTotal)+Number(this.state.personalPropertyTotal)}</h4> */}
                 ${(Number(this.state.realEstateTotal)+Number(this.state.vehiclesTotal)+Number(this.state.personalPropertyTotal)).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h4>
 
-                <a href={'/realestate'}><img src={this.state.realEstateImage} alt="realEstateImage" className="welcome-links" /></a>
+                <a href={'/realestate'}><img src={this.state.realEstateImage} alt="realEstateImage" className="detail-image" /></a>
                 
                 <h5>Total Real Estate:</h5>
                 <h5>${Number(this.state.realEstateTotal).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h5>
 
-                <a href={'/vehicles'}><img src={this.state.vehicleImage} alt="vehicleImage" className="welcome-links"/></a>
+                <a href={'/vehicles'}><img src={this.state.vehicleImage} alt="vehicleImage" className="detail-image"/></a>
 
                 <h5>Total Vehicles:</h5>
                 <h5>${Number(this.state.vehiclesTotal).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</h5>
 
-                <a href={'/personalproperty'}><img src={this.state.personalPropertyImage} alt="personalPropertyImage" className="welcome-links" /></a>
+                <a href={'/personalproperty'}><img src={this.state.personalPropertyImage} alt="personalPropertyImage" className="detail-image" /></a>
 
                 <h5>Total Personal Property:</h5>
                 <h5>${Number(this.state.personalPropertyTotal).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} </h5>

@@ -100,6 +100,7 @@ class RealEstateEdit extends Component {
     constructUpdatedRealEstate = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
+        console.log("im running constructing updated realestate")
         if (this.state.realEstateType !== "") {
             this.handleOtherInput()
             .then(result => {
@@ -223,7 +224,7 @@ class RealEstateEdit extends Component {
                     </Button>
                 </div>
                 <div className="button-div">
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.constructUpdatedRealEstate}>Submit
+                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={ this.constructUpdatedRealEstate}>Submit
                     </Button>
                     <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.history.goBack}>Cancel

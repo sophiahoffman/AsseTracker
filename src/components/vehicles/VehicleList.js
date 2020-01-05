@@ -72,6 +72,7 @@ class VehicleList extends Component {
                     <Button variant="secondary" type="button" className="newArticleBtn" onClick={() => this.props.history.push("vehicles/new")}>Add New Vehicle</Button>
                 </div>
                 <form className="form-radio">
+                    <h6>Assets to Display:</h6>
                     <RadioGroup className="radio-button-group" name="assetDisplay" selectedValue={this.state.selectedValue} onChange={this.handleChange}>
                         <label>
                             <Radio value="active" className="radio-button"  />  Active
