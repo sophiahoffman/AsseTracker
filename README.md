@@ -2,11 +2,13 @@
 
 To use AsseTracker:
 - Clone Github repository
-- Navigate to directory
+- Navigate to main application directory
+- In terminal, enter "npm start" to start services - default to port 3000
+- Navigate to api subdirectory
 - Make a copy of the database.json.example file
 - Rename copy to database.json
 - Start json server
-- npm start to start services - default to port 3000
+
 
 There are 3 asset category groupings:  
 Real Estate  
