@@ -18,7 +18,7 @@ class WelcomeAsseTracker extends Component {
     }
 
     componentDidMount() {
-        APIManager.get(`realestate/?userId=${this.state.userId}&&activeAsset=true`)
+        APIManager.get(`realestates/?userId=${this.state.userId}&&activeAsset=true`)
         .then(re => this.setState({realEstateTotal: this.sumAssetPrice(re)}))
         APIManager.get(`personalproperty/?userId=${this.state.userId}&&activeAsset=true`)
         .then(pp => this.setState({personalPropertyTotal: this.sumAssetPrice(pp)}))
