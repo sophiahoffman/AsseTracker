@@ -10,7 +10,9 @@ import '../../AsseTracker.css';
 
 class PersonalPropertyCard extends Component {
 
+
     MyVerticallyCenteredModal = props => {
+        console.log(this.props.fromRealEstateCard)
         return (
             <Modal
             {...props}
@@ -43,8 +45,12 @@ class PersonalPropertyCard extends Component {
                     <h6 className="row-sm-10 row-form-label">Model</h6>
                     <h6 className="card-property">{this.props.personalProperty.model}</h6> 
                 </div>
+                {/* <div className="col-md-12 form-group">
+                    <h6 className="row-sm-10 row-form-label">Location</h6>
+                    <h6 className="card-property">{this.props.personalProperty.realEstateId}</h6> 
+                </div> */}
                 <div className="col-md-12 form-group">
-                    <h6 className="row-sm-10 row-form-label">Physical Location</h6>
+                    <h6 className="row-sm-10 row-form-label">Location Notes</h6>
                     <h6 className="card-property">{this.props.personalProperty.location}</h6> 
                 </div>
                 <div className="col-md-12 form-group">
@@ -75,6 +81,7 @@ class PersonalPropertyCard extends Component {
                 </div>
                 </> :
                 null}
+                {this.props.fromRealEstateCard ?
                 <div className="button-div">
                     <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>
                     {this.props.personalProperty.activeAsset ? 
@@ -82,8 +89,8 @@ class PersonalPropertyCard extends Component {
                     :
                     null}  
                     <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.deletePersonalProperty(this.props.personalProperty.id)}>Delete</Button>
-
-                </div>  
+                </div>
+                : null}  
             </Modal.Body>
             <Modal.Footer>
                     <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>

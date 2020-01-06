@@ -122,7 +122,7 @@ button.modal-close {
 
 img {
   width: 20%;
-  border-radius: 50%;
+  border-radius: 100%;
   justify-content: center;
   margin: auto;
 }
@@ -180,12 +180,12 @@ img {
 
 .card-title-small {
   width: inherit;
-  height: 150px;
+  height: 125px;
 }
 
 .card-small {
-  width: 300px;
-  height: 300px;
+  width: 325px;
+  height: 325px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

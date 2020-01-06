@@ -5,9 +5,31 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import PersonalPropertyCard from '../personalProperty/PersonalPropertyCard';
+import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
+// import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import '../../AsseTracker.css';
 
 class RealEstateCard extends Component {
+        state = {
+            personalProperty: [],
+            fromRealEstateCard: true,
+        }
+
+        getActivePersonalPropertyAtLocation = locationId => {
+            // const [modalShow, setModalShow] = React.useState(false);
+            locationId = this.props.realEstate.id
+            return (
+
+                PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
+                .then(personalProperty => {
+                    this.setState({
+                    personalProperty: personalProperty,
+                    })
+                })
+            )
+        }
+
         MyVerticallyCenteredModal = props => {
         return (
             <Modal
@@ -89,6 +111,40 @@ class RealEstateCard extends Component {
             </Modal>
         );
     }
+        MyAssociatedPersonalProperty = props => {
+                    return (
+
+// .then(
+            <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    <h6>Personal Property associated with {this.props.realEstate.name}</h6>
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className="personalProperty-container-cards container-cards">
+                    {this.state.personalProperty.map(personalProperty => 
+                        <PersonalPropertyCard 
+                        key={personalProperty.id}
+                        personalProperty={personalProperty}
+                        fromRealEstateCard = {this.state.fromRealEstateCard}
+                        deletePersonalProperty = {this.deletePersonalProperty}
+                        {...this.props}
+                         />)}
+                </div> 
+            </Modal.Body>
+            <Modal.Footer>
+                    <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>
+            </Modal.Footer> 
+            </Modal>
+// )
+        );
+    }
     
 
     App = () => {
@@ -107,6 +163,25 @@ class RealEstateCard extends Component {
             </ButtonToolbar>
         );
     }
+
+    AssociatedPP = () => {
+        const [modalShow, setModalShow] = React.useState(false);
+
+        return (
+            <ButtonToolbar>
+            <Button className="button-card" variant="secondary" onClick={() => {
+            this.getActivePersonalPropertyAtLocation(this.props.realEstate.id)
+            .then(setModalShow(true))}}>
+                Personal Property
+            </Button>
+
+            <this.MyAssociatedPersonalProperty
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+            </ButtonToolbar>
+        );
+    }
     render () {
         return (
             <React.Fragment>
@@ -119,13 +194,15 @@ class RealEstateCard extends Component {
                             {this.props.realEstate.name}
                         </Card.Title>
                         <this.App />
+                        <this.AssociatedPP />
                         <div className="card-format-small">
                             <div className="col-md-12">
                                 {/* <h6 className="row-sm-10 row-form-label">Address</h6> */}
                                 <h6 className="card-property-small">{this.props.realEstate.address}</h6> 
                             </div>
                             <div className="col-md-12">
-                                <h6 className="card-property-small">{this.props.realEstate.city}, {this.props.realEstate.state}</h6> 
+                                <h6 className="card-property-small">{this.props.realEstate.city}
+                                <p>{this.props.realEstate.state}</p></h6> 
                             </div>
                         </div> 
                         

@@ -8,7 +8,11 @@ export default {
     userId: localStorage.getItem("userId"),
 
     getActivePersonalProperty () {
-        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=ppType&&_expand=realEstateId&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },
+    getActivePersonalPropertyAtLocation (locationId) {
+        let route = `${this.component}?realEstateId=${locationId}&&activeAsset=true&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getDisposedPersonalProperty () {

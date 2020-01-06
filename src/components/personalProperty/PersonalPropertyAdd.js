@@ -12,6 +12,8 @@ import '../../AsseTracker.css';
 // PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
 class PersonalPropertyAdd extends Component {
+    userId = localStorage.getItem("userId")
+
     state = {
         personalPropertyName: "",
         personalPropertyTypeId: 1,
@@ -20,6 +22,8 @@ class PersonalPropertyAdd extends Component {
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
+        personalPropertyLocationId: 0,
+        personalPropertyLocations: [],
         personalPropertyLocation: "",
         personalPropertyPurchaseLocation: "",
         personalPropertyPurchaseDate: "",
@@ -37,11 +41,17 @@ class PersonalPropertyAdd extends Component {
         .then(results => {
             this.setState({personalPropertyTypes: results})
         })
+        let locations = `realEstate?userId=${this.userId}&&_sort=id&&_order=asc`
+        APIManager.get(locations)
+        .then(results => {
+            this.setState({personalPropertyLocations: results})
+        })
     }
 
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
+        console.log(e.target.id, e.target.value)
         this.setState(stateToChange)
     };
 // handleOtherInput is run at form submit. Creates new type based on whether or not there is any text entered in id="personalPropertyType"
@@ -79,6 +89,7 @@ class PersonalPropertyAdd extends Component {
                     description: this.state.personalPropertyDescription,
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
@@ -98,6 +109,7 @@ class PersonalPropertyAdd extends Component {
                 description: this.state.personalPropertyDescription,
                 manufacturer: this.state.personalPropertyManufacturer,
                 model: this.state.personalPropertyModel,
+                realEstateId: Number(this.state.personalPropertyLocationId),
                 location: this.state.personalPropertyLocation,
                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
                 purchaseDate: this.state.personalPropertyPurchaseDate,
@@ -143,7 +155,15 @@ class PersonalPropertyAdd extends Component {
                         <Form.Control type="text" id="personalPropertyModel" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-8 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
+                        <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange}>
+                        {this.state.personalPropertyLocations.map(location => (
+                            <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group className="col-md-8 form-group form-inline">
+                        <Form.Label className="row-sm-2 row-form-label">Location Notes</Form.Label>
                         <Form.Control type="text" id="personalPropertyLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-8 form-group form-inline">
