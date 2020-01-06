@@ -41,7 +41,7 @@ class PersonalPropertyAdd extends Component {
         .then(results => {
             this.setState({personalPropertyTypes: results})
         })
-        let locations = `realEstate?userId=${this.userId}&&_sort=id&&_order=asc`
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
         APIManager.get(locations)
         .then(results => {
             this.setState({personalPropertyLocations: results})

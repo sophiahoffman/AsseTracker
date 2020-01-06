@@ -10,9 +10,19 @@ import '../../AsseTracker.css';
 
 class PersonalPropertyCard extends Component {
 
+    state = {
+        showButtons: true,
+    }
+
+    componentDidMount() {
+        if (this.props.fromRealEstateCard) {
+            this.setState({showButtons: false})
+        } else {
+            return null
+        }
+    }
 
     MyVerticallyCenteredModal = props => {
-        console.log(this.props.fromRealEstateCard)
         return (
             <Modal
             {...props}
@@ -45,10 +55,10 @@ class PersonalPropertyCard extends Component {
                     <h6 className="row-sm-10 row-form-label">Model</h6>
                     <h6 className="card-property">{this.props.personalProperty.model}</h6> 
                 </div>
-                {/* <div className="col-md-12 form-group">
+                <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Location</h6>
-                    <h6 className="card-property">{this.props.personalProperty.realEstateId}</h6> 
-                </div> */}
+                    <h6 className="card-property">{this.props.personalProperty.realEstate.name}</h6> 
+                </div>
                 <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Location Notes</h6>
                     <h6 className="card-property">{this.props.personalProperty.location}</h6> 
@@ -81,7 +91,7 @@ class PersonalPropertyCard extends Component {
                 </div>
                 </> :
                 null}
-                {this.props.fromRealEstateCard ?
+                {this.state.showButtons ?
                 <div className="button-div">
                     <Button variant="secondary" type="button" className="personalProperty-button" onClick={() => this.props.history.push(`/personalproperty/${this.props.personalProperty.id}/edit`)}>Edit</Button>
                     {this.props.personalProperty.activeAsset ? 

@@ -4,7 +4,7 @@ import APIManager from './APIManager';
 
 
 export default {
-    component: "realEstate",
+    component: "realEstates",
     userId: localStorage.getItem("userId"),
 
     getAllRealEstate () {

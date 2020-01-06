@@ -9,6 +9,7 @@ import Cloudinary from '../../ignore';
 
 class PersonalPropertyEdit extends Component {
     objectId = this.props.match.params.personalPropertyId
+    userId = localStorage.getItem("userId")
 
     state = {
         personalPropertyName: "",
@@ -35,9 +36,14 @@ class PersonalPropertyEdit extends Component {
 
     componentDidMount() {
         let propType = 'ppTypes?_sort=id&&_order=asc'
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
         APIManager.get(propType)
         .then(results => {
             this.setState({personalPropertyTypes: results})
+        })
+        .then(() => APIManager.get(locations))
+        .then(results => {
+            this.setState({personalPropertyLocations: results})
         })
         .then(result => PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId))
         .then(item => {
@@ -101,7 +107,7 @@ class PersonalPropertyEdit extends Component {
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
                     location: this.state.personalPropertyLocation,
-                    locationId: this.state.personalPropertyLocationId,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
@@ -123,7 +129,7 @@ class PersonalPropertyEdit extends Component {
                     description: this.state.personalPropertyDescription,
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
-                    locationId: this.state.personalPropertyLocationId,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
