@@ -127,6 +127,7 @@ class VehiclesAdd extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
                     <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
+                    <option></option>
                     {this.state.vehicleTypes.map(type => (
                         <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                     ))}

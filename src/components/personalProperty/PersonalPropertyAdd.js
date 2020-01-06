@@ -133,6 +133,7 @@ class PersonalPropertyAdd extends Component {
                     <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                         <Form.Control as="select" id="personalPropertyTypeId" onChange={this.handleFieldChange}>
+                        <option></option>
                         {this.state.personalPropertyTypes.map(type => (
                             <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
@@ -157,6 +158,7 @@ class PersonalPropertyAdd extends Component {
                     <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
                         <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange}>
+                        <option></option>
                         {this.state.personalPropertyLocations.map(location => (
                             <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
                         ))}

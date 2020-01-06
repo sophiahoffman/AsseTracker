@@ -160,6 +160,7 @@ class RealEstateEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
                     <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
+                    <option></option>
                     {this.state.realEstateTypes.map(type => (
                         <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                     ))}
