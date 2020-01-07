@@ -24,9 +24,10 @@ class Login extends Component {
 
     validateUserLogin = () => {
         this.setState({loadingStatus: true})
-        APIManager.get(`users?email=${this.state.userEmailAddress}`)
+        APIManager.get(`users?userEmailAddress=${this.state.userEmailAddress}`)
         .then(result => {
-            if (result[0].password === this.state.userPassword) {
+            console.log(result)
+            if (result[0].userPassword === this.state.userPassword) {
                 localStorage.setItem("userId", result[0].id)
                 this.props.history.push('/')
                 return this.props.isAuthenticated()
