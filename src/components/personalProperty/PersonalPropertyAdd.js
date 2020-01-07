@@ -27,7 +27,7 @@ class PersonalPropertyAdd extends Component {
         personalPropertyLocation: "",
         personalPropertyPurchaseLocation: "",
         personalPropertyPurchaseDate: "",
-        personalPropertyPurchasePrice: "",
+        personalPropertyPurchasePrice: "0",
         personalPropertyActiveAsset: true,
         loadingStatus: false,
         // Cloudinary added imageURL

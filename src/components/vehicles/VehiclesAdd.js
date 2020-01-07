@@ -25,7 +25,7 @@ class VehiclesAdd extends Component {
         vehicleLocation: "",
         vehiclePurchaseLocation: "",
         vehiclePurchaseDate: "",
-        vehiclePurchasePrice: "",
+        vehiclePurchasePrice: "0",
         vehicleActiveAsset: true,
         loadingStatus: false,        
         // Cloudinary added imageURL

@@ -2,77 +2,7 @@
   "users": [
   ],
   "personalProperty": [
-<<<<<<< HEAD
-    {
-      "userId": 1,
-      "name": "Lord of the Rings First Edition",
-      "ppTypeId": 6,
-      "description": "1st US Edition - Later Printings 1955/1956",
-      "manufacturer": "Houghton Mifflin",
-      "model": "1955/1956 Later Print 1st Edition",
-      "location": "3rd book from the left; 2nd shelf",
-      "realEstateId": 6,
-      "purchaseLocation": "eBay",
-      "purchaseDate": "2020-01-05",
-      "purchasePrice": "1950.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/vop2nuy8sp3sj9uqq2ex",
-      "id": 1,
-      "disposalPrice": "NaN"
-    },
-    {
-      "userId": 1,
-      "name": "Custom Guitar",
-      "ppTypeId": 3,
-      "description": "Fender Custom Shop Custom Deluxe Stratocaster 2012 Faded Honey Burst, j0078",
-      "manufacturer": "Fender",
-      "model": "Stratocaster",
-      "location": "Chicago DJ Room",
-      "realEstateId": 6,
-      "purchaseLocation": "eBay",
-      "purchaseDate": "0001-01-31",
-      "purchasePrice": "3500.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/s8nmdbsmdgc5ubaonjc0",
-      "id": 2,
-      "disposalPrice": "NaN"
-    },
-    {
-      "userId": 3,
-      "name": "cannon camera",
-      "ppTypeId": 5,
-      "description": "test ",
-      "manufacturer": "cannon",
-      "model": "a230",
-      "location": "santa cruz",
-      "realEstateId": 5,
-      "purchaseLocation": "walnut",
-      "purchaseDate": "2000-01-01",
-      "purchasePrice": "1000.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/skmlrxyujfiqerecap9a",
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "name": "Technic 1210 Turntables",
-      "ppTypeId": 4,
-      "description": "Technic 1210 Turntables",
-      "manufacturer": "Technic",
-      "model": "1210",
-      "location": "Chicago DJ Room",
-      "realEstateId": 5,
-      "purchaseLocation": "craigslist",
-      "purchaseDate": "2011-01-01",
-      "purchasePrice": "999.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/pd0xxbjbj5sdavssa1ee",
-      "id": 7,
-      "disposalPrice": "NaN"
-    }
-=======
    
->>>>>>> master
   ],
   "ppTypes": [
     {
@@ -80,7 +10,7 @@
       "type": "jewelry"
     }
   ],
-  "realEstate": [
+  "realEstates": [
    
   ],
   "reTypes": [
