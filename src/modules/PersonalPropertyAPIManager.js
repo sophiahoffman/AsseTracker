@@ -5,7 +5,7 @@ import APIManager from './APIManager';
 
 export default {
     component: "personalProperty",
-    userId: localStorage.getItem("userId"),
+    userId: sessionStorage.getItem("userId"),
 
     getActivePersonalProperty () {
         let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=ppType&&_sort=purchaseDate&&_order=desc`

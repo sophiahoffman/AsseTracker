@@ -23,7 +23,7 @@ class EntryPortal extends Component {
   };
 
   validateUserEmail = () => {
-    localStorage.setItem("email", this.state.userEmailAddress)
+    sessionStorage.setItem("email", this.state.userEmailAddress)
     let userEmail=this.state.userEmailAddress;
     APIManager.get(`users?userEmailAddress=${userEmail}`)
     .then(result => {

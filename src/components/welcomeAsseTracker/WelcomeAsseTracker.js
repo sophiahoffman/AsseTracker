@@ -11,7 +11,7 @@ class WelcomeAsseTracker extends Component {
         vehiclesTotal: "",
         personalPropertyTotal: "",
 
-        userId: localStorage.getItem("userId"),
+        userId: sessionStorage.getItem("userId"),
         personalPropertyImage: require("../../assets/personal_property.png"),
         realEstateImage: require("../../assets/real_estate.png"),
         vehicleImage: require("../../assets/vehicle.png")

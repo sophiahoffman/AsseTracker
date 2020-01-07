@@ -74,7 +74,7 @@ class VehiclesAdd extends Component {
             this.handleOtherInput()
             .then(result => {
                 const newVehicle = {
-                    userId: Number(localStorage.getItem("userId")),
+                    userId: Number(sessionStorage.getItem("userId")),
                     name: this.state.vehicleName,
                     vehicleTypeId: Number(result.id),
                     vin: this.state.vehicleVin,
@@ -95,7 +95,7 @@ class VehiclesAdd extends Component {
             })
         } else {
             const newVehicle = {
-                userId: Number(localStorage.getItem("userId")),
+                userId: Number(sessionStorage.getItem("userId")),
                 name: this.state.vehicleName,
                 vehicleTypeId: Number(this.state.vehicleTypeId),
                 vin: this.state.vehicleVin,

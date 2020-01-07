@@ -9,7 +9,7 @@ import APIManager from '../../modules/APIManager'
 
 class Register extends Component {
     state = {
-        userEmailAddress: localStorage.getItem("email"),
+        userEmailAddress: sessionStorage.getItem("email"),
         userPassword: "",
         userPassword2: "",
         userName: "",
@@ -36,7 +36,7 @@ class Register extends Component {
             }
             APIManager.post(`users`, newUser)
             .then(result => {
-                localStorage.setItem("userId", result.id)
+                sessionStorage.setItem("userId", result.id)
                 this.props.history.push('/')
                 return this.props.isAuthenticated()
             })       
