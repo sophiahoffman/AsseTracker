@@ -125,7 +125,8 @@ class RealEstateCard extends Component {
                                 <h6 className="card-property-small">{this.props.realEstate.address}</h6> 
                             </div>
                             <div className="col-md-12">
-                                <h6 className="card-property-small">{this.props.realEstate.city}, {this.props.realEstate.state}</h6> 
+                                <h6 className="card-property-small">{this.props.realEstate.city}</h6>
+                                <h6><p>{this.props.realEstate.state}</p></h6> 
                             </div>
                         </div> 
                         
