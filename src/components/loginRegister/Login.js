@@ -11,7 +11,7 @@ import '../../AsseTracker.css'
 
 class Login extends Component {
     state = {
-        userEmailAddress: localStorage.getItem("email"),
+        userEmailAddress: sessionStorage.getItem("email"),
         userPassword: "",
         loadingStatus: false,
     }
@@ -28,7 +28,7 @@ class Login extends Component {
         .then(result => {
             console.log(result)
             if (result[0].userPassword === this.state.userPassword) {
-                localStorage.setItem("userId", result[0].id)
+                sessionStorage.setItem("userId", result[0].id)
                 this.props.history.push('/')
                 return this.props.isAuthenticated()
             } else {

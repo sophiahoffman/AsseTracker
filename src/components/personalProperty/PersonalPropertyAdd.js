@@ -73,7 +73,7 @@ class PersonalPropertyAdd extends Component {
             this.handleOtherInput()
             .then(result => {
                 const newPersonalProperty = {
-                    userId: Number(localStorage.getItem("userId")),
+                    userId: Number(sessionStorage.getItem("userId")),
                     name: this.state.personalPropertyName,
                     ppTypeId: Number(result.id),
                     description: this.state.personalPropertyDescription,
@@ -92,7 +92,7 @@ class PersonalPropertyAdd extends Component {
             })
         } else {
             const newPersonalProperty = {
-                userId: Number(localStorage.getItem("userId")),
+                userId: Number(sessionStorage.getItem("userId")),
                 name: this.state.personalPropertyName,
                 ppTypeId: Number(this.state.personalPropertyTypeId),
                 description: this.state.personalPropertyDescription,

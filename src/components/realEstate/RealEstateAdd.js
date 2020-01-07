@@ -77,7 +77,7 @@ class RealEstateAdd extends Component {
             this.handleOtherInput()
             .then(result => {
                 const newRealEstate = {
-                    userId: Number(localStorage.getItem("userId")),
+                    userId: Number(sessionStorage.getItem("userId")),
                     name: this.state.realEstateName,
                     reTypeId: Number(result.id),
                     address: this.state.realEstateAddress,
@@ -96,7 +96,7 @@ class RealEstateAdd extends Component {
             })
         } else {
             const newRealEstate = {
-                userId: Number(localStorage.getItem("userId")),
+                userId: Number(sessionStorage.getItem("userId")),
                 name: this.state.realEstateName,
                 reTypeId: Number(this.state.realEstateTypeId),
                 address: this.state.realEstateAddress,

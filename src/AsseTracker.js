@@ -6,16 +6,16 @@ import ApplicationViews from './ApplicationViews'
 import { withRouter } from 'react-router-dom'
 import NavBar from '../src/components/navBar/NavBar'
 
-// localStorage.setItem("userId", 1)
+// sessionStorage.setItem("userId", 1)
 
 class AsseTracker extends Component {
 
   handleLogout = () => {
-    localStorage.clear()
+    sessionStorage.clear()
     this.props.history.push('/')
   }
 
-  isAuthenticated = () => localStorage.getItem("userId") !== null
+  isAuthenticated = () => sessionStorage.getItem("userId") !== null
 
   render() {
       return (

@@ -42,7 +42,7 @@ class ApplicationViews extends Component {
               exact path="/login" render={props => {
                 if (this.props.isAuthenticated()) {
                   return <WelcomeAsseTracker {...props} />
-                } else if (localStorage.getItem("email")) {
+                } else if (sessionStorage.getItem("email")) {
                   return <Login {...this.props} />
                 } else {
                   return <EntryPortal {...props} />
@@ -54,7 +54,7 @@ class ApplicationViews extends Component {
               exact path="/register" render={props => {
                 if (this.props.isAuthenticated()) {
                   return <WelcomeAsseTracker {...props} />
-                } else if (localStorage.getItem("email")) {
+                } else if (sessionStorage.getItem("email")) {
                   return <Register {...this.props} />
                 } else {
                   return <EntryPortal {...props} />
