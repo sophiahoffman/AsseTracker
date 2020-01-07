@@ -1,237 +1,26 @@
 {
   "users": [
-    {
-      "id": 1,
-      "username": "shoffman",
-      "password": "123",
-      "email": "hoffman@hotmail.com"
-    },
-    {
-      "userName": "mohoffman",
-      "userPassword": "123",
-      "userEmailAddress": "moet@gmail.com",
-      "id": 2
-    },
-    {
-      "userName": "rohoffmancpa@yahoo.com",
-      "userPassword": "123",
-      "userEmailAddress": "rohoffmancpa@yahoo.com",
-      "id": 3
-    }
   ],
   "personalProperty": [
-    {
-      "userId": 1,
-      "name": "Lord of the Rings First Edition",
-      "ppTypeId": 6,
-      "description": "1st US Edition - Later Printings 1955/1956",
-      "manufacturer": "Houghton Mifflin",
-      "model": "1955/1956 Later Print 1st Edition",
-      "location": "3rd book from the left; 2nd shelf",
-      "purchaseLocation": "eBay",
-      "purchaseDate": "2020-01-05",
-      "purchasePrice": "1950.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/vop2nuy8sp3sj9uqq2ex",
-      "id": 1,
-      "disposalPrice": "NaN"
-    },
-    {
-      "userId": 1,
-      "name": "Custom Guitar",
-      "ppTypeId": 3,
-      "description": "Fender Custom Shop Custom Deluxe Stratocaster 2012 Faded Honey Burst, j0078",
-      "manufacturer": "Fender",
-      "model": "Stratocaster",
-      "location": "Chicago DJ Room",
-      "purchaseLocation": "eBay",
-      "purchaseDate": "0001-01-31",
-      "purchasePrice": "3500.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/s8nmdbsmdgc5ubaonjc0",
-      "id": 2,
-      "disposalPrice": "NaN"
-    },
-    {
-      "userId": 3,
-      "name": "cannon camera",
-      "ppTypeId": 5,
-      "description": "test ",
-      "manufacturer": "cannon",
-      "model": "a230",
-      "location": "santa cruz",
-      "purchaseLocation": "walnut",
-      "purchaseDate": "2000-01-01",
-      "purchasePrice": "1000.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/skmlrxyujfiqerecap9a",
-      "id": 6
-    },
-    {
-      "userId": 1,
-      "name": "Technic 1210 Turntables",
-      "ppTypeId": 4,
-      "description": "Technic 1210 Turntables",
-      "manufacturer": "Technic",
-      "model": "1210",
-      "location": "Chicago DJ Room",
-      "purchaseLocation": "craigslist",
-      "purchaseDate": "2011-01-01",
-      "purchasePrice": "999.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/pd0xxbjbj5sdavssa1ee",
-      "id": 7,
-      "disposalPrice": "NaN"
-    }
+   
   ],
   "ppTypes": [
     {
       "id": 1,
       "type": "jewelry"
-    },
-    {
-      "id": 2,
-      "type": "appliances"
-    },
-    {
-      "type": "musical instrument",
-      "id": 3
-    },
-    {
-      "type": "dj gear",
-      "id": 4
-    },
-    {
-      "type": "photo gear",
-      "id": 5
-    },
-    {
-      "type": "book",
-      "id": 6
-    },
-    {
-      "type": "dreams",
-      "id": 7
     }
   ],
   "realEstate": [
-    {
-      "userId": 3,
-      "name": "Prop 1",
-      "reTypeId": 1,
-      "address": "123 maple st",
-      "city": "santa cruz",
-      "state": "ca",
-      "zip": "93911",
-      "rent": false,
-      "imageUrl": "/static/media/real_estate.8355a760.png",
-      "purchaseDate": "1980-01-01",
-      "purchasePrice": "225000.00",
-      "activeAsset": true,
-      "id": 3
-    },
-    {
-      "userId": 3,
-      "name": "prop 2",
-      "reTypeId": 1,
-      "address": "925 main st",
-      "city": "los angeles",
-      "state": "ca",
-      "zip": "95123",
-      "rent": false,
-      "imageUrl": "/static/media/real_estate.8355a760.png",
-      "purchaseDate": "1978-01-02",
-      "purchasePrice": "1250000.00",
-      "activeAsset": true,
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "name": "Versailles",
-      "reTypeId": 3,
-      "address": "6121 Kirkstone Lane",
-      "city": "Windermere",
-      "state": "Florida",
-      "zip": "34786",
-      "rent": false,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/ryojcyooqsziuhsttylw",
-      "purchaseDate": "2009-12-12",
-      "purchasePrice": "2450000.00",
-      "activeAsset": true,
-      "id": 5,
-      "disposalPrice": "NaN"
-    }
+   
   ],
   "reTypes": [
     {
       "id": 1,
       "type": "house"
-    },
-    {
-      "id": 2,
-      "type": "condo"
-    },
-    {
-      "type": "mansion",
-      "id": 3
     }
   ],
   "vehicles": [
-    {
-      "userId": 1,
-      "name": "Litterbox I",
-      "vehicleTypeId": 1,
-      "vin": "ABCDEFG1234567",
-      "license": "NSS4EVER",
-      "year": "2005",
-      "make": "Honda",
-      "model": "Element",
-      "location": "Nashville",
-      "purchaseLocation": "Monterey Honda",
-      "purchaseDate": "2013-05-08",
-      "purchasePrice": "11500.00",
-      "activeAsset": false,
-      "imageUrl": "data:image/png;base64,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",
-      "id": 1,
-      "disposalDate": "2013-05-22",
-      "disposalPrice": "1000.00",
-      "disposalNotes": "sold to cousin"
-    },
-    {
-      "userId": 3,
-      "name": "fast car",
-      "vehicleTypeId": 1,
-      "vin": "joieeo3847312",
-      "license": "a123abc",
-      "year": "199991",
-      "make": "BMW",
-      "model": "540i",
-      "location": "santa cruz",
-      "purchaseLocation": "monterey",
-      "purchaseDate": "1999-01-01",
-      "purchasePrice": "25000.00",
-      "activeAsset": true,
-      "imageUrl": "/static/media/vehicle.b4a920d0.png",
-      "id": 2,
-      "disposalPrice": "NaN"
-    },
-    {
-      "userId": 1,
-      "name": "Litterbox II",
-      "vehicleTypeId": 1,
-      "vin": "WAUAH94F27N989445",
-      "license": "NSS4EVER",
-      "year": "2011",
-      "make": "Honda",
-      "model": "Element",
-      "location": "Nashville",
-      "purchaseLocation": "Sam Linder Honda",
-      "purchaseDate": "2013-08-10",
-      "purchasePrice": "22000.00",
-      "activeAsset": true,
-      "imageUrl": "https://res.cloudinary.com/anymouse/image/upload/v1576529805/AsseTracker/rc9ojdzpdzws2bgdsmkg",
-      "id": 3
-    }
+    
   ],
   "vehicleTypes": [
     {

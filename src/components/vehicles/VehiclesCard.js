@@ -82,7 +82,7 @@ class VehiclesCard extends Component {
                     <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/disposal`)}>Disposal</Button>
                     :
                     null}  
-                    <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deletevehicle(this.props.vehicle.id)}>Delete</Button>
+                    <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
 
                 </div>  
             </Modal.Body>
