@@ -5,7 +5,7 @@ import APIManager from './APIManager';
 
 export default {
     component: "realEstates",
-    userId: localStorage.getItem("userId"),
+    userId: sessionStorage.getItem("userId"),
 
     getAllRealEstate () {
         let route = `${this.component}?userId=${this.userId}&&_expand=reType&&_sort=purchaseDate&&_order=desc`

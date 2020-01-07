@@ -5,7 +5,7 @@ import APIManager from './APIManager';
 
 export default {
     component: "vehicles",
-    userId: localStorage.getItem("userId"),
+    userId: sessionStorage.getItem("userId"),
 
     getActiveVehicles () {
         let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
