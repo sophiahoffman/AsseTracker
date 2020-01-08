@@ -183,7 +183,7 @@ img {
   height: 125px;
 }
 
-.card-small {
+.card-small, .card-medium {
   width: 325px;
   height: 325px;
   display: flex;
@@ -212,10 +212,19 @@ img {
   border-radius: .25rem;
 }
 
+.card-small {
+  width: 250px;
+  height: 250px;
+}
+
+.card-medium {
+  width: 300px;
+  height: 375px;
+}
+
 .card-content-small {
   width: inherit;
   height: inherit;
-
 }
 
 .card-property-small {

@@ -12,11 +12,11 @@ import '../../AsseTracker.css';
 // PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
 class PersonalPropertyAdd extends Component {
-    userId = localStorage.getItem("userId")
+    userId = sessionStorage.getItem("userId")
 
     state = {
         personalPropertyName: "",
-        personalPropertyTypeId: 1,
+        personalPropertyTypeId: 0,
         personalPropertyTypes: [],
         personalPropertyType: "",
         personalPropertyDescription: "",
@@ -51,7 +51,6 @@ class PersonalPropertyAdd extends Component {
     handleFieldChange = e => {
         const stateToChange = {};
         stateToChange[e.target.id] = e.target.value
-        console.log(e.target.id, e.target.value)
         this.setState(stateToChange)
     };
 // handleOtherInput is run at form submit. Creates new type based on whether or not there is any text entered in id="personalPropertyType"
@@ -133,9 +132,9 @@ class PersonalPropertyAdd extends Component {
                     <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                         <Form.Control as="select" id="personalPropertyTypeId" onChange={this.handleFieldChange}>
-                        <option></option>
+                        <option key={`type-option-0`} value={0}></option>
                         {this.state.personalPropertyTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
                     </Form.Group>
@@ -158,9 +157,9 @@ class PersonalPropertyAdd extends Component {
                     <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
                         <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange}>
-                        <option></option>
+                        <option key={`location-option-0`} value={0}></option>
                         {this.state.personalPropertyLocations.map(location => (
-                            <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
+                            <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
                         ))}
                         </Form.Control>
                     </Form.Group>

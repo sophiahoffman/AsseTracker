@@ -7,30 +7,52 @@ import Modal from 'react-bootstrap/Modal';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import PersonalPropertyCard from '../personalProperty/PersonalPropertyCard';
 import PersonalPropertyAPIManager from '../../modules/PersonalPropertyAPIManager';
+import VehiclesCard from '../vehicles/VehiclesCard';
+import VehiclesAPIManager from '../../modules/VehiclesAPIManager';
+
 // import RealEstateAPIManager from '../../modules/RealEstateAPIManager';
 import '../../AsseTracker.css';
 
 class RealEstateCard extends Component {
-        state = {
-            personalProperty: [],
-            fromRealEstateCard: true,
-        }
+    state = {
+        personalProperty: [],
+        vehicles: [],
+        fromRealEstateCard: true,
+    }
 
-        getActivePersonalPropertyAtLocation = locationId => {
-            // const [modalShow, setModalShow] = React.useState(false);
-            locationId = this.props.realEstate.id
-            return (
+    componentDidMount() {
+        const locationId = this.props.realEstate.id
+          
+        PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
+        .then(personalProperty => {
+            this.setState({
+                personalProperty: personalProperty,
+            })
+        })
 
-                PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
-                .then(personalProperty => {
-                    this.setState({
-                    personalProperty: personalProperty,
-                    })
+        VehiclesAPIManager.getActiveVehiclesAtLocation(locationId)
+        .then(vehicles => {
+            this.setState({
+                vehicles: vehicles,
+            })
+        })
+    }
+
+
+    getActivePersonalPropertyAtLocation = locationId => {
+        locationId = this.props.realEstate.id
+        return (
+
+            PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
+            .then(personalProperty => {
+                this.setState({
+                personalProperty: personalProperty,
                 })
-            )
-        }
+            })
+        )
+    }
 
-        MyVerticallyCenteredModal = props => {
+    MyVerticallyCenteredModal = props => {
         return (
             <Modal
             {...props}
@@ -111,10 +133,8 @@ class RealEstateCard extends Component {
             </Modal>
         );
     }
-        MyAssociatedPersonalProperty = props => {
-                    return (
-
-// .then(
+    MyAssociatedPersonalProperty = props => {
+        return (
             <Modal
             {...props}
             size="lg"
@@ -142,7 +162,37 @@ class RealEstateCard extends Component {
                     <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>
             </Modal.Footer> 
             </Modal>
-// )
+        );
+    }
+    MyAssociatedVehicles = props => {
+        return (
+            <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    <h6>Vehicles associated with {this.props.realEstate.name}</h6>
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className="personalProperty-container-cards container-cards">
+                    {this.state.vehicles.map(vehicle => 
+                        <VehiclesCard 
+                        key={vehicle.id}
+                        personalProperty={vehicle}
+                        fromRealEstateCard = {this.state.fromRealEstateCard}
+                        deleteVehicle = {this.deleteVehicle}
+                        {...this.props}
+                         />)}
+                </div> 
+            </Modal.Body>
+            <Modal.Footer>
+                    <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>
+            </Modal.Footer> 
+            </Modal>
         );
     }
     
@@ -169,9 +219,7 @@ class RealEstateCard extends Component {
 
         return (
             <ButtonToolbar>
-            <Button className="button-card" variant="secondary" onClick={() => {
-            this.getActivePersonalPropertyAtLocation(this.props.realEstate.id)
-            .then(setModalShow(true))}}>
+            <Button className="button-card" variant="secondary" onClick={() => setModalShow(true)}>
                 Personal Property
             </Button>
 
@@ -182,10 +230,28 @@ class RealEstateCard extends Component {
             </ButtonToolbar>
         );
     }
+
+    AssociatedVehicles = () => {
+        const [modalShow, setModalShow] = React.useState(false);
+
+        return (
+            <ButtonToolbar>
+            <Button className="button-card" variant="secondary" onClick={() => setModalShow(true)}>
+                Vehicles
+            </Button>
+
+            <this.MyAssociatedVehicles
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+            </ButtonToolbar>
+        );
+    }
+    
     render () {
         return (
             <React.Fragment>
-                <div className="card-small">
+                <div className="card-medium">
                     <div className = "card-content-small">
                         <Card.Title className="card-title-small">
                         {(this.props.realEstate.imageUrl !== "") 
@@ -195,6 +261,7 @@ class RealEstateCard extends Component {
                         </Card.Title>
                         <this.App />
                         <this.AssociatedPP />
+                        <this.AssociatedVehicles />
                         <div className="card-format-small">
                             <div className="col-md-12">
                                 {/* <h6 className="row-sm-10 row-form-label">Address</h6> */}

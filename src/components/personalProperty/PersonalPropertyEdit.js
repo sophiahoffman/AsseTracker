@@ -9,7 +9,7 @@ import Cloudinary from '../../ignore';
 
 class PersonalPropertyEdit extends Component {
     objectId = this.props.match.params.personalPropertyId
-    userId = localStorage.getItem("userId")
+    userId = sessionStorage.getItem("userId")
 
     state = {
         personalPropertyName: "",
@@ -158,7 +158,7 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                     <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
-                    <option></option>
+                    <option value={0}></option>
                     {this.state.personalPropertyTypes.map(type => (
                         <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                     ))}
