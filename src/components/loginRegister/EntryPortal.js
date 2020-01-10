@@ -25,7 +25,7 @@ class EntryPortal extends Component {
   validateUserEmail = () => {
     sessionStorage.setItem("email", this.state.userEmailAddress)
     let userEmail=this.state.userEmailAddress;
-    APIManager.get(`users?userEmailAddress=${userEmail}`)
+    APIManager.get(`users?email=${userEmail}`)
     .then(result => {
       if (result.length>0) {
         this.props.history.push('/login')

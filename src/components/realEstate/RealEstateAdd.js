@@ -22,7 +22,7 @@ class RealEstateAdd extends Component {
         realEstateState: "",
         realEstateZip: "",
         realEstatePurchaseDate: "",
-        realEstatePurchasePrice: "",
+        realEstatePurchasePrice: "0",
         realEstateActiveAsset: true,
         rentCheckbox: false,
         loadingStatus: false,

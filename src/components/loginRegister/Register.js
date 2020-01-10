@@ -30,9 +30,9 @@ class Register extends Component {
         } else if (this.state.userPassword === this.state.userPassword2) {
 
             const newUser = {
-                userName: this.state.userName,
-                userPassword: this.state.userPassword,
-                userEmailAddress: this.state.userEmailAddress
+                username: this.state.userName,
+                password: this.state.userPassword,
+                email: this.state.userEmailAddress
             }
             APIManager.post(`users`, newUser)
             .then(result => {

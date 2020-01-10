@@ -12,18 +12,22 @@ import '../../AsseTracker.css';
 // PersonalPropertyAdd takes input from user and writes a new item to the personalproperty table. First it gets the personal property types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the personalproperty table. 
 
 class PersonalPropertyAdd extends Component {
+    userId = sessionStorage.getItem("userId")
+
     state = {
         personalPropertyName: "",
-        personalPropertyTypeId: 1,
+        personalPropertyTypeId: 0,
         personalPropertyTypes: [],
         personalPropertyType: "",
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
+        personalPropertyLocationId: 0,
+        personalPropertyLocations: [],
         personalPropertyLocation: "",
         personalPropertyPurchaseLocation: "",
         personalPropertyPurchaseDate: "",
-        personalPropertyPurchasePrice: "",
+        personalPropertyPurchasePrice: "0",
         personalPropertyActiveAsset: true,
         loadingStatus: false,
         // Cloudinary added imageURL
@@ -36,6 +40,11 @@ class PersonalPropertyAdd extends Component {
         APIManager.get(propType)
         .then(results => {
             this.setState({personalPropertyTypes: results})
+        })
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
+        APIManager.get(locations)
+        .then(results => {
+            this.setState({personalPropertyLocations: results})
         })
     }
 
@@ -79,6 +88,7 @@ class PersonalPropertyAdd extends Component {
                     description: this.state.personalPropertyDescription,
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
@@ -98,6 +108,7 @@ class PersonalPropertyAdd extends Component {
                 description: this.state.personalPropertyDescription,
                 manufacturer: this.state.personalPropertyManufacturer,
                 model: this.state.personalPropertyModel,
+                realEstateId: Number(this.state.personalPropertyLocationId),
                 location: this.state.personalPropertyLocation,
                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
                 purchaseDate: this.state.personalPropertyPurchaseDate,
@@ -121,8 +132,9 @@ class PersonalPropertyAdd extends Component {
                     <Form.Group className="col-md-8 form-group form-inline">
                         <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                         <Form.Control as="select" id="personalPropertyTypeId" onChange={this.handleFieldChange}>
+                        <option key={`type-option-0`} value={0}></option>
                         {this.state.personalPropertyTypes.map(type => (
-                            <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
                         ))}
                         </Form.Control>
                     </Form.Group>
@@ -143,7 +155,16 @@ class PersonalPropertyAdd extends Component {
                         <Form.Control type="text" id="personalPropertyModel" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-8 form-group form-inline">
-                        <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
+                        <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
+                        <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange}>
+                        <option key={`location-option-0`} value={0}></option>
+                        {this.state.personalPropertyLocations.map(location => (
+                            <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
+                        ))}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group className="col-md-8 form-group form-inline">
+                        <Form.Label className="row-sm-2 row-form-label">Location Notes</Form.Label>
                         <Form.Control type="text" id="personalPropertyLocation" onChange={this.handleFieldChange} />
                     </Form.Group>
                     <Form.Group className="col-md-8 form-group form-inline">

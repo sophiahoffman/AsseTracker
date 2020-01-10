@@ -8,19 +8,23 @@ export default {
     userId: sessionStorage.getItem("userId"),
 
     getActivePersonalProperty () {
-        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=ppType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },
+    getActivePersonalPropertyAtLocation (locationId) {
+        let route = `${this.component}?realEstateId=${locationId}&&activeAsset=true&&_expand=ppType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getDisposedPersonalProperty () {
-    let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
+    let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=ppType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
     return APIManager.get(route);
     },
     getAllPersonalProperty () {
-    let route = `${this.component}?userId=${this.userId}&&_expand=ppType&&_sort=purchaseDate&&_order=desc`
+    let route = `${this.component}?userId=${this.userId}&&_expand=ppType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
     return APIManager.get(route);
     },
     getOnePersonalProperty (objectId) {
-        let route = `${this.component}/${objectId}?_expand=ppType`
+        let route = `${this.component}/${objectId}?_expand=ppType&&_expand=realEstate`
         return APIManager.get(route);
     },
     postPersonalProperty (newObject) {

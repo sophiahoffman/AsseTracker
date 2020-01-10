@@ -8,15 +8,19 @@ export default {
     userId: sessionStorage.getItem("userId"),
 
     getActiveVehicles () {
-        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${this.userId}&&activeAsset=true&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
+        return APIManager.get(route);
+    },
+    getActiveVehiclesAtLocation (locationId) {
+        let route = `${this.component}?realEstateId=${locationId}&&_activeAsset=true&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getDisposedVehicles () {
-    let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+    let route = `${this.component}?userId=${this.userId}&&activeAsset=false&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
     return APIManager.get(route);
     },
     getAllVehicles () {
-        let route = `${this.component}?userId=${this.userId}&&_expand=vehicleType&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?userId=${this.userId}&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },    
     getOneVehicle (objectId) {

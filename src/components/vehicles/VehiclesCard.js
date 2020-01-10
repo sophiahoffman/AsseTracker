@@ -7,6 +7,18 @@ import './VehiclesCard'
 import '../../AsseTracker.css'
 
 class VehiclesCard extends Component {
+    state = {
+        showButtons: true,
+    }
+
+    componentDidMount() {
+        if (this.props.fromRealEstateCard) {
+            this.setState({showButtons: false})
+        } else {
+            return null
+        }
+    }
+
     MyVerticallyCenteredModal = props => {
         return (
             <Modal
@@ -25,8 +37,11 @@ class VehiclesCard extends Component {
             </Modal.Header>
             <Modal.Body>
                 <div className="col-md-12 form-group">
-                    <h6 className="row-sm-10 row-form-label">Property Type</h6>
+                    <h6 className="row-sm-10 row-form-label">Vehicle Type</h6>
+                    {this.props.vehicle.vehicleTypeId !== 0 ?
                     <h6 className="card-property">{this.props.vehicle.vehicleType.type}</h6> 
+                    : <h6 className="card-property">Other</h6>
+                    }
                 </div>
                 <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">VIN</h6>
@@ -47,6 +62,17 @@ class VehiclesCard extends Component {
                 <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Model</h6>
                     <h6 className="card-property">{this.props.vehicle.model}</h6> 
+                </div>
+                <div className="col-md-12 form-group">
+                    <h6 className="row-sm-10 row-form-label">Location</h6>
+                    {this.props.vehicle.realEstateId !== 0 ?
+                    <h6 className="card-property">{this.props.vehicle.realEstate.name}</h6>
+                    : <h6 className="card-property">Other</h6>
+                    }
+                </div>
+                <div className="col-md-12 col-md-12 form-group">
+                    <h6 className="row-sm-10 row-form-label">Location Notes</h6>
+                    <h6 className="card-property">{this.props.vehicle.location}</h6> 
                 </div>
                 <div className="col-md-12 col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Purchase Date</h6>
@@ -76,6 +102,7 @@ class VehiclesCard extends Component {
                 </div>
                 </> :
                 null}
+                {this.state.showButtons ?
                 <div className="button-div">
                     <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/edit`)}>Edit</Button>
                     {this.props.vehicle.activeAsset ? 
@@ -85,6 +112,7 @@ class VehiclesCard extends Component {
                     <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
 
                 </div>  
+                : null}
             </Modal.Body>
             <Modal.Footer>
                     <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>

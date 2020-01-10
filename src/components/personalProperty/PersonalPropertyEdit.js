@@ -9,6 +9,7 @@ import Cloudinary from '../../ignore';
 
 class PersonalPropertyEdit extends Component {
     objectId = this.props.match.params.personalPropertyId
+    userId = sessionStorage.getItem("userId")
 
     state = {
         personalPropertyName: "",
@@ -18,6 +19,8 @@ class PersonalPropertyEdit extends Component {
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
+        personalPropertyLocationId: "",
+        personalPropertyLocations: [],
         personalPropertyLocation: "",
         personalPropertyPurchaseLocation: "",
         personalPropertyPurchaseDate: "",
@@ -33,9 +36,14 @@ class PersonalPropertyEdit extends Component {
 
     componentDidMount() {
         let propType = 'ppTypes?_sort=id&&_order=asc'
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
         APIManager.get(propType)
         .then(results => {
             this.setState({personalPropertyTypes: results})
+        })
+        .then(() => APIManager.get(locations))
+        .then(results => {
+            this.setState({personalPropertyLocations: results})
         })
         .then(result => PersonalPropertyAPIManager.getOnePersonalProperty(this.objectId))
         .then(item => {
@@ -45,6 +53,7 @@ class PersonalPropertyEdit extends Component {
                 personalPropertyDescription: item.description,
                 personalPropertyManufacturer: item.manufacturer,
                 personalPropertyModel: item.model,
+                personalPropertyLocationId: item.realEstateId,
                 personalPropertyLocation: item.location,
                 personalPropertyPurchaseLocation: item.purchaseLocation,
                 personalPropertyPurchaseDate: item.purchaseDate,
@@ -98,6 +107,7 @@ class PersonalPropertyEdit extends Component {
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
                     location: this.state.personalPropertyLocation,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
                     purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
@@ -119,6 +129,7 @@ class PersonalPropertyEdit extends Component {
                     description: this.state.personalPropertyDescription,
                     manufacturer: this.state.personalPropertyManufacturer,
                     model: this.state.personalPropertyModel,
+                    realEstateId: Number(this.state.personalPropertyLocationId),
                     location: this.state.personalPropertyLocation,
                     purchaseLocation: this.state.personalPropertyPurchaseLocation,
                     purchaseDate: this.state.personalPropertyPurchaseDate,
@@ -147,6 +158,7 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                     <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
+                    <option value={0}></option>
                     {this.state.personalPropertyTypes.map(type => (
                         <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
                     ))}
@@ -167,6 +179,15 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Model</Form.Label>
                     <Form.Control type="text" value={this.state.personalPropertyModel} id="personalPropertyModel" onChange={this.handleFieldChange} />
+                </Form.Group>
+                <Form.Group className="col-md-8 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
+                    <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
+                    <option key={`location-option-0`} value={0}>Other</option>
+                    {this.state.personalPropertyLocations.map(location => (
+                        <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
+                    ))}
+                    </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
