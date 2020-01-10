@@ -7,6 +7,18 @@ import './VehiclesCard'
 import '../../AsseTracker.css'
 
 class VehiclesCard extends Component {
+    state = {
+        showButtons: true,
+    }
+
+    componentDidMount() {
+        if (this.props.fromRealEstateCard) {
+            this.setState({showButtons: false})
+        } else {
+            return null
+        }
+    }
+
     MyVerticallyCenteredModal = props => {
         return (
             <Modal
@@ -90,6 +102,7 @@ class VehiclesCard extends Component {
                 </div>
                 </> :
                 null}
+                {this.state.showButtons ?
                 <div className="button-div">
                     <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.history.push(`/vehicles/${this.props.vehicle.id}/edit`)}>Edit</Button>
                     {this.props.vehicle.activeAsset ? 
@@ -99,6 +112,7 @@ class VehiclesCard extends Component {
                     <Button variant="secondary" type="button" className="vehicle-button" onClick={() => this.props.deleteVehicle(this.props.vehicle.id)}>Delete</Button>
 
                 </div>  
+                : null}
             </Modal.Body>
             <Modal.Footer>
                     <Button className="modal-close" variant="secondary" onClick={props.onHide}>Close</Button>

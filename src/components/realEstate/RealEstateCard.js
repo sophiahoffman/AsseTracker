@@ -30,29 +30,43 @@ class RealEstateCard extends Component {
             })
         })
 
-        VehiclesAPIManager.getActiveVehiclesAtLocation(locationId)
+        VehiclesAPIManager.getActiveVehiclesAtLocation (locationId)
         .then(vehicles => {
+            
             this.setState({
                 vehicles: vehicles,
             })
         })
     }
 
+    // getActivePersonalPropertyAtLocation = locationId => {
+    //     locationId = this.props.realEstate.id
+    //     return (
 
-    getActivePersonalPropertyAtLocation = locationId => {
-        locationId = this.props.realEstate.id
-        return (
+    //         PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
+    //         .then(personalProperty => {
+    //             this.setState({
+    //             personalProperty: personalProperty,
+    //             })
+    //         })
+    //     )
+    // }
 
-            PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
-            .then(personalProperty => {
-                this.setState({
-                personalProperty: personalProperty,
-                })
-            })
-        )
-    }
+    // getActiveVehiclesAtLocation = locationId => {
+    //     locationId = this.props.realEstate.id
+    //     return (
+
+    //         VehiclesAPIManager.getActiveVehiclesAtLocation(locationId)
+    //         .then(vehicles => {
+    //             this.setState({
+    //             vehicles: vehicles,
+    //             })
+    //         })
+    //     )
+    // }
 
     MyVerticallyCenteredModal = props => {
+        console.log("realestateProps",this.props)
         return (
             <Modal
             {...props}
@@ -71,7 +85,10 @@ class RealEstateCard extends Component {
             <Modal.Body>
                 <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Property Type</h6>
+                    {this.props.realEstate.reTypeId !== 0 ?
                     <h6 className="card-property">{this.props.realEstate.reType.type}</h6> 
+                    : <h6 className="card-property">Other</h6>
+                    }
                 </div>
                 <div className="col-md-12 form-group">
                     <h6 className="row-sm-10 row-form-label">Address</h6>
@@ -182,7 +199,7 @@ class RealEstateCard extends Component {
                     {this.state.vehicles.map(vehicle => 
                         <VehiclesCard 
                         key={vehicle.id}
-                        personalProperty={vehicle}
+                        vehicle={vehicle}
                         fromRealEstateCard = {this.state.fromRealEstateCard}
                         deleteVehicle = {this.deleteVehicle}
                         {...this.props}

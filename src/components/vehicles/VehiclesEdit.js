@@ -179,8 +179,8 @@ class VehiclesEdit extends Component {
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
-                    <Form.Control as="select" id="vehicleLocationId" onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
-                    <option key={`location-option-0`} value={0}></option>
+                    <Form.Control as="select" id="vehicleLocationId" value={this.state.vehicleLocationId} onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
+                    <option key={`location-option-0`} value="0"></option>
                     {this.state.vehicleLocations.map(location => (
                         <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
                     ))}

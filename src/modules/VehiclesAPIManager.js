@@ -12,7 +12,7 @@ export default {
         return APIManager.get(route);
     },
     getActiveVehiclesAtLocation (locationId) {
-        let route = `${this.component}?realEstateId=${locationId}&&activeAsset=true&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
+        let route = `${this.component}?realEstateId=${locationId}&&_activeAsset=true&&_expand=vehicleType&&_expand=realEstate&&_sort=purchaseDate&&_order=desc`
         return APIManager.get(route);
     },
     getDisposedVehicles () {

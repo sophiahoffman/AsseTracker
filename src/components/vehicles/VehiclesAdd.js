@@ -112,7 +112,6 @@ class VehiclesAdd extends Component {
                 make: this.state.vehicleMake,
                 model: this.state.vehicleModel,
                 realEstateId: Number(this.state.personalPropertyLocationId),
-                locationId: Number(this.state.locationId),
                 location: this.state.vehicleLocation,
                 purchaseLocation: this.state.vehiclePurchaseLocation,
                 purchaseDate: this.state.vehiclePurchaseDate,
