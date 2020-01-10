@@ -9,6 +9,7 @@ import Cloudinary from '../../ignore';
 
 class VehiclesEdit extends Component {
     objectId = this.props.match.params.vehicleId
+    userId = sessionStorage.getItem("userId")
 
     state = {
         vehicleName: "",
@@ -20,6 +21,8 @@ class VehiclesEdit extends Component {
         vehicleYear: "",
         vehicleMake: "",
         vehicleModel: "",
+        vehicleLocations: [],
+        vehicleLocationId: "",
         vehicleLocation: "",
         vehiclePurchaseLocation: "",
         vehiclePurchaseDate: "",
@@ -35,9 +38,14 @@ class VehiclesEdit extends Component {
 
     componentDidMount() {
         let propType = 'vehicleTypes?_sort=id&&_order=asc'
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
         APIManager.get(propType)
         .then(results => {
             this.setState({vehicleTypes: results})
+        })
+        .then(() => APIManager.get(locations))
+        .then(results => {
+            this.setState({vehicleLocations: results})
         })
         .then(results => VehiclesAPIManager.getOneVehicle(this.objectId))
         .then(item => {
@@ -49,6 +57,7 @@ class VehiclesEdit extends Component {
                 vehicleYear: item.year,
                 vehicleMake: item.make,
                 vehicleModel: item.model,
+                vehicleLocationId: item.realEstateId,
                 vehicleLocation: item.location,
                 vehiclePurchaseLocation: item.purchaseLocation,
                 vehiclePurchaseDate: item.purchaseDate,
@@ -88,58 +97,42 @@ class VehiclesEdit extends Component {
         });
     }
 
+    createUpdatedVehicle = vehicleLocationId => {
+        const updatedVehicle = {
+            id: this.objectId,
+            name: this.state.vehicleName,
+            vehicleTypeId: Number(vehicleLocationId),
+            vin: this.state.vehicleVin,
+            license: this.state.vehicleLicense,
+            year: this.state.vehicleYear,
+            make: this.state.vehicleMake,
+            model: this.state.vehicleModel,
+            realEstateId: this.state.vehicleLocationId,
+            location: this.state.vehicleLocation,
+            purchaseLocation: this.state.vehiclePurchaseLocation,
+            purchaseDate: this.state.vehiclePurchaseDate,
+            purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
+            activeAsset: this.state.vehicleActiveAsset,
+            disposalDate: this.state.vehicleDisposalDate,
+            disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
+            disposalNotes: this.state.vehicleDisposalNotes,
+            // Cloudinary: added image URL
+            imageUrl: this.state.vehicleImageUrl,
+        }
+        VehiclesAPIManager.updateVehicle(updatedVehicle)
+        .then(() => this.props.history.push("/vehicles"));    
+    }
+
     constructUpdatedVehicle = e => {
         e.preventDefault();
         this.setState({loadingStatus:true});
+        let vehicleTypeId = this.state.vehicleTypeId
         if (this.state.vehicleType !== "") {
             this.handleOtherInput()
-            .then(result => {
-                const updatedVehicle = {
-                    id: this.objectId,
-                    name: this.state.vehicleName,
-                    vehicleTypeId: Number(result.id),
-                    vin: this.state.vehicleVin,
-                    license: this.state.vehicleLicense,
-                    year: this.state.vehicleYear,
-                    make: this.state.vehicleMake,
-                    model: this.state.vehicleModel,
-                    location: this.state.vehicleLocation,
-                    purchaseLocation: this.state.vehiclePurchaseLocation,
-                    purchaseDate: this.state.vehiclePurchaseDate,
-                    purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
-                    activeAsset: this.state.vehicleActiveAsset,
-                    disposalDate: this.state.vehicleDisposalDate,
-                    disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.vehicleDisposalNotes,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.vehicleImageUrl,
-                }
-                VehiclesAPIManager.updateVehicle(updatedVehicle)
-                .then(() => this.props.history.push("/vehicles"));
-            })
+            .then(result => {vehicleTypeId = result.id})
+            .then(() => this.createUpdatedVehicle(vehicleTypeId))
         } else {
-            const updatedVehicle = {
-                id: this.objectId,
-                name: this.state.vehicleName,
-                vehicleTypeId: Number(this.state.vehicleTypeId),
-                vin: this.state.vehicleVin,
-                license: this.state.vehicleLicense,
-                year: this.state.vehicleYear,
-                make: this.state.vehicleMake,
-                model: this.state.vehicleModel,
-                location: this.state.vehicleLocation,
-                purchaseLocation: this.state.vehiclePurchaseLocation,
-                purchaseDate: this.state.vehiclePurchaseDate,
-                purchasePrice: Number(this.state.vehiclePurchasePrice).toFixed(2),
-                activeAsset: this.state.vehicleActiveAsset,
-                disposalDate: this.state.vehicleDisposalDate,
-                disposalPrice: Number(this.state.vehicleDisposalPrice).toFixed(2),
-                disposalNotes: this.state.vehicleDisposalNotes,
-                // Cloudinary: added image URL
-                imageUrl: this.state.vehicleImageUrl,
-            }
-            VehiclesAPIManager.updateVehicle(updatedVehicle)
-            .then(() => this.props.history.push("/vehicles"));
+            this.createUpdatedVehicle(vehicleTypeId)
         }
     }
 
@@ -185,7 +178,16 @@ class VehiclesEdit extends Component {
                     <Form.Control type="text" value={this.state.vehicleModel} id="vehicleModel" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
+                    <Form.Control as="select" id="vehicleLocationId" onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
+                    <option key={`location-option-0`} value={0}></option>
+                    {this.state.vehicleLocations.map(location => (
+                        <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>
+                <Form.Group className="col-md-8 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Location Notes</Form.Label>
                     <Form.Control type="text" value={this.state.vehicleLocation} id="vehicleLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">

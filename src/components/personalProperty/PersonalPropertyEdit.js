@@ -19,7 +19,7 @@ class PersonalPropertyEdit extends Component {
         personalPropertyDescription: "",
         personalPropertyManufacturer: "",
         personalPropertyModel: "",
-        personalPropertyLocationId: 0,
+        personalPropertyLocationId: "",
         personalPropertyLocations: [],
         personalPropertyLocation: "",
         personalPropertyPurchaseLocation: "",
@@ -183,7 +183,7 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
                     <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
-                    <option></option>
+                    <option key={`location-option-0`} value={0}>Other</option>
                     {this.state.personalPropertyLocations.map(location => (
                         <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
                     ))}

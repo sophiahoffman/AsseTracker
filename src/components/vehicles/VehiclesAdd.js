@@ -10,18 +10,20 @@ import '../../AsseTracker.css'
 
 // vehiclesAdd takes input from user and writes a new item to the vehicles table. First it gets the vehicle types from vehicleTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the vehicleTypes table. That new typeId is added to the object and written to the vehicles table. 
 class VehiclesAdd extends Component {
-    vehicleTypesText = "";
+    userId = sessionStorage.getItem("userId")
     
     state = {
         vehicleName: "",
         vehicleTypes: [],
         vehicleType:"",
-        vehicleTypeId: 1,
+        vehicleTypeId: 0,
         vehicleVin: "",
         vehicleLicense: "",
         vehicleYear: "",
         vehicleMake: "",
         vehicleModel: "",
+        vehicleLocations: [],
+        vehicleLocationId: 0,
         vehicleLocation: "",
         vehiclePurchaseLocation: "",
         vehiclePurchaseDate: "",
@@ -38,6 +40,11 @@ class VehiclesAdd extends Component {
         .then(results => {
             this.setState({vehicleTypes: results})
         })
+        let locations = `realEstates?userId=${this.userId}&&_sort=id&&_order=asc`
+        APIManager.get(locations)
+        .then(results => {
+            this.setState({personalPropertyLocations: results})
+        })        
     };
 
     handleFieldChange = e => {
@@ -82,6 +89,7 @@ class VehiclesAdd extends Component {
                     year: this.state.vehicleYear,
                     make: this.state.vehicleMake,
                     model: this.state.vehicleModel,
+                    realEstateId: Number(this.state.vehicleLocationId),
                     location: this.state.vehicleLocation,
                     purchaseLocation: this.state.vehiclePurchaseLocation,
                     purchaseDate: this.state.vehiclePurchaseDate,
@@ -103,6 +111,8 @@ class VehiclesAdd extends Component {
                 year: this.state.vehicleYear,
                 make: this.state.vehicleMake,
                 model: this.state.vehicleModel,
+                realEstateId: Number(this.state.personalPropertyLocationId),
+                locationId: Number(this.state.locationId),
                 location: this.state.vehicleLocation,
                 purchaseLocation: this.state.vehiclePurchaseLocation,
                 purchaseDate: this.state.vehiclePurchaseDate,
@@ -158,7 +168,16 @@ class VehiclesAdd extends Component {
                     <Form.Control type="text" id="vehicleModel" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
-                    <Form.Label className="row-sm-2 row-form-label">Physical Location</Form.Label>
+                    <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
+                    <Form.Control as="select" id="vehicleLocationId" onChange={this.handleFieldChange}>
+                    <option key={`location-option-0`} value={0}></option>
+                    {this.state.vehicleLocations.map(location => (
+                        <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
+                    ))}
+                    </Form.Control>
+                </Form.Group>                
+                <Form.Group className="col-md-8 form-group form-inline">
+                    <Form.Label className="row-sm-2 row-form-label">Location Notes</Form.Label>
                     <Form.Control type="text" id="vehicleLocation" onChange={this.handleFieldChange} />
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
