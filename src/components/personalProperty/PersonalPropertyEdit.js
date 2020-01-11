@@ -93,63 +93,95 @@ class PersonalPropertyEdit extends Component {
         });
     }
 
+    createPostUpdatedPersonalProperty = ppTypeId => {
+        const updatedPersonalProperty = {
+            id: this.objectId,
+            name: this.state.personalPropertyName,
+            ppTypeId: Number(ppTypeId),
+            description: this.state.personalPropertyDescription,
+            manufacturer: this.state.personalPropertyManufacturer,
+            model: this.state.personalPropertyModel,
+            location: this.state.personalPropertyLocation,
+            realEstateId: Number(this.state.personalPropertyLocationId),
+            purchaseLocation: this.state.personalPropertyPurchaseLocation,
+            purchaseDate: this.state.personalPropertyPurchaseDate,
+            purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
+            activeAsset: this.state.personalPropertyActiveAsset,
+            // Cloudinary: added image URL
+            imageUrl: this.state.personalPropertyImageUrl,
+            disposalDate: this.state.personalPropertyDisposalDate,
+            disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
+            disposalNotes: this.state.personalPropertyDisposalNotes,
+        }
+        PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+        .then(() => this.props.history.push("/personalproperty"));
+    }
+
     constructUpdatedPersonalProperty = e => {
+        let ppTypeId = this.state.personalPropertyTypeId
         e.preventDefault();
         this.setState({loadingStatus:true});
         if (this.state.personalPropertyType !== "") {
             this.handleOtherInput()
             .then(result => {
-                const updatedPersonalProperty = {
-                    id: this.objectId,
-                    name: this.state.personalPropertyName,
-                    ppTypeId: Number(result.id),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    location: this.state.personalPropertyLocation,
-                    realEstateId: Number(this.state.personalPropertyLocationId),
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
-                    purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-                    activeAsset: this.state.personalPropertyActiveAsset,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.personalPropertyImageUrl,
-                    disposalDate: this.state.personalPropertyDisposalDate,
-                    disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.personalPropertyDisposalNotes,
-                }
-                PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-                .then(() => this.props.history.push("/personalproperty"));
+                ppTypeId = result.id
+                this.createPostUpdatedPersonalProperty(ppTypeId)
             })
         } else {
-            const updatedPersonalProperty = {
-                    id: this.objectId,
-                    name: this.state.personalPropertyName,
-                    ppTypeId: Number(this.state.personalPropertyTypeId),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    realEstateId: Number(this.state.personalPropertyLocationId),
-                    location: this.state.personalPropertyLocation,
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
-                    purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-                    activeAsset: this.state.personalPropertyActiveAsset,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.personalPropertyImageUrl,
-                    disposalDate: this.state.personalPropertyDisposalDate,
-                    disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.personalPropertyDisposalNotes,
-                }
-                PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-                .then(() => this.props.history.push("/personalproperty"));
+            this.createPostUpdatedPersonalProperty(ppTypeId)
         }
     }
+    //             const updatedPersonalProperty = {
+    //                 id: this.objectId,
+    //                 name: this.state.personalPropertyName,
+    //                 ppTypeId: Number(result.id),
+    //                 description: this.state.personalPropertyDescription,
+    //                 manufacturer: this.state.personalPropertyManufacturer,
+    //                 model: this.state.personalPropertyModel,
+    //                 location: this.state.personalPropertyLocation,
+    //                 realEstateId: Number(this.state.personalPropertyLocationId),
+    //                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
+    //                 purchaseDate: this.state.personalPropertyPurchaseDate,
+    //                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
+    //                 activeAsset: this.state.personalPropertyActiveAsset,
+    //                 // Cloudinary: added image URL
+    //                 imageUrl: this.state.personalPropertyImageUrl,
+    //                 disposalDate: this.state.personalPropertyDisposalDate,
+    //                 disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
+    //                 disposalNotes: this.state.personalPropertyDisposalNotes,
+    //             }
+    //             PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+    //             .then(() => this.props.history.push("/personalproperty"));
+    //         })
+    //     } else {
+    //         const updatedPersonalProperty = {
+    //                 id: this.objectId,
+    //                 name: this.state.personalPropertyName,
+    //                 ppTypeId: Number(this.state.personalPropertyTypeId),
+    //                 description: this.state.personalPropertyDescription,
+    //                 manufacturer: this.state.personalPropertyManufacturer,
+    //                 model: this.state.personalPropertyModel,
+    //                 realEstateId: Number(this.state.personalPropertyLocationId),
+    //                 location: this.state.personalPropertyLocation,
+    //                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
+    //                 purchaseDate: this.state.personalPropertyPurchaseDate,
+    //                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
+    //                 activeAsset: this.state.personalPropertyActiveAsset,
+    //                 // Cloudinary: added image URL
+    //                 imageUrl: this.state.personalPropertyImageUrl,
+    //                 disposalDate: this.state.personalPropertyDisposalDate,
+    //                 disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
+    //                 disposalNotes: this.state.personalPropertyDisposalNotes,
+    //             }
+    //             PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
+    //             .then(() => this.props.history.push("/personalproperty"));
+    //     }
+    // }
 
     render() {
         return (
             <div className="update-form">
-                <h6 id="title_editForm">{this.state.personalPropertyName}</h6>
+                <h4 id="title_editForm">{this.state.personalPropertyName}</h4>
 
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Name</Form.Label>
@@ -158,10 +190,10 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Item Type</Form.Label>
                     <Form.Control as="select" id="personalPropertyTypeId" value={this.state.personalPropertyTypeId} onChange={this.handleFieldChange} >
-                    <option value={0}></option>
-                    {this.state.personalPropertyTypes.map(type => (
-                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                    ))}
+                        {this.state.personalPropertyTypes.map(type => (
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        <option key={`type-option-0`} value={0}>Other</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -183,10 +215,10 @@ class PersonalPropertyEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
                     <Form.Control as="select" id="personalPropertyLocationId" onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
-                    <option key={`location-option-0`} value={0}>Other</option>
-                    {this.state.personalPropertyLocations.map(location => (
-                        <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
-                    ))}
+                        {this.state.personalPropertyLocations.map(location => (
+                            <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
+                        ))}
+                        <option key={`location-option-0`} value={0}></option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -222,7 +254,7 @@ class PersonalPropertyEdit extends Component {
                 </> :
                 null} 
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                <img align="center" src={this.state.personalPropertyImageUrl} alt=""/><br />
+                <img className="detail-image" src={this.state.personalPropertyImageUrl} alt=""/><br />
                 <div className="image-upload-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Replace Image
                     </Button>

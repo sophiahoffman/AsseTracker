@@ -75,7 +75,7 @@ class RealEstateCard extends Component {
             centered
             >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title className= "my-modal-title" id="contained-modal-title-vcenter">
                     {(this.props.realEstate.imageUrl !== "") 
                     ? <><img className="detail-image" src={this.props.realEstate.imageUrl} alt={this.props.realEstate.name} /><br /></>
                     : null }
@@ -159,7 +159,7 @@ class RealEstateCard extends Component {
             centered
             >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title className= "my-modal-title" id="contained-modal-title-vcenter">
                     <h6>Personal Property associated with {this.props.realEstate.name}</h6>
                 </Modal.Title>
             </Modal.Header>
@@ -190,7 +190,7 @@ class RealEstateCard extends Component {
             centered
             >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title className= "my-modal-title" id="contained-modal-title-vcenter">
                     <h6>Vehicles associated with {this.props.realEstate.name}</h6>
                 </Modal.Title>
             </Modal.Header>

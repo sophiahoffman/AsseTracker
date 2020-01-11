@@ -28,7 +28,7 @@ class VehiclesCard extends Component {
             centered
             >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title className= "my-modal-title" id="contained-modal-title-vcenter">
                     {(this.props.vehicle.imageUrl !== "") 
                     ? <><img className="detail-image" src={this.props.vehicle.imageUrl} alt={this.props.vehicle.name} /><br /></>
                     : null }

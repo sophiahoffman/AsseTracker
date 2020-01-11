@@ -147,10 +147,10 @@ class VehiclesEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
                     <Form.Control as="select" id="vehicleTypeId" value={this.state.vehicleTypeId} onChange={this.handleFieldChange}>
-                    <option></option>
-                    {this.state.vehicleTypes.map(type => (
-                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                    ))}
+                        {this.state.vehicleTypes.map(type => (
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        <option key={`type-option-0`} value={0}></option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -179,11 +179,11 @@ class VehiclesEdit extends Component {
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
-                    <Form.Control as="select" id="vehicleLocationId" value={this.state.vehicleLocationId} onChange={this.handleFieldChange} value={this.state.personalPropertyLocationId}>
-                    <option key={`location-option-0`} value="0"></option>
-                    {this.state.vehicleLocations.map(location => (
-                        <option key={`select-option-${location.id}`} value={location.id}>{location.name}</option>
-                    ))}
+                    <Form.Control as="select" id="vehicleLocationId" value={this.state.vehicleLocationId} onChange={this.handleFieldChange}>
+                        {this.state.vehicleLocations.map(location => (
+                            <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
+                        ))}
+                        <option key={`location-option-0`} value="0"></option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -219,7 +219,7 @@ class VehiclesEdit extends Component {
                 </> :
                 null}                 
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                <img align="center" src={this.state.vehicleImageUrl} alt=""/><br />
+                <img className="detail-image" src={this.state.vehicleImageUrl} alt=""/><br />
                 <div className="image-upload-div">
                     <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button">Replace Image
                     </Button>

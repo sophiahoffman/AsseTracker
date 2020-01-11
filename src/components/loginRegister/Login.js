@@ -42,7 +42,7 @@ class Login extends Component {
             <div className="new-form">
                 <Form.Group className="col-md-8 form-group form-inline">
                 <Form.Label className="row-sm-2 row-form-label">Enter Your Password</Form.Label>
-                    <Form.Control type="password" id="userPassword" onChange={this.handleFieldChange} />
+                    <Form.Control autofocus type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 
                 <div className="button-div">
