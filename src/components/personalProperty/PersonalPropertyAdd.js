@@ -73,54 +73,48 @@ class PersonalPropertyAdd extends Component {
             }
         });
     }
+    createPostNewPersonalProperty = ppTypeId => {
+        const newPersonalProperty = {
+            
+            userId: this.userId,
+            name: this.state.personalPropertyName,
+            ppTypeId: Number(ppTypeId),
+            description: this.state.personalPropertyDescription,
+            manufacturer: this.state.personalPropertyManufacturer,
+            model: this.state.personalPropertyModel,
+            location: this.state.personalPropertyLocation,
+            realEstateId: Number(this.state.personalPropertyLocationId),
+            purchaseLocation: this.state.personalPropertyPurchaseLocation,
+            purchaseDate: this.state.personalPropertyPurchaseDate,
+            purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
+            activeAsset: this.state.personalPropertyActiveAsset,
+            // Cloudinary: added image URL
+            imageUrl: this.state.personalPropertyImageUrl,
+            disposalDate: this.state.personalPropertyDisposalDate,
+            disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
+            disposalNotes: this.state.personalPropertyDisposalNotes,
+        }
+        PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
+        .then(() => this.props.history.push("/personalproperty"));
+    }
+
 
 // if else statement allows for different object posted if user enters custom property type
     constructNewPersonalProperty = e => {
+        let ppTypeId = this.state.personalPropertyTypeId
         e.preventDefault();
         this.setState({loadingStatus:true});
         if (this.state.personalPropertyType !== "") {
             this.handleOtherInput()
             .then(result => {
-                const newPersonalProperty = {
-                    userId: Number(sessionStorage.getItem("userId")),
-                    name: this.state.personalPropertyName,
-                    ppTypeId: Number(result.id),
-                    description: this.state.personalPropertyDescription,
-                    manufacturer: this.state.personalPropertyManufacturer,
-                    model: this.state.personalPropertyModel,
-                    realEstateId: Number(this.state.personalPropertyLocationId),
-                    location: this.state.personalPropertyLocation,
-                    purchaseLocation: this.state.personalPropertyPurchaseLocation,
-                    purchaseDate: this.state.personalPropertyPurchaseDate,
-                    purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-                    activeAsset: this.state.personalPropertyActiveAsset,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.personalPropertyImageUrl,
-                }
-                PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
-                .then(() => this.props.history.push("/personalproperty"));
+                ppTypeId = result.id
+                this.createPostNewPersonalProperty(ppTypeId)
             })
         } else {
-            const newPersonalProperty = {
-                userId: Number(sessionStorage.getItem("userId")),
-                name: this.state.personalPropertyName,
-                ppTypeId: Number(this.state.personalPropertyTypeId),
-                description: this.state.personalPropertyDescription,
-                manufacturer: this.state.personalPropertyManufacturer,
-                model: this.state.personalPropertyModel,
-                realEstateId: Number(this.state.personalPropertyLocationId),
-                location: this.state.personalPropertyLocation,
-                purchaseLocation: this.state.personalPropertyPurchaseLocation,
-                purchaseDate: this.state.personalPropertyPurchaseDate,
-                purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-                activeAsset: this.state.personalPropertyActiveAsset,
-                // Cloudinary: added image URL
-                imageUrl: this.state.personalPropertyImageUrl,
-            }
-            PersonalPropertyAPIManager.postPersonalProperty(newPersonalProperty)
-            .then(() => this.props.history.push("/personalproperty"));
+            this.createPostNewPersonalProperty(ppTypeId)
         }
     }
+
 
     render() {
         return (
@@ -182,7 +176,7 @@ class PersonalPropertyAdd extends Component {
                         <Form.Control type="number" step=".01" id="personalPropertyPurchasePrice" onChange={this.handleFieldChange} />
                     </Form.Group>
                     {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                    <img src={this.state.personalPropertyImageUrl} alt=""/><br />
+                    <img className="detail-image" src={this.state.personalPropertyImageUrl} alt=""/><br />
                     <div className="image-upload-div">
                         <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="upload-button" disabled={this.state.loadingStatus}>Replace Image
                         </Button>
