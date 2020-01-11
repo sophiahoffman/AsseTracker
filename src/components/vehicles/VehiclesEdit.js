@@ -99,6 +99,7 @@ class VehiclesEdit extends Component {
 
     createUpdatedVehicle = vehicleLocationId => {
         const updatedVehicle = {
+            id: this.objectId,
             name: this.state.vehicleName,
             vehicleTypeId: Number(vehicleLocationId),
             vin: this.state.vehicleVin,

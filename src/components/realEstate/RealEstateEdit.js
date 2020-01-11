@@ -99,6 +99,7 @@ class RealEstateEdit extends Component {
     
     createPostUpdatedRealEstate = reTypeId => {
         const updatedRealEstate = {
+            id: this.objectId,
             name: this.state.realEstateName,
             reTypeId: Number(reTypeId),
             address: this.state.realEstateAddress,

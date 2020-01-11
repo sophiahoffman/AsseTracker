@@ -95,6 +95,7 @@ class PersonalPropertyEdit extends Component {
 
     createPostUpdatedPersonalProperty = ppTypeId => {
         const updatedPersonalProperty = {
+            id: this.objectId,
             name: this.state.personalPropertyName,
             ppTypeId: Number(ppTypeId),
             description: this.state.personalPropertyDescription,
