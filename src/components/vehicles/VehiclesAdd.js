@@ -194,7 +194,7 @@ class VehiclesAdd extends Component {
                     <Form.Control type="number" id="vehiclePurchasePrice" onChange={this.handleFieldChange} />
                 </Form.Group>
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                <img src={this.state.vehicleImageUrl} alt=""/><br />
+                <img className="detail-image" src={this.state.vehicleImageUrl} alt=""/><br />
                 <div className="image-upload-div">
                     <Button variant="secondary" onClick={this.uploadWidget.bind(this)} className="button">Replace Image
                     </Button>

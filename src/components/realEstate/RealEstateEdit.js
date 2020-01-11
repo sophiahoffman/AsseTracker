@@ -96,56 +96,38 @@ class RealEstateEdit extends Component {
             }        
         });
     }
+    
+    createPostUpdatedRealEstate = reTypeId => {
+        const updatedRealEstate = {
+            name: this.state.realEstateName,
+            reTypeId: Number(reTypeId),
+            address: this.state.realEstateAddress,
+            city: this.state.realEstateCity,
+            state: this.state.realEstateState,
+            zip: this.state.realEstateZip,
+            rent: this.state.rentCheckbox,
+            // Cloudinary: added image URL
+            imageUrl: this.state.realEstateImageUrl,
+            purchaseDate: this.state.realEstatePurchaseDate,
+            purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
+            activeAsset: this.state.realEstateActiveAsset,
+        }
+        RealEstateAPIManager.updateRealEstate(updatedRealEstate)
+        .then(() => this.props.history.push("/realestate"));
+    }
 
     constructUpdatedRealEstate = e => {
+        let reTypeId = this.state.realEstateTypeId
         e.preventDefault();
         this.setState({loadingStatus:true});
-        console.log("im running constructing updated realestate")
         if (this.state.realEstateType !== "") {
             this.handleOtherInput()
             .then(result => {
-                const updatedRealEstate = {
-                    id: this.objectId,
-                    name: this.state.realEstateName,
-                    reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress,
-                    city: this.state.realEstateCity,
-                    state: this.state.realEstateState,
-                    zip: this.state.realEstateZip,
-                    rent: this.state.rentCheckbox,
-                    purchaseDate: this.state.realEstatePurchaseDate,
-                    purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
-                    activeAsset: this.state.realEstateActiveAsset,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.realEstateImageUrl,
-                    disposalDate: this.state.realEstateDisposalDate,
-                    disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                    disposalNotes: this.state.realEstateDisposalNotes,
-                }
-                RealEstateAPIManager.updateRealEstate(updatedRealEstate)
-                .then(() => this.props.history.push("/realestate"));
+                reTypeId = result.id
+                this.createPostUpdatedRealEstate(reTypeId)
             })
         } else {
-            const updatedRealEstate = {
-                id: this.objectId,
-                name: this.state.realEstateName,
-                reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress,
-                city: this.state.realEstateCity,
-                state: this.state.realEstateState,
-                zip: this.state.realEstateZip,
-                rent: this.state.rentCheckbox,
-                purchaseDate: this.state.realEstatePurchaseDate,
-                purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
-                activeAsset: this.state.realEstateActiveAsset,
-                // Cloudinary: added image URL
-                imageUrl: this.state.realEstateImageUrl,
-                disposalDate: this.state.realEstateDisposalDate,
-                disposalPrice: Number(this.state.realEstateDisposalPrice).toFixed(2),
-                disposalNotes: this.state.realEstateDisposalNotes,
-            }
-            RealEstateAPIManager.updateRealEstate(updatedRealEstate)
-            .then(() => this.props.history.push("/realestate"));
+            this.createPostUpdatedRealEstate(reTypeId)
         }
     }
 

@@ -11,6 +11,7 @@ import '../../AsseTracker.css'
 
 // RealEstateAdd takes input from user and writes a new item to the realEstate table. First it gets the real estate types from ppTypes table and provides those options in a dropdown. But the form also provides an option to fill in a text input and add to the ppTypes table. That new typeId is added to the object and written to the realEstate table. 
 class RealEstateAdd extends Component {
+    userId = sessionStorage.getItem("userId")
 
     state = {
         realEstateName: "",
@@ -70,48 +71,38 @@ class RealEstateAdd extends Component {
         });
     }
 
+    createPostNewRealEstate = reTypeId => {
+        const newRealEstate = {
+            userId: Number(this.userId),
+            name: this.state.realEstateName,
+            reTypeId: Number(reTypeId),
+            address: this.state.realEstateAddress,
+            city: this.state.realEstateCity,
+            state: this.state.realEstateState,
+            zip: this.state.realEstateZip,
+            rent: this.state.rentCheckbox,
+            // Cloudinary: added image URL
+            imageUrl: this.state.realEstateImageUrl,
+            purchaseDate: this.state.realEstatePurchaseDate,
+            purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
+            activeAsset: this.state.realEstateActiveAsset,
+        }
+        RealEstateAPIManager.postRealEstate(newRealEstate)
+        .then(() => this.props.history.push("/realestate"));
+    }
+
     constructNewRealEstate = e => {
+        let reTypeId = this.state.realEstateTypeId
         e.preventDefault();
         this.setState({loadingStatus:true});
         if (this.state.realEstateType !== "") {
             this.handleOtherInput()
             .then(result => {
-                const newRealEstate = {
-                    userId: Number(sessionStorage.getItem("userId")),
-                    name: this.state.realEstateName,
-                    reTypeId: Number(result.id),
-                    address: this.state.realEstateAddress,
-                    city: this.state.realEstateCity,
-                    state: this.state.realEstateState,
-                    zip: this.state.realEstateZip,
-                    rent: this.state.rentCheckbox,
-                    // Cloudinary: added image URL
-                    imageUrl: this.state.realEstateImageUrl,
-                    purchaseDate: this.state.realEstatePurchaseDate,
-                    purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
-                    activeAsset: this.state.realEstateActiveAsset,
-                }
-                RealEstateAPIManager.postRealEstate(newRealEstate)
-                .then(() => this.props.history.push("/realestate"));
+                reTypeId = result.id
+                this.createPostNewRealEstate(reTypeId)
             })
         } else {
-            const newRealEstate = {
-                userId: Number(sessionStorage.getItem("userId")),
-                name: this.state.realEstateName,
-                reTypeId: Number(this.state.realEstateTypeId),
-                address: this.state.realEstateAddress,
-                city: this.state.realEstateCity,
-                state: this.state.realEstateState,
-                zip: this.state.realEstateZip,
-                rent: this.state.rentCheckbox,
-                // Cloudinary: added image URL
-                imageUrl: this.state.realEstateImageUrl,
-                purchaseDate: this.state.realEstatePurchaseDate,
-                purchasePrice: Number(this.state.realEstatePurchasePrice).toFixed(2),
-                activeAsset: this.state.realEstateActiveAsset,
-            }
-            RealEstateAPIManager.postRealEstate(newRealEstate)
-            .then(() => this.props.history.push("/realestate"));
+            this.createPostNewRealEstate(reTypeId)
         }
     }
 
@@ -171,7 +162,7 @@ class RealEstateAdd extends Component {
                 </Form.Group>
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
 
-                    <img src={this.state.realEstateImageUrl} alt=""/><br />
+                    <img className="detail-image" src={this.state.realEstateImageUrl} alt=""/><br />
                 <div className="image-upload-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)}>Replace Image
                     </Button>

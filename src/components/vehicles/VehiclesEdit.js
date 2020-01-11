@@ -99,7 +99,6 @@ class VehiclesEdit extends Component {
 
     createUpdatedVehicle = vehicleLocationId => {
         const updatedVehicle = {
-            id: this.objectId,
             name: this.state.vehicleName,
             vehicleTypeId: Number(vehicleLocationId),
             vin: this.state.vehicleVin,
@@ -183,7 +182,7 @@ class VehiclesEdit extends Component {
                         {this.state.vehicleLocations.map(location => (
                             <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
                         ))}
-                        <option key={`location-option-0`} value="0"></option>
+                        <option key={`location-option-0`} value={0}></option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">

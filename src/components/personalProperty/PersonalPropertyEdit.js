@@ -95,7 +95,6 @@ class PersonalPropertyEdit extends Component {
 
     createPostUpdatedPersonalProperty = ppTypeId => {
         const updatedPersonalProperty = {
-            id: this.objectId,
             name: this.state.personalPropertyName,
             ppTypeId: Number(ppTypeId),
             description: this.state.personalPropertyDescription,
@@ -131,52 +130,6 @@ class PersonalPropertyEdit extends Component {
             this.createPostUpdatedPersonalProperty(ppTypeId)
         }
     }
-    //             const updatedPersonalProperty = {
-    //                 id: this.objectId,
-    //                 name: this.state.personalPropertyName,
-    //                 ppTypeId: Number(result.id),
-    //                 description: this.state.personalPropertyDescription,
-    //                 manufacturer: this.state.personalPropertyManufacturer,
-    //                 model: this.state.personalPropertyModel,
-    //                 location: this.state.personalPropertyLocation,
-    //                 realEstateId: Number(this.state.personalPropertyLocationId),
-    //                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
-    //                 purchaseDate: this.state.personalPropertyPurchaseDate,
-    //                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-    //                 activeAsset: this.state.personalPropertyActiveAsset,
-    //                 // Cloudinary: added image URL
-    //                 imageUrl: this.state.personalPropertyImageUrl,
-    //                 disposalDate: this.state.personalPropertyDisposalDate,
-    //                 disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-    //                 disposalNotes: this.state.personalPropertyDisposalNotes,
-    //             }
-    //             PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-    //             .then(() => this.props.history.push("/personalproperty"));
-    //         })
-    //     } else {
-    //         const updatedPersonalProperty = {
-    //                 id: this.objectId,
-    //                 name: this.state.personalPropertyName,
-    //                 ppTypeId: Number(this.state.personalPropertyTypeId),
-    //                 description: this.state.personalPropertyDescription,
-    //                 manufacturer: this.state.personalPropertyManufacturer,
-    //                 model: this.state.personalPropertyModel,
-    //                 realEstateId: Number(this.state.personalPropertyLocationId),
-    //                 location: this.state.personalPropertyLocation,
-    //                 purchaseLocation: this.state.personalPropertyPurchaseLocation,
-    //                 purchaseDate: this.state.personalPropertyPurchaseDate,
-    //                 purchasePrice: Number(this.state.personalPropertyPurchasePrice).toFixed(2),
-    //                 activeAsset: this.state.personalPropertyActiveAsset,
-    //                 // Cloudinary: added image URL
-    //                 imageUrl: this.state.personalPropertyImageUrl,
-    //                 disposalDate: this.state.personalPropertyDisposalDate,
-    //                 disposalPrice: Number(this.state.personalPropertyDisposalPrice).toFixed(2),
-    //                 disposalNotes: this.state.personalPropertyDisposalNotes,
-    //             }
-    //             PersonalPropertyAPIManager.updatePersonalProperty(updatedPersonalProperty)
-    //             .then(() => this.props.history.push("/personalproperty"));
-    //     }
-    // }
 
     render() {
         return (
