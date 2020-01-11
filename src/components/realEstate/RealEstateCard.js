@@ -39,34 +39,7 @@ class RealEstateCard extends Component {
         })
     }
 
-    // getActivePersonalPropertyAtLocation = locationId => {
-    //     locationId = this.props.realEstate.id
-    //     return (
-
-    //         PersonalPropertyAPIManager.getActivePersonalPropertyAtLocation(locationId)
-    //         .then(personalProperty => {
-    //             this.setState({
-    //             personalProperty: personalProperty,
-    //             })
-    //         })
-    //     )
-    // }
-
-    // getActiveVehiclesAtLocation = locationId => {
-    //     locationId = this.props.realEstate.id
-    //     return (
-
-    //         VehiclesAPIManager.getActiveVehiclesAtLocation(locationId)
-    //         .then(vehicles => {
-    //             this.setState({
-    //             vehicles: vehicles,
-    //             })
-    //         })
-    //     )
-    // }
-
     MyVerticallyCenteredModal = props => {
-        console.log("realestateProps",this.props)
         return (
             <Modal
             {...props}
