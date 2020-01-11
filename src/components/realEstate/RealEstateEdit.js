@@ -160,10 +160,10 @@ class RealEstateEdit extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Property Type</Form.Label>
                     <Form.Control as="select" id="realEstateTypeId" value={this.state.realEstateTypeId} onChange={this.handleFieldChange}>
-                    <option value={0}></option>
-                    {this.state.realEstateTypes.map(type => (
-                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                    ))}
+                        {this.state.realEstateTypes.map(type => (
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        <option key={`type-option-0`} value={0}>Other</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -219,7 +219,7 @@ class RealEstateEdit extends Component {
                 </> :
                 null} 
                 {/* This image tag will contain the uploaded image because we are using the imageUrl property in state which we change when the image is uploaded*/}
-                <img src={this.state.realEstateImageUrl} alt=""/><br />
+                <img src={this.state.realEstateImageUrl} className="detail-image" alt=""/><br />
                 <div className="image-upload-div">
                     <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.uploadWidget.bind(this)} className="upload-button">Replace Image
                     </Button>

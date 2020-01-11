@@ -128,7 +128,8 @@ img {
 }
 
 .detail-image {
-  height: 125px;
+  height: 200px;
+  width: auto;
   justify-content: center;
   vertical-align: center;
   margin: auto;
@@ -147,7 +148,8 @@ img {
 }
 
 .card-image {
-  height: 75px;
+  height: 100px;
+  width: auto;
   justify-content: center;
   vertical-align: center;
   margin: auto;
@@ -247,4 +249,10 @@ img {
   width: 50%;
   font-size: 16px;
   font-weight: 500;
+}
+
+.my-modal-title {
+  /* padding-left: 15px;
+  padding-right: 15px; */
+  text-align: center;
 }

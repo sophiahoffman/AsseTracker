@@ -136,10 +136,11 @@ class VehiclesAdd extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Vehicle Type</Form.Label>
                     <Form.Control as="select" id="vehicleTypeId" onChange={this.handleFieldChange}>
-                    <option></option>
-                    {this.state.vehicleTypes.map(type => (
-                        <option key={`select-option-${type.id}`} value={type.id}>{type.type}</option>
-                    ))}
+                        <option value={0}></option>     
+                        {this.state.vehicleTypes.map(type => (
+                            <option key={`type-option-${type.id}`} value={type.id}>{type.type}</option>
+                        ))}
+                        <option key={`type-option-0`} value={0}>Other</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group className="col-md-8 form-group form-inline">
@@ -169,10 +170,11 @@ class VehiclesAdd extends Component {
                 <Form.Group className="col-md-8 form-group form-inline">
                     <Form.Label className="row-sm-2 row-form-label">Select Location</Form.Label>
                     <Form.Control as="select" id="vehicleLocationId" onChange={this.handleFieldChange}>
-                    <option key={`location-option-0`} value={0}></option>
-                    {this.state.vehicleLocations.map(location => (
-                        <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
-                    ))}
+                        <option value={0}></option>     
+                        {this.state.vehicleLocations.map(location => (
+                            <option key={`location-option-${location.id}`} value={location.id}>{location.name}</option>
+                        ))}
+                        <option key={`location-option-0`} value={0}>Other</option>
                     </Form.Control>
                 </Form.Group>                
                 <Form.Group className="col-md-8 form-group form-inline">
