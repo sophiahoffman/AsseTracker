@@ -44,9 +44,9 @@ class EntryPortal extends Component {
           <img id="portal-logo" src={this.state.logoUrl} alt="logo"></img>
         </div>
         <div className="new-form">
-            <Form.Group className="col-md-8 form-group form-inline">
+            <Form.Group className="col-md-8 form-group entry-portal-fields">
                 <Form.Label className="row-sm-2 row-form-label">Enter Your Email Address</Form.Label>
-                <Form.Control autofocus type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
+                <Form.Control className ="entry-portal-field" autoFocus type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
             <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
             </Button>

@@ -251,6 +251,14 @@ img {
   font-weight: 500;
 }
 
+.entry-portal-form {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: auto;
+  justify-content: center;
+}
+
 .my-modal-title {
   /* padding-left: 15px;
   padding-right: 15px; */
