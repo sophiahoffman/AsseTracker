@@ -33,6 +33,7 @@ class Login extends Component {
                 return this.props.isAuthenticated()
             } else {
                 window.alert('User email and password do not match')
+                this.setState({loadingStatus: false})
             }
         })
     }
@@ -40,15 +41,15 @@ class Login extends Component {
     render() {
         return (
             <div className="new-form">
-                <Form.Group className="col-md-8 form-group form-inline">
+                <Form.Group className="col-md-8 entry-portal-fields">
                 <Form.Label className="row-sm-2 row-form-label">Enter Your Password</Form.Label>
-                    <Form.Control autoFocus type="password" id="userPassword" onChange={this.handleFieldChange} />
+                    <Form.Control class="entry-portal-field" autoFocus type="password" id="userPassword" onChange={this.handleFieldChange} />
                 </Form.Group>
                 
                 <div className="button-div">
-                    <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserLogin}>Submit
+                    <Button class="entry-portal-field" variant="secondary" type="button" disabled={this.state.loadingStatus} onClick={this.validateUserLogin}>Submit
                     </Button>
-                    <Button variant="secondary" type="button" disabled={this.state.loadingStatus} 
+                    <Button class="entry-portal-field" variant="secondary" type="button" disabled={this.state.loadingStatus} 
                     onClick={this.props.handleLogout}>Cancel
                     </Button>
                 </div>

@@ -22,7 +22,7 @@
   }
 
   .entry-portal-field {
-    width: 200px;
+    max-width: 200px;
     margin:auto;
   }
 

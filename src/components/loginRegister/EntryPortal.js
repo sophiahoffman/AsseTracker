@@ -48,7 +48,7 @@ class EntryPortal extends Component {
                 <Form.Label className="row-sm-2 row-form-label">Enter Your Email Address</Form.Label>
                 <Form.Control className ="entry-portal-field" autoFocus type="email" value={this.state.userEmailAddress} id="userEmailAddress" onChange={this.handleFieldChange} />
             </Form.Group>
-            <Button variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
+            <Button className="entry-portal-field" variant="secondary" type="button" disabled={this.loadingStatus} onClick={this.validateUserEmail}>Submit
             </Button>
         </div>
         </>
